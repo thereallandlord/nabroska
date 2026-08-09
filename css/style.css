@@ -120,6 +120,15 @@ body {
   font-family: "Aquarelle", cursive;
   font-size: calc(235 * var(--u));
   line-height: 1;
+  /* 🔴 НЕ УБИРАТЬ. У Aquarelle верхушка «И» и росчерк «В» выходят за высоту,
+     которую шрифт объявляет своей. Браузер считает рамку буквы по этой
+     объявленной высоте и, как только буква попадает в отдельный слой
+     (любой filter, will-change, анимация), срезает всё, что вылезло, —
+     те самые «три пикселя сверху». Запас в 0.4em кладёт росчерки внутрь
+     рамки, а отрицательный margin возвращает букву на прежнее место,
+     поэтому координаты выше править не нужно. */
+  padding: .4em;
+  margin: -.4em;
 }
 .t-word {                         /* «наброска» и «профессию» */
   font-family: "Champagne & Limousines", sans-serif;
@@ -136,7 +145,7 @@ body {
 /* ---------- Описание слева ---------- */
 .hero__lead {
   left: calc(98 * var(--u));
-  top:  calc(830.25 * var(--u));
+  top:  calc(782.25 * var(--u));
   font-size: calc(63 * var(--u));
   line-height: calc(72.5 * var(--u));
   font-weight: 700;
@@ -146,7 +155,7 @@ body {
 
 /* ---------- Цифры справа сверху ---------- */
 .hero__facts {
-  right: calc(100 * var(--u));
+  right: calc(64 * var(--u));
   top:   calc(106.75 * var(--u));
   font-size: calc(56 * var(--u));
   line-height: calc(64.5 * var(--u));
@@ -159,7 +168,7 @@ body {
 .hero__cta {
   position: absolute;
   left: calc(100 * var(--u));
-  top:  calc(1248 * var(--u));
+  top:  calc(1200 * var(--u));
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -201,7 +210,9 @@ body {
 .hero__facts .ln,
 .hero__cta           { opacity: 0; }
 
-.t-script, .t-word, .hero__lead .ln, .hero__facts .ln, .hero__cta { will-change: transform, opacity; }
+/* 🔴 .t-script здесь НЕТ намеренно: will-change выносит букву в отдельный слой,
+   а слой режет росчерки по объявленной высоте шрифта. */
+.t-word, .hero__lead .ln, .hero__facts .ln, .hero__cta { will-change: transform, opacity; }
 
 /* 🔴 Рукописные буквы проявляются ЦЕЛИКОМ — никаких развёрток и масок.
    Пробовали «письмо» слева направо: буква в середине показа неизбежно
@@ -216,9 +227,11 @@ body {
 .hero.is-ready .hero__cta { animation: riseIn 1.05s var(--ease) forwards; animation-delay: var(--d, 0s); }
 
 @keyframes bgIn   { to { opacity: 1; transform: scale(1); } }
+/* 🔴 Без filter и без scale — только прозрачность и лёгкий подъём.
+   Любой filter создаёт слой, а слой срезает росчерки (см. .t-script). */
 @keyframes letterIn {
-  from { opacity: 0; transform: translateY(.12em) scale(.986); filter: blur(11px); }
-  to   { opacity: 1; transform: none;                          filter: blur(0); }
+  from { opacity: 0; transform: translateY(.09em); }
+  to   { opacity: 1; transform: none; }
 }
 @keyframes riseIn {
   from { opacity: 0; transform: translateY(var(--rise, 1.1em)); filter: blur(6px); }

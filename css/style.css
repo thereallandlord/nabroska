@@ -379,6 +379,14 @@ body {
   .hero__layer { flex: 1 1 auto; justify-content: center; }
 }
 
+/* Планшет горизонтально: экран меньше десктопного, и цифры справа
+   при том же поле наезжали на самый край. Отодвигаем их только здесь —
+   компьютерная версия остаётся как есть. */
+@media (orientation: landscape) and (max-width: 1400px),
+       (orientation: landscape) and (pointer: coarse) {
+  .hero__facts { right: calc(70 * var(--u)); }
+}
+
 /* очень низкий экран в альбомной ориентации — ужимаем поля кнопки,
    чтобы она не наезжала на нижний край сцены */
 @media (orientation: landscape) and (max-height: 420px) {

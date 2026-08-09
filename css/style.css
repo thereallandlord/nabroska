@@ -155,7 +155,7 @@ body {
 
 /* ---------- Цифры справа сверху ---------- */
 .hero__facts {
-  right: calc(64 * var(--u));
+  right: calc(32 * var(--u));
   top:   calc(106.75 * var(--u));
   font-size: calc(56 * var(--u));
   line-height: calc(64.5 * var(--u));
@@ -369,6 +369,14 @@ body {
   }
   .hero__cta:hover,
   .hero__cta:focus-visible { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(0, 0, 0, .46); }
+}
+
+/* Планшет в вертикали: экран высокий, текста столько же — между кнопкой
+   и иллюстрацией копилась пустота. Отдаём картинке фиксированную долю,
+   текст центрируем в оставшейся части. Телефона это не касается. */
+@media (orientation: portrait) and (min-width: 700px) {
+  .hero__bg   { flex: 0 0 58%; }
+  .hero__layer { flex: 1 1 auto; justify-content: center; }
 }
 
 /* очень низкий экран в альбомной ориентации — ужимаем поля кнопки,

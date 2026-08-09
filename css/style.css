@@ -273,15 +273,6 @@ body {
     height: 112%;
     object-position: 68% 100%;
   }
-  /* мягкий переход картинки в фон */
-  .hero__bg::after {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 26%;
-    background: linear-gradient(to bottom, var(--navy), rgba(11, 18, 34, 0));
-    pointer-events: none;
-  }
 
   /* текст — верхняя часть */
   .hero__layer {

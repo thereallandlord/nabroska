@@ -15,8 +15,10 @@
 
 <!-- ======================= ПЕРВЫЙ БЛОК (обложка) =======================
      Весь текст ниже — обычный редактируемый текст, не картинка.
-     Менять можно прямо здесь. Размеры и координаты — в css/style.css
-     (блок «ПЕРВЫЙ ЭКРАН», числа = пиксели на макете 2560×1440).
+     Менять можно прямо здесь. Размеры и координаты — в css/style.css:
+       «ПЕРВЫЙ ЭКРАН»   — координаты (числа = пиксели макета 2560×1440)
+       «АНИМАЦИЯ»       — задержки и характер появления
+       «ТЕЛЕФОН»        — вертикальная раскладка
 ================================================================= -->
 <section class="hero">
 
@@ -31,25 +33,45 @@
   <div class="hero__layer">
 
     <h1 class="hero__title">
-      <span class="t-script t-script--iz">Из</span><span class="t-word t-word--nabroska">наброска</span><span class="t-script t-script--v">В</span><span class="t-word t-word--prof">профессию</span>
+      <span class="t-line"><span class="t-script t-script--iz">Из</span><span class="t-word t-word--nabroska">наброска</span></span><span class="t-line"><span class="t-script t-script--v">В</span><span class="t-word t-word--prof">профессию</span></span>
     </h1>
 
     <p class="hero__lead">
-      освой базу диджитал иллюстрации<br>
-      и построй на ней профессию<br>
-      <br>
-      от первого взмаха стилусом до дохода на<br>
-      иллюстрации без академических знаний
+      <span class="ln">освой базу диджитал иллюстрации</span>
+      <span class="ln">и построй на ней профессию</span>
+      <span class="ln ln--gap" aria-hidden="true"></span>
+      <span class="ln">от первого взмаха стилусом до дохода на</span>
+      <span class="ln">иллюстрации без академических знаний</span>
     </p>
 
+    <!-- Текст кнопки и ссылку менять здесь -->
+    <a class="hero__cta" href="#">Узнать подробнее</a>
+
     <p class="hero__facts">
-      2 курса<br>
-      60+ уроков<br>
-      старт 1.09.2026
+      <span class="ln">2 курса</span>
+      <span class="ln">60+ уроков</span>
+      <span class="ln">старт 1.09.2026</span>
     </p>
 
   </div>
 </section>
+
+<noscript><style>
+  .hero__title span, .hero__lead .ln, .hero__facts .ln, .hero__cta, .hero__bg
+  { opacity: 1 !important; transform: none !important; filter: none !important;
+    -webkit-mask-image: none !important; mask-image: none !important; }
+</style></noscript>
+
+<script>
+/* Появление запускаем, когда шрифты уже подгрузились — иначе текст моргает.
+   Страховка на 1.2 с: если шрифты не ответили, показываем всё равно. */
+(function () {
+  var hero = document.querySelector('.hero');
+  var go = function () { hero.classList.add('is-ready'); };
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(go); setTimeout(go, 1200); }
+  else { go(); }
+})();
+</script>
 
 </body>
 </html>

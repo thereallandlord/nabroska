@@ -1,8 +1,17 @@
 /* ============================================================
-   Из наброска в профессию — стили
-   Макет: 2560 × 1440 (16:9). Все размеры заданы в пикселях макета
-   через переменную --u, поэтому блок масштабируется без искажений
-   на любой ширине экрана.
+   «Из наброска в профессию» — первый экран
+
+   Как это устроено
+   ----------------
+   Экран всегда равен высоте устройства (100svh) — прокрутки внутри блока нет.
+   Картинка заполняет экран целиком (cover).
+   Текст лежит на «сцене» — это макет 2560×1440, вписанный в экран целиком.
+   Все координаты текста заданы в пикселях макета через переменную --u,
+   поэтому числа в этом файле — ровно те же, что в исходном макете.
+   На экране 16:9 совпадение с макетом пиксельное.
+
+   На вертикальном экране (телефон) включается другая раскладка —
+   блок «ТЕЛЕФОН» в самом низу файла.
    ============================================================ */
 
 /* ---------- Шрифты ---------- */
@@ -26,11 +35,13 @@
 :root {
   --navy:  #0b1222;   /* фон макета */
   --cream: #f5f0d2;   /* цвет всего текста на обложке */
+  --wine:  #6c0006;   /* глубокий красный из иллюстрации */
+
+  --ease: cubic-bezier(.22, .9, .28, 1);
 }
 
 /* ---------- База ---------- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { -webkit-text-size-adjust: 100%; }
 
 body {
@@ -39,23 +50,23 @@ body {
   font-family: "Champagne & Limousines", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* ============================================================
    ПЕРВЫЙ ЭКРАН
-   --u = 1 пиксель макета. Числа ниже — координаты из макета,
-   их можно править напрямую (левый край, верх, кегль).
    ============================================================ */
 .hero {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 100vh;
+  height: 100svh;          /* устойчиво к панелям браузера на телефоне */
   overflow: hidden;
   background: var(--navy);
-  container-type: inline-size;   /* от ширины блока считается --u */
-  --u: calc(100cqi / 2560);
+  container-type: size;    /* от размера экрана считается масштаб макета --u */
 }
 
+/* картинка кроет экран целиком */
 .hero__bg,
 .hero__bg img {
   position: absolute;
@@ -64,11 +75,18 @@ body {
   height: 100%;
   display: block;
   object-fit: cover;
+  object-position: 50% 50%;
 }
 
+/* сцена = макет 2560×1440, целиком вписанный в экран и отцентрованный */
 .hero__layer {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  --u: min(calc(100cqw / 2560), calc(100cqh / 1440));
+  width:  calc(2560 * var(--u));
+  height: calc(1440 * var(--u));
+  transform: translate(-50%, -50%);
 }
 
 /* --- общий вид текстовых слоёв --- */
@@ -81,13 +99,14 @@ body {
   white-space: nowrap;
 }
 
-/* ---------- Заголовок ---------- */
-/* Заголовок собран из 4 отдельных слоёв: две рукописные буквы
-   (шрифт Aquarelle) и два слова (Champagne & Limousines).
-   Каждый слой позиционируется отдельно — так же, как в макете. */
+/* ---------- Заголовок ----------
+   Собран из 4 слоёв: две рукописные буквы (Aquarelle)
+   и два слова (Champagne & Limousines). Каждый — со своей координатой. */
 .hero__title { inset: 0; }
+.hero__title .t-line { display: contents; }
 
-.hero__title span {
+.hero__title .t-script,
+.hero__title .t-word {
   position: absolute;
   display: block;
   white-space: nowrap;
@@ -105,10 +124,10 @@ body {
   line-height: 1;
 }
 
-.t-script--iz       { left: calc(429 * var(--u)); top: calc(179.5 * var(--u)); }
-.t-word--nabroska   { left: calc(824 * var(--u)); top: calc(248   * var(--u)); }
-.t-script--v        { left: calc(233 * var(--u)); top: calc(397.5 * var(--u)); }
-.t-word--prof       { left: calc(471 * var(--u)); top: calc(435   * var(--u)); }
+.t-script--iz     { left: calc(429 * var(--u)); top: calc(179.5 * var(--u)); }
+.t-word--nabroska { left: calc(824 * var(--u)); top: calc(248   * var(--u)); }
+.t-script--v      { left: calc(233 * var(--u)); top: calc(397.5 * var(--u)); }
+.t-word--prof     { left: calc(471 * var(--u)); top: calc(435   * var(--u)); }
 
 /* ---------- Описание слева ---------- */
 .hero__lead {
@@ -118,6 +137,8 @@ body {
   line-height: calc(72.5 * var(--u));
   font-weight: 700;
 }
+.hero__lead .ln { display: block; }
+.hero__lead .ln--gap { height: calc(72.5 * var(--u)); }
 
 /* ---------- Цифры справа сверху ---------- */
 .hero__facts {
@@ -127,4 +148,242 @@ body {
   line-height: calc(64.5 * var(--u));
   font-weight: 700;
   text-align: right;
+}
+.hero__facts .ln { display: block; }
+
+/* ---------- Кнопка ---------- */
+.hero__cta {
+  position: absolute;
+  left: calc(229 * var(--u));
+  top:  calc(1248 * var(--u));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(30 * var(--u)) calc(66 * var(--u));
+  font-family: "Champagne & Limousines", sans-serif;
+  font-size: calc(44 * var(--u));
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: calc(1.5 * var(--u));
+  white-space: nowrap;
+  color: var(--navy);
+  background: var(--cream);
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 calc(10 * var(--u)) calc(34 * var(--u)) rgba(0, 0, 0, .34);
+  transition: transform .45s var(--ease), box-shadow .45s var(--ease),
+              background-color .45s var(--ease), color .45s var(--ease);
+}
+.hero__cta:hover,
+.hero__cta:focus-visible {
+  background: #fffdf2;
+  transform: translateY(calc(-4 * var(--u)));
+  box-shadow: 0 calc(18 * var(--u)) calc(46 * var(--u)) rgba(0, 0, 0, .45);
+}
+.hero__cta:active { transform: translateY(0); }
+.hero__cta:focus-visible { outline: calc(3 * var(--u)) solid var(--cream); outline-offset: calc(6 * var(--u)); }
+
+/* ============================================================
+   АНИМАЦИЯ ПОЯВЛЕНИЯ
+   Задержки собраны здесь — правятся одним числом на элемент.
+   Появление стартует, когда подгрузились шрифты (класс .is-ready).
+   ============================================================ */
+
+/* стартовое состояние */
+.hero__bg            { opacity: 0; transform: scale(1.055); }
+.hero__title .t-script,
+.hero__title .t-word,
+.hero__lead .ln,
+.hero__facts .ln,
+.hero__cta           { opacity: 0; }
+
+.t-word, .hero__lead .ln, .hero__facts .ln, .hero__cta { will-change: transform, opacity; }
+
+/* рукописные буквы проявляются «письмом» — слева направо */
+.t-script {
+  -webkit-mask-image: linear-gradient(90deg, #000 0 34%, transparent 62%);
+          mask-image: linear-gradient(90deg, #000 0 34%, transparent 62%);
+  /* 400% по высоте — рукописные буквы сильно выходят за строку,
+     маска в одну строку срезала бы им верхушки и хвосты */
+  -webkit-mask-size: 320% 400%;    mask-size: 320% 400%;
+  -webkit-mask-position: 100% 50%; mask-position: 100% 50%;
+  -webkit-mask-repeat: no-repeat;  mask-repeat: no-repeat;
+}
+
+.hero.is-ready .hero__bg { animation: bgIn 1.7s var(--ease) forwards; }
+.hero.is-ready .t-script { animation: writeIn 1.25s var(--ease) forwards; animation-delay: var(--d, 0s); }
+.hero.is-ready .t-word,
+.hero.is-ready .hero__lead .ln,
+.hero.is-ready .hero__facts .ln,
+.hero.is-ready .hero__cta { animation: riseIn 1.05s var(--ease) forwards; animation-delay: var(--d, 0s); }
+
+@keyframes bgIn   { to { opacity: 1; transform: scale(1); } }
+@keyframes writeIn{
+  0%   { opacity: 0; -webkit-mask-position: 100% 50%; mask-position: 100% 50%; }
+  18%  { opacity: 1; }
+  100% { opacity: 1; -webkit-mask-position: 0% 50%;   mask-position: 0% 50%; }
+}
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(var(--rise, 1.1em)); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0);                  filter: blur(0); }
+}
+
+/* очерёдность появления */
+.t-script--iz     { --d: .20s; }
+.t-word--nabroska { --d: .50s; --rise: .38em; }
+.t-script--v      { --d: .68s; }
+.t-word--prof     { --d: .92s; --rise: .38em; }
+
+.hero__facts .ln:nth-child(1) { --d: 1.05s; --rise: .8em; }
+.hero__facts .ln:nth-child(2) { --d: 1.14s; --rise: .8em; }
+.hero__facts .ln:nth-child(3) { --d: 1.23s; --rise: .8em; }
+
+.hero__lead .ln:nth-child(1) { --d: 1.20s; }
+.hero__lead .ln:nth-child(2) { --d: 1.31s; }
+.hero__lead .ln:nth-child(4) { --d: 1.46s; }
+.hero__lead .ln:nth-child(5) { --d: 1.57s; }
+
+.hero__cta { --d: 1.80s; --rise: .9em; }
+
+/* ============================================================
+   ТЕЛЕФОН И ЛЮБОЙ ВЕРТИКАЛЬНЫЙ ЭКРАН
+   Экран по-прежнему ровно в высоту устройства, прокрутки нет:
+   текст сверху занимает столько, сколько нужно, картинка забирает остаток.
+   ============================================================ */
+@media (orientation: portrait) {
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    container-type: normal;
+  }
+
+  /* картинка — нижняя часть экрана */
+  .hero__bg {
+    position: relative;
+    inset: auto;
+    order: 2;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+  }
+  /* приближаем кадр к фигуре: у вертикального экрана иначе сверху
+     остаётся пустое небо, а героиня уезжает вниз.
+     Картинка выше своего окна и прижата к низу — верх обрезается. */
+  .hero__bg img {
+    inset: auto 0 0 0;
+    height: 112%;
+    object-position: 68% 100%;
+  }
+  /* мягкий переход картинки в фон */
+  .hero__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 26%;
+    background: linear-gradient(to bottom, var(--navy), rgba(11, 18, 34, 0));
+    pointer-events: none;
+  }
+
+  /* текст — верхняя часть */
+  .hero__layer {
+    position: relative;
+    top: auto; left: auto;
+    transform: none;
+    width: 100%;
+    height: auto;
+    order: 1;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(14px, 3.4vw, 26px);
+    padding: clamp(26px, 8vw, 54px) clamp(22px, 6.5vw, 46px) clamp(10px, 3vw, 22px);
+    z-index: 2;
+  }
+
+  .hero__title,
+  .hero__lead,
+  .hero__facts,
+  .hero__cta {
+    position: static;
+    white-space: normal;
+    left: auto; top: auto; right: auto;
+    text-align: left;
+  }
+
+  /* цифры — одной строкой сверху */
+  .hero__facts {
+    order: 1;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: clamp(12px, 3.4vw, 19px);
+    line-height: 1.2;
+    letter-spacing: .02em;
+    opacity: .9;
+  }
+  .hero__facts .ln { display: inline; }
+  .hero__facts .ln + .ln::before { content: "·"; margin: 0 .55em; opacity: .55; }
+
+  /* заголовок — две строки, рукописная буква перед словом */
+  .hero__title {
+    order: 2;
+    inset: auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2px, .6vw, 8px);
+  }
+  .hero__title .t-line {
+    display: flex;
+    align-items: baseline;
+    /* запас: у рукописных букв хвост уходит вправо за свою ширину */
+    gap: clamp(10px, 3.4vw, 26px);
+  }
+  .hero__title .t-script,
+.hero__title .t-word {
+    position: static;
+    display: inline-block;
+    left: auto; top: auto;
+  }
+  .t-script { font-size: clamp(50px, 15vw, 104px); line-height: .9; }
+  .t-word   { font-size: clamp(28px, 8.4vw, 58px); letter-spacing: .012em; line-height: 1; }
+
+  /* описание */
+  .hero__lead {
+    order: 3;
+    font-size: clamp(14px, 4.05vw, 27px);
+    line-height: 1.34;
+  }
+  .hero__lead .ln--gap { height: .5em; }
+
+  /* кнопка */
+  .hero__cta {
+    order: 4;
+    padding: clamp(13px, 3.7vw, 22px) clamp(28px, 8vw, 48px);
+    font-size: clamp(14px, 4vw, 24px);
+    letter-spacing: .03em;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .38);
+  }
+  .hero__cta:hover,
+  .hero__cta:focus-visible { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(0, 0, 0, .46); }
+}
+
+/* очень низкий экран в альбомной ориентации — ужимаем поля кнопки,
+   чтобы она не наезжала на нижний край сцены */
+@media (orientation: landscape) and (max-height: 420px) {
+  .hero__cta { padding: calc(26 * var(--u)) calc(58 * var(--u)); }
+}
+
+/* ============================================================
+   Если человек отключил анимации в системе — показываем сразу
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .hero__bg { opacity: 1; transform: none; animation: none !important; }
+  .hero__title .t-script,
+.hero__title .t-word,
+  .hero__lead .ln,
+  .hero__facts .ln,
+  .hero__cta { opacity: 1; animation: none !important; }
+  .t-script { -webkit-mask-image: none; mask-image: none; }
+  .hero__cta { transition: background-color .2s linear; }
 }

@@ -201,25 +201,24 @@ body {
 .hero__facts .ln,
 .hero__cta           { opacity: 0; }
 
-.t-word, .hero__lead .ln, .hero__facts .ln, .hero__cta { will-change: transform, opacity; }
+.t-script, .t-word, .hero__lead .ln, .hero__facts .ln, .hero__cta { will-change: transform, opacity; }
 
-/* Рукописные буквы проявляются «письмом» — слева направо.
-   🔴 Только clip-path с запасом в −45%: маска (mask-image) для этого не годится —
-   она по умолчанию обрезает всё, что выходит за строку, а у Aquarelle росчерки
-   уходят и влево, и вверх за неё, и буквам срезало хвосты. */
+/* 🔴 Рукописные буквы проявляются ЦЕЛИКОМ — никаких развёрток и масок.
+   Пробовали «письмо» слева направо: буква в середине показа неизбежно
+   выглядит обрезанной, а маска вдобавок срезала росчерки за пределами строки.
+   Здесь буква просто выходит из расфокуса — в любой момент она целая. */
 
 .hero.is-ready .hero__bg { animation: bgIn 1.7s var(--ease) forwards; }
-.hero.is-ready .t-script { animation: writeIn 1.25s var(--ease) forwards; animation-delay: var(--d, 0s); }
+.hero.is-ready .t-script { animation: letterIn 1.35s var(--ease) forwards; animation-delay: var(--d, 0s); }
 .hero.is-ready .t-word,
 .hero.is-ready .hero__lead .ln,
 .hero.is-ready .hero__facts .ln,
 .hero.is-ready .hero__cta { animation: riseIn 1.05s var(--ease) forwards; animation-delay: var(--d, 0s); }
 
 @keyframes bgIn   { to { opacity: 1; transform: scale(1); } }
-@keyframes writeIn{
-  0%   { opacity: 0; -webkit-clip-path: inset(-45% 100% -45% -45%); clip-path: inset(-45% 100% -45% -45%); }
-  14%  { opacity: 1; }
-  100% { opacity: 1; -webkit-clip-path: inset(-45% -45% -45% -45%); clip-path: inset(-45% -45% -45% -45%); }
+@keyframes letterIn {
+  from { opacity: 0; transform: translateY(.12em) scale(.986); filter: blur(11px); }
+  to   { opacity: 1; transform: none;                          filter: blur(0); }
 }
 @keyframes riseIn {
   from { opacity: 0; transform: translateY(var(--rise, 1.1em)); filter: blur(6px); }
@@ -373,6 +372,6 @@ body {
   .hero__lead .ln,
   .hero__facts .ln,
   .hero__cta { opacity: 1; animation: none !important; }
-  .t-script { -webkit-clip-path: none; clip-path: none; }
+  .t-script { transform: none; filter: none; }
   .hero__cta { transition: background-color .2s linear; }
 }

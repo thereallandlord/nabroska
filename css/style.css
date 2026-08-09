@@ -99,6 +99,10 @@ body {
   white-space: nowrap;
 }
 
+/* Поля по краям выровнены между собой: весь левый столбец сдвинут
+   на 129 px левее макета, цифры справа — на 20 px правее.
+   Внутренняя композиция заголовка при этом сохранена целиком. */
+
 /* ---------- Заголовок ----------
    Собран из 4 слоёв: две рукописные буквы (Aquarelle)
    и два слова (Champagne & Limousines). Каждый — со своей координатой. */
@@ -124,14 +128,14 @@ body {
   line-height: 1;
 }
 
-.t-script--iz     { left: calc(429 * var(--u)); top: calc(179.5 * var(--u)); }
-.t-word--nabroska { left: calc(824 * var(--u)); top: calc(248   * var(--u)); }
-.t-script--v      { left: calc(233 * var(--u)); top: calc(397.5 * var(--u)); }
-.t-word--prof     { left: calc(471 * var(--u)); top: calc(435   * var(--u)); }
+.t-script--iz     { left: calc(300 * var(--u)); top: calc(179.5 * var(--u)); }
+.t-word--nabroska { left: calc(695 * var(--u)); top: calc(248   * var(--u)); }
+.t-script--v      { left: calc(104 * var(--u)); top: calc(397.5 * var(--u)); }
+.t-word--prof     { left: calc(342 * var(--u)); top: calc(435   * var(--u)); }
 
 /* ---------- Описание слева ---------- */
 .hero__lead {
-  left: calc(227 * var(--u));
+  left: calc(98 * var(--u));
   top:  calc(830.25 * var(--u));
   font-size: calc(63 * var(--u));
   line-height: calc(72.5 * var(--u));
@@ -142,7 +146,7 @@ body {
 
 /* ---------- Цифры справа сверху ---------- */
 .hero__facts {
-  right: calc(120 * var(--u));
+  right: calc(100 * var(--u));
   top:   calc(106.75 * var(--u));
   font-size: calc(56 * var(--u));
   line-height: calc(64.5 * var(--u));
@@ -154,7 +158,7 @@ body {
 /* ---------- Кнопка ---------- */
 .hero__cta {
   position: absolute;
-  left: calc(229 * var(--u));
+  left: calc(100 * var(--u));
   top:  calc(1248 * var(--u));
   display: inline-flex;
   align-items: center;
@@ -199,16 +203,10 @@ body {
 
 .t-word, .hero__lead .ln, .hero__facts .ln, .hero__cta { will-change: transform, opacity; }
 
-/* рукописные буквы проявляются «письмом» — слева направо */
-.t-script {
-  -webkit-mask-image: linear-gradient(90deg, #000 0 34%, transparent 62%);
-          mask-image: linear-gradient(90deg, #000 0 34%, transparent 62%);
-  /* 400% по высоте — рукописные буквы сильно выходят за строку,
-     маска в одну строку срезала бы им верхушки и хвосты */
-  -webkit-mask-size: 320% 400%;    mask-size: 320% 400%;
-  -webkit-mask-position: 100% 50%; mask-position: 100% 50%;
-  -webkit-mask-repeat: no-repeat;  mask-repeat: no-repeat;
-}
+/* Рукописные буквы проявляются «письмом» — слева направо.
+   🔴 Только clip-path с запасом в −45%: маска (mask-image) для этого не годится —
+   она по умолчанию обрезает всё, что выходит за строку, а у Aquarelle росчерки
+   уходят и влево, и вверх за неё, и буквам срезало хвосты. */
 
 .hero.is-ready .hero__bg { animation: bgIn 1.7s var(--ease) forwards; }
 .hero.is-ready .t-script { animation: writeIn 1.25s var(--ease) forwards; animation-delay: var(--d, 0s); }
@@ -219,9 +217,9 @@ body {
 
 @keyframes bgIn   { to { opacity: 1; transform: scale(1); } }
 @keyframes writeIn{
-  0%   { opacity: 0; -webkit-mask-position: 100% 50%; mask-position: 100% 50%; }
-  18%  { opacity: 1; }
-  100% { opacity: 1; -webkit-mask-position: 0% 50%;   mask-position: 0% 50%; }
+  0%   { opacity: 0; -webkit-clip-path: inset(-45% 100% -45% -45%); clip-path: inset(-45% 100% -45% -45%); }
+  14%  { opacity: 1; }
+  100% { opacity: 1; -webkit-clip-path: inset(-45% -45% -45% -45%); clip-path: inset(-45% -45% -45% -45%); }
 }
 @keyframes riseIn {
   from { opacity: 0; transform: translateY(var(--rise, 1.1em)); filter: blur(6px); }
@@ -380,10 +378,10 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .hero__bg { opacity: 1; transform: none; animation: none !important; }
   .hero__title .t-script,
-.hero__title .t-word,
+  .hero__title .t-word,
   .hero__lead .ln,
   .hero__facts .ln,
   .hero__cta { opacity: 1; animation: none !important; }
-  .t-script { -webkit-mask-image: none; mask-image: none; }
+  .t-script { -webkit-clip-path: none; clip-path: none; }
   .hero__cta { transition: background-color .2s linear; }
 }

@@ -2,8 +2,9 @@
    Стилус вместо курсора + след, будто делаешь набросок.
 
    Подключается одной строкой: <script src="js/stylus-cursor.js" defer></script>
-   Работает только там, где есть настоящий курсор (мышь, трекпад).
-   На тач-экранах и при отключённых анимациях не включается вовсе.
+   С мышью: перо заменяет курсор и рисует постоянно.
+   На тач-экране: перо и след появляются, только пока ведёшь пальцем.
+   При отключённых в системе анимациях не включается вовсе.
 
    🔴 Как рисуется след — важно.
    След НЕ собран из отрезков с круглыми торцами: у такой сборки торцы
@@ -32,7 +33,9 @@
 
   var fine = matchMedia('(pointer: fine)').matches;
   var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!fine || calm) return;
+  if (calm) return;
+  /* На тач-экране курсора нет: перо и след появляются, только пока ведёшь пальцем. */
+  var touchMode = !fine;
 
   /* ---------- холст ---------- */
   var cv = document.createElement('canvas');
@@ -67,7 +70,7 @@
         '<path d="M12.1 101.5h3.8L14 106.6z" fill="#0b1222"/>' +
       '</svg>';
     document.body.appendChild(pen);
-    document.documentElement.style.cursor = 'none';
+    if (!touchMode) document.documentElement.style.cursor = 'none';
     svg = pen.querySelector('svg');
   }
 
@@ -76,19 +79,29 @@
   var rawX = -999, rawY = -999;
   var sx = -999, sy = -999;   // сглаженное положение пера
   var lastX = -999, lastY = -999;
-  var speed = 0, down = false, lean = 0, visible = false, started = false;
+  var speed = 0, down = false, lean = 0, visible = false, started = false, teleport = false;
 
   function show(v) { visible = v; if (pen) pen.style.opacity = v ? '1' : '0'; }
 
   addEventListener('pointermove', function (e) {
-    if (e.pointerType === 'touch') return;
+    if (touchMode && !down) return;        // на тач-экране рисуем только при касании
     rawX = e.clientX; rawY = e.clientY;
     if (!started) { sx = rawX; sy = rawY; lastX = rawX; lastY = rawY; started = true; }
     if (!visible) show(true);
   }, { passive: true });
 
-  addEventListener('pointerdown', function (e) { if (e.pointerType !== 'touch') down = true; }, { passive: true });
-  addEventListener('pointerup',   function () { down = false; }, { passive: true });
+  addEventListener('pointerdown', function (e) {
+    down = true;
+    rawX = e.clientX; rawY = e.clientY;
+    teleport = true;                       // новое касание не соединяем с прошлым
+    started = true;
+    show(true);
+  }, { passive: true });
+  addEventListener('pointerup', function () {
+    down = false;
+    if (touchMode) setTimeout(function () { if (!down) show(false); }, 260);
+  }, { passive: true });
+  addEventListener('pointercancel', function () { down = false; if (touchMode) show(false); }, { passive: true });
   addEventListener('mouseleave',  function () { show(false); });
   addEventListener('mouseenter',  function () { show(true); });
   document.addEventListener('mouseleave', function () { show(false); });
@@ -112,6 +125,7 @@
 
     /* рука: тянемся к настоящему курсору, но плавно — так линия перестаёт дёргаться */
     if (started) {
+      if (teleport) { sx = rawX; sy = rawY; lastX = rawX; lastY = rawY; teleport = false; }
       sx += (rawX - sx) * CFG.smooth;
       sy += (rawY - sy) * CFG.smooth;
 

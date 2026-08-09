@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Из наброска в профессию — курс по диджитал-иллюстрации</title>
+<meta name="description" content="Освой базу диджитал-иллюстрации и построй на ней профессию: от первого взмаха стилусом до дохода на иллюстрации без академических знаний.">
+
+<link rel="preload" href="fonts/Aquarelle.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/ChampagneLimousines-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/ChampagneLimousines-Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ======================= ПЕРВЫЙ БЛОК (обложка) =======================
+     Весь текст ниже — обычный редактируемый текст, не картинка.
+     Менять можно прямо здесь. Размеры и координаты — в css/style.css
+     (блок «ПЕРВЫЙ ЭКРАН», числа = пиксели на макете 2560×1440).
+================================================================= -->
+<section class="hero">
+
+  <picture class="hero__bg">
+    <source srcset="img/hero-1600.webp 1600w, img/hero.webp 2560w"
+            sizes="100vw" type="image/webp">
+    <img src="img/hero.jpg"
+         srcset="img/hero-1600.jpg 1600w, img/hero.jpg 2560w"
+         sizes="100vw" alt="" fetchpriority="high" decoding="async">
+  </picture>
+
+  <div class="hero__layer">
+
+    <h1 class="hero__title">
+      <span class="t-script t-script--iz">Из</span><span class="t-word t-word--nabroska">наброска</span><span class="t-script t-script--v">В</span><span class="t-word t-word--prof">профессию</span>
+    </h1>
+
+    <p class="hero__lead">
+      освой базу диджитал иллюстрации<br>
+      и построй на ней профессию<br>
+      <br>
+      от первого взмаха стилусом до дохода на<br>
+      иллюстрации без академических знаний
+    </p>
+
+    <p class="hero__facts">
+      2 курса<br>
+      60+ уроков<br>
+      старт 1.09.2026
+    </p>
+
+  </div>
+</section>
+
+</body>
+</html>

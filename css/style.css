@@ -1,0 +1,130 @@
+/* ============================================================
+   Из наброска в профессию — стили
+   Макет: 2560 × 1440 (16:9). Все размеры заданы в пикселях макета
+   через переменную --u, поэтому блок масштабируется без искажений
+   на любой ширине экрана.
+   ============================================================ */
+
+/* ---------- Шрифты ---------- */
+@font-face {
+  font-family: "Aquarelle";
+  src: url("../fonts/Aquarelle.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: block;
+}
+@font-face {
+  font-family: "Champagne & Limousines";
+  src: url("../fonts/ChampagneLimousines-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: block;
+}
+@font-face {
+  font-family: "Champagne & Limousines";
+  src: url("../fonts/ChampagneLimousines-Bold.ttf") format("truetype");
+  font-weight: 700; font-style: normal; font-display: block;
+}
+
+/* ---------- Переменные ---------- */
+:root {
+  --navy:  #0b1222;   /* фон макета */
+  --cream: #f5f0d2;   /* цвет всего текста на обложке */
+}
+
+/* ---------- База ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--navy);
+  color: var(--cream);
+  font-family: "Champagne & Limousines", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   ПЕРВЫЙ ЭКРАН
+   --u = 1 пиксель макета. Числа ниже — координаты из макета,
+   их можно править напрямую (левый край, верх, кегль).
+   ============================================================ */
+.hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--navy);
+  container-type: inline-size;   /* от ширины блока считается --u */
+  --u: calc(100cqi / 2560);
+}
+
+.hero__bg,
+.hero__bg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.hero__layer {
+  position: absolute;
+  inset: 0;
+}
+
+/* --- общий вид текстовых слоёв --- */
+.hero__title,
+.hero__lead,
+.hero__facts {
+  position: absolute;
+  color: var(--cream);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* ---------- Заголовок ---------- */
+/* Заголовок собран из 4 отдельных слоёв: две рукописные буквы
+   (шрифт Aquarelle) и два слова (Champagne & Limousines).
+   Каждый слой позиционируется отдельно — так же, как в макете. */
+.hero__title { inset: 0; }
+
+.hero__title span {
+  position: absolute;
+  display: block;
+  white-space: nowrap;
+}
+
+.t-script {                       /* рукописные «Из» и «В» */
+  font-family: "Aquarelle", cursive;
+  font-size: calc(235 * var(--u));
+  line-height: 1;
+}
+.t-word {                         /* «наброска» и «профессию» */
+  font-family: "Champagne & Limousines", sans-serif;
+  font-size: calc(134 * var(--u));
+  letter-spacing: calc(2 * var(--u));
+  line-height: 1;
+}
+
+.t-script--iz       { left: calc(429 * var(--u)); top: calc(179.5 * var(--u)); }
+.t-word--nabroska   { left: calc(824 * var(--u)); top: calc(248   * var(--u)); }
+.t-script--v        { left: calc(233 * var(--u)); top: calc(397.5 * var(--u)); }
+.t-word--prof       { left: calc(471 * var(--u)); top: calc(435   * var(--u)); }
+
+/* ---------- Описание слева ---------- */
+.hero__lead {
+  left: calc(227 * var(--u));
+  top:  calc(830.25 * var(--u));
+  font-size: calc(63 * var(--u));
+  line-height: calc(72.5 * var(--u));
+  font-weight: 700;
+}
+
+/* ---------- Цифры справа сверху ---------- */
+.hero__facts {
+  right: calc(120 * var(--u));
+  top:   calc(106.75 * var(--u));
+  font-size: calc(56 * var(--u));
+  line-height: calc(64.5 * var(--u));
+  font-weight: 700;
+  text-align: right;
+}

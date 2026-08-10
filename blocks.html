@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Блоки 2–4 — три варианта</title>
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0b1222">
+
+<link rel="preload" href="fonts/Aquarelle.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/ChampagneLimousines-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/ChampagneLimousines-Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/blocks.css">
+</head>
+<body class="v1">
+
+<!-- переключатель вариантов: только для показа, в сайт не пойдёт -->
+<div class="switch">
+  <button data-v="v1" aria-pressed="true">1 — по макету</button>
+  <button data-v="v2" aria-pressed="false">2 — с волной</button>
+  <button data-v="v3" aria-pressed="false">3 — карточки</button>
+</div>
+
+<!-- ПЕРВЫЙ ЭКРАН — копия боевого, чтобы видеть блоки в контексте. Не менялся. -->
+<section class="hero">
+  <picture class="hero__bg">
+    <source srcset="img/hero-1600.webp 1600w, img/hero.webp 2560w" sizes="100vw" type="image/webp">
+    <img src="img/hero.jpg" srcset="img/hero-1600.jpg 1600w, img/hero.jpg 2560w" sizes="100vw" alt="" fetchpriority="high">
+  </picture>
+  <div class="hero__layer">
+    <h1 class="hero__title">
+      <span class="t-line"><span class="t-script t-script--iz">Из</span><span class="t-word t-word--nabroska">наброска</span></span><span class="t-line"><span class="t-script t-script--v">В</span><span class="t-word t-word--prof">профессию</span></span>
+    </h1>
+    <p class="hero__lead">
+      <span class="ln">освой базу диджитал иллюстрации</span>
+      <span class="ln">и построй на ней профессию</span>
+      <span class="ln ln--gap" aria-hidden="true"></span>
+      <span class="ln">от первого взмаха стилусом до дохода на</span>
+      <span class="ln">иллюстрации без академических знаний</span>
+    </p>
+    <a class="hero__cta" href="#">Узнать подробнее</a>
+    <p class="hero__facts">
+      <span class="ln">2 курса</span>
+      <span class="ln">60+ уроков</span>
+      <span class="ln">старт 1.09.2026</span>
+    </p>
+  </div>
+</section>
+
+<!-- кружевной разделитель -->
+<div class="lace" aria-hidden="true"></div>
+
+<!-- ======================= БЛОК 2 ======================= -->
+<section class="section s2">
+  <svg class="wave" viewBox="0 0 1440 760" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id="wv" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#93101f"/><stop offset="1" stop-color="#5b0005"/>
+    </linearGradient></defs>
+    <path d="M0,150 C260,20 520,300 760,230 C1000,160 1220,10 1440,70 L1440,650 C1220,715 1000,545 760,610 C520,675 260,415 0,540 Z" fill="url(#wv)"/>
+  </svg>
+  <div class="wrap">
+
+    <h2 class="h2"><span class="script">Д</span>ля кого это обучение</h2>
+
+    <p class="stage stage--edge">Этап 1 — рисование</p>
+
+    <article class="persona">
+      <div class="persona__art">
+        <picture>
+          <source srcset="img/blocks/novichok.webp" type="image/webp">
+          <img src="img/blocks/novichok.png" alt="Новичок" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="persona__body">
+        <h3 class="persona__name">Новичок</h3>
+        <ul class="list">
+          <li>Не рисовала прежде и хочешь обрести хобби или профессию: раскрыть потенциал, воплотить идеи на холсте, но пока даже не знаешь, с какой кисти подступиться.</li>
+          <li>Неуверенно владеешь программой, хочешь узнать больше фишек и ускорить процесс рисования.</li>
+          <li>Ищешь обучение, где в фокусе не рисование лиц, а окружение, смыслы и сюжет.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="persona persona--flip">
+      <div class="persona__art">
+        <picture>
+          <source srcset="img/blocks/illustrator.webp" type="image/webp">
+          <img src="img/blocks/illustrator.png" alt="Иллюстратор без системы" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="persona__body">
+        <h3 class="persona__name">Иллюстратор<br>без системы</h3>
+        <ul class="list">
+          <li>Рисуешь, но хаотично — нет ощущения прогресса, нет понимания, куда расти дальше.</li>
+          <li>Сложно переносить идею из головы на холст.</li>
+          <li>Хочешь освежить свои техники, отточить навыки.</li>
+          <li>Развить свой уникальный стиль и научиться влиять на него.</li>
+          <li>Восхищаешься работами других и хочешь перенять то, что нравится, не копируя чужие работы.</li>
+          <li>Жаждешь экспериментов, но не знаешь, как выйти из рамок привычного.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="persona">
+      <div class="persona__art">
+        <picture>
+          <source srcset="img/blocks/tradition.webp" type="image/webp">
+          <img src="img/blocks/tradition.png" alt="Традиционный художник" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="persona__body">
+        <h3 class="persona__name">Традиционный<br>художник</h3>
+        <ul class="list">
+          <li>Рисуешь красками или карандашами и хочешь перейти в диджитал.</li>
+          <li>Разобраться с Procreate от азов до уверенного владения программой.</li>
+        </ul>
+      </div>
+    </article>
+
+    <p class="stage stage--edge stage--next">Этап 2 — профессия</p>
+  </div>
+</section>
+
+<!-- ======================= БЛОК 3 =======================
+     🔴 Текст здесь — заглушка под этап «профессия».
+     Заменить на настоящий, когда будет от жены.        -->
+<section class="section s3">
+  <div class="wrap">
+    <h2 class="h2"><span class="script">И</span>з хобби — в доход</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step__num">1</div>
+        <h3>Портфолио, которое показывают</h3>
+        <p>Собираем работы так, чтобы их не стыдно было отправить заказчику, а не прятать в папке «потом доделаю».</p>
+      </div>
+      <div class="step">
+        <div class="step__num">2</div>
+        <h3>Цена за работу</h3>
+        <p>Понимаешь, сколько стоит твоя иллюстрация, и называешь цену спокойно — без «ну сколько не жалко».</p>
+      </div>
+      <div class="step">
+        <div class="step__num">3</div>
+        <h3>Первые заказчики</h3>
+        <p>Где искать: соцсети, маркетплейсы, стоки. Что писать и как показывать себя, чтобы отвечали.</p>
+      </div>
+      <div class="step">
+        <div class="step__num">4</div>
+        <h3>Работа до сдачи</h3>
+        <p>Ведёшь проект от брифа до финала так, чтобы к тебе возвращались и советовали дальше.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= БЛОК 4 ======================= -->
+<section class="section s4">
+  <div class="wrap">
+    <!-- без рукописной первой буквы: в Aquarelle «Ч» нарисована как «И» -->
+    <h2 class="h2">Что внутри</h2>
+
+    <div class="facts-row">
+      <div class="fact"><b>2</b><span>КУРСА — РИСОВАНИЕ И ПРОФЕССИЯ</span></div>
+      <div class="fact"><b>60+</b><span>УРОКОВ С РАЗБОРАМИ</span></div>
+      <div class="fact"><b>1.09</b><span>СТАРТ ПОТОКА 2026</span></div>
+    </div>
+
+    <div class="cta-box">
+      <p>Начинаем с первого штриха и доводим до работ, за которые платят. Без академии и «сначала три года гипсы».</p>
+      <a class="btn" href="#">Узнать подробнее</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var hero = document.querySelector('.hero');
+  var go = function () { hero.classList.add('is-ready'); };
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(go); setTimeout(go, 1200); }
+  else { go(); }
+
+  // ?nohero=1 — спрятать первый экран, чтобы снять блоки одним кадром
+  if (/nohero=1/.test(location.search)) {
+    hero.style.display = 'none';
+    var l = document.querySelector('.lace');
+    if (l) l.style.marginTop = '0';
+  }
+
+  // вариант можно открыть сразу: blocks.html?v=v2
+  var q = (location.search.match(/v=(v[123])/) || [])[1];
+  if (q) document.body.className = q;
+
+  var btns = document.querySelectorAll('.switch button');
+  btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.v === (q || 'v1'))); });
+  btns.forEach(function (b) {
+    b.onclick = function () {
+      document.body.className = b.dataset.v;
+      btns.forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+      scrollTo({ top: innerHeight * 0.92, behavior: 'smooth' });
+    };
+  });
+})();
+</script>
+<script src="js/stylus-cursor.js" defer></script>
+
+</body>
+</html>

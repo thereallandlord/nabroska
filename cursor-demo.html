@@ -88,6 +88,8 @@
     <button class="demo__btn" id="d-nopen" aria-pressed="false">Только след</button>
   </div>
 
+  <div class="demo__hint" id="d-size" style="opacity:.85"></div>
+
   <div class="demo__row">
     <span class="demo__hint" style="opacity:.75">Цвет следа</span>
     <button class="demo__sw" data-c="#f5f0d2" aria-pressed="true" style="background:#f5f0d2" title="кремовый"></button>
@@ -117,6 +119,19 @@ addEventListener('load', function () {
     StylusCursor.setStylus(false);
     pen.setAttribute('aria-pressed', 'false'); nopen.setAttribute('aria-pressed', 'true');
   };
+  // живой замер: что реально видит браузер и во сколько ужат макет 2560×1440
+  var out = document.getElementById('d-size');
+  function measure() {
+    var w = innerWidth, h = innerHeight;
+    var k = Math.min(w / 2560, h / 1440);
+    out.innerHTML = 'Окно браузера: <b>' + w + '×' + h + '</b><br>' +
+                    'Пропорция: <b>' + (w / h).toFixed(2) + '</b> (16:9 = 1.78)<br>' +
+                    'Макет 2560×1440 ужат в <b>' + k.toFixed(3) + '</b> → ' +
+                    Math.round(2560 * k) + '×' + Math.round(1440 * k);
+  }
+  measure();
+  addEventListener('resize', measure);
+
   document.querySelectorAll('.demo__sw').forEach(function (b) {
     b.onclick = function () {
       StylusCursor.setColor(b.dataset.c);

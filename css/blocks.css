@@ -422,3 +422,30 @@ body.v4 .btn:hover { background: #a5182a; }
   body.v4 .list li { font-size: clamp(19px, 1.45vw, 23px); }
   body.v4 .s4 .wrap { width: min(1100px, 100% - clamp(32px, 6vw, 120px)); }
 }
+
+/* ---------- v4: плашка по размеру текста, а не во всю колонку ----------
+   Была ошибка: плашка занимала всю колонку сетки и у коротких списков
+   зияла пустотой. Теперь ширину задаёт содержимое, а колонка только
+   ограничивает максимум. */
+@media (min-width: 700px) {
+  body.v4 .persona__body {
+    width: fit-content;
+    max-width: 100%;
+    min-width: min(100%, 30rem);   /* короткий список тоже должен читаться плашкой, а не бумажкой */
+    justify-self: start;
+    padding: clamp(26px, 3vw, 38px) clamp(26px, 3vw, 40px) clamp(26px, 3vw, 38px) clamp(46px, 5vw, 66px);
+  }
+  body.v4 .persona--flip .persona__body {
+    justify-self: end;
+    padding: clamp(26px, 3vw, 38px) clamp(46px, 5vw, 66px) clamp(26px, 3vw, 38px) clamp(26px, 3vw, 40px);
+  }
+  body.v4 .list { max-width: 54ch; gap: clamp(11px, 1.1vw, 16px); }
+  body.v4 .persona__name { font-size: clamp(42px, 4vw, 62px); margin-bottom: clamp(12px, 1.4vw, 20px); }
+}
+
+@media (min-width: 1100px) {
+  body.v4 .persona__body        { padding: 38px 40px 38px 78px; }
+  body.v4 .persona--flip .persona__body { padding: 38px 78px 38px 40px; }
+  body.v4 .list li { font-size: clamp(18px, 1.35vw, 21px); }
+}
+

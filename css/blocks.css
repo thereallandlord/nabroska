@@ -72,16 +72,19 @@
   display: grid;
   gap: clamp(24px, 3.5vw, 70px);
   align-items: center;
-  margin-bottom: clamp(48px, 6vw, 120px);
+  margin-bottom: clamp(56px, 6vw, 104px);
 }
 .persona:last-of-type { margin-bottom: 0; }
 
 .persona__art { display: flex; justify-content: center; }
 .persona__art img {
   display: block;
-  width: 100%;
-  max-width: clamp(240px, 30vw, 460px);
-  height: auto;
+  /* 🔴 Ровняем фигуры по ВЫСОТЕ. Исходники разной пропорции, и по ширине
+     они выходили визуально разного размера. */
+  height: clamp(240px, 30vw, 420px);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
   filter: drop-shadow(0 26px 50px rgba(0, 0, 0, .45));
 }
 
@@ -449,3 +452,208 @@ body.v4 .btn:hover { background: #a5182a; }
   body.v4 .list li { font-size: clamp(18px, 1.35vw, 21px); }
 }
 
+
+/* ============================================================
+   ПРАВКИ ПО ЗАМЕЧАНИЯМ (v4)
+   ============================================================ */
+
+/* поля внутри плашки одинаковые слева и справа —
+   раньше одна сторона была шире, чтобы уместить нахлёст фигуры */
+@media (min-width: 700px) {
+  body.v4 .persona__body,
+  body.v4 .persona--flip .persona__body {
+    padding: clamp(28px, 3vw, 40px);
+  }
+  body.v4 .persona__art        { margin-right: 0; }
+  body.v4 .persona--flip .persona__art { margin-left: 0; }
+}
+@media (min-width: 1100px) {
+  body.v4 .persona__body,
+  body.v4 .persona--flip .persona__body { padding: 40px; }
+}
+
+/* плашка чуть прозрачная, с мягким градиентом */
+body.v4 .persona__body,
+body.v4 .step,
+body.v4 .s4 .wrap,
+.panel {
+  background: linear-gradient(158deg,
+              rgba(251, 247, 232, .93) 0%,
+              rgba(244, 238, 216, .86) 55%,
+              rgba(236, 228, 199, .78) 100%);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 253, 242, .5);
+}
+
+/* ключевые слова — бордовым */
+.key { color: #7d1220; font-weight: 700; }
+body:not(.v4) .key { color: #f0a5ad; }   /* на тёмном фоне бордовый не читается */
+
+/* ============================================================
+   НОВЫЕ СЕКЦИИ. Оформлены раз и работают при любом варианте:
+   светлые плашки, тёмный текст, бордовые акценты.
+   ============================================================ */
+.panel {
+  border-radius: clamp(20px, 2.2vw, 34px);
+  padding: clamp(24px, 3.4vw, 44px);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, .42);
+  color: #141c31;
+}
+.panel h3 {
+  font-family: "Aquarelle", cursive;
+  font-weight: 400;
+  color: #7d1220;
+  font-size: clamp(34px, 4.4vw, 56px);
+  line-height: 1.08;
+  margin-bottom: clamp(14px, 1.6vw, 22px);
+  padding: .1em 0;
+}
+.panel .list li { color: #141c31; font-size: clamp(16.5px, 1.35vw, 20px); line-height: 1.6; }
+.panel .list li::before { background: #a5182a; }
+.panel .list { max-width: none; gap: clamp(10px, 1vw, 15px); }
+
+/* подводка к блоку */
+.lead-line {
+  text-align: center;
+  color: var(--ink);
+  font-size: clamp(18px, 1.8vw, 28px);
+  font-weight: 700;
+  line-height: 1.5;
+  max-width: 46ch;
+  margin: clamp(-16px, -1vw, -8px) auto clamp(34px, 4vw, 64px);
+}
+
+/* сетка карточек «тебе с нами, если ты…» */
+.grid-2 {
+  display: grid;
+  gap: clamp(16px, 2vw, 28px);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  align-items: start;
+}
+
+/* маленькая иллюстрация в углу карточки */
+.panel { position: relative; overflow: hidden; }
+.panel__deco {
+  position: absolute;
+  right: clamp(-18px, -1vw, -8px);
+  bottom: clamp(-18px, -1vw, -8px);
+  width: clamp(84px, 9vw, 140px);
+  opacity: .5;
+  pointer-events: none;
+  filter: saturate(.9);
+}
+
+/* плитки «свободы» */
+.tiles {
+  display: grid;
+  gap: clamp(12px, 1.6vw, 22px);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+}
+.tile {
+  padding: clamp(20px, 2.2vw, 30px);
+  border-radius: clamp(16px, 1.8vw, 24px);
+  background: linear-gradient(180deg, rgba(245, 240, 210, .1), rgba(245, 240, 210, .04));
+  border: 1px solid rgba(245, 240, 210, .2);
+  color: var(--ink);
+  font-size: clamp(16px, 1.35vw, 21px);
+  font-weight: 700;
+  line-height: 1.45;
+}
+.tile b { display: block; color: #f0a5ad; font-size: 1.06em; margin-bottom: .35em; }
+
+/* секция с крупной сценой сбоку */
+.with-art {
+  display: grid;
+  gap: clamp(24px, 3vw, 56px);
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+.with-art__art img { display: block; width: 100%; height: auto; }
+@media (min-width: 900px) {
+  .with-art { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); }
+  .with-art--left { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
+  .with-art--left .with-art__art { order: -1; }
+}
+
+/* финальный блок */
+.final {
+  position: relative;
+  overflow: hidden;
+  border-radius: clamp(22px, 2.4vw, 38px);
+  padding: clamp(34px, 5vw, 86px) clamp(24px, 4vw, 70px);
+  text-align: center;
+  background: linear-gradient(180deg, rgba(108, 0, 6, .55), rgba(11, 18, 34, .2));
+  border: 1px solid rgba(245, 240, 210, .18);
+}
+.final__bg {
+  position: absolute; inset: auto 0 0 0;
+  width: 100%; opacity: .55;
+  pointer-events: none; z-index: 0;
+}
+.final > * { position: relative; z-index: 1; }
+.final p {
+  color: var(--ink);
+  font-size: clamp(18px, 2vw, 32px);
+  font-weight: 700;
+  line-height: 1.45;
+  max-width: 34ch;
+  margin: 0 auto clamp(26px, 3vw, 44px);
+  text-wrap: pretty;
+}
+
+/* ---------- телефон ---------- */
+@media (max-width: 700px) {
+  .panel__deco { width: 74px; opacity: .38; }
+  .lead-line { text-align: left; }
+  .with-art__art img { max-width: 74vw; margin-inline: auto; }
+}
+
+/* ---------- правки по итогам первого прогона новых секций ---------- */
+
+/* карточки «тебе с нами» — ровно 2 в ряд, а не 3+1 */
+@media (min-width: 980px) {
+  .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* декор в углу карточки: аккуратно, не обрезаясь */
+.panel__deco {
+  right: clamp(10px, 1.4vw, 20px);
+  bottom: clamp(10px, 1.4vw, 20px);
+  width: clamp(70px, 7vw, 110px);
+  opacity: .34;
+}
+
+/* плитки «свободы» — светлые, как и остальной текст блоков */
+.tile {
+  position: relative;
+  background: linear-gradient(158deg, rgba(251,247,232,.92), rgba(240,233,211,.8));
+  border: 1px solid rgba(255, 253, 242, .5);
+  color: #141c31;
+  padding-right: clamp(58px, 6vw, 84px);
+}
+.tile b { color: #7d1220; }
+.tile__ico {
+  position: absolute;
+  right: clamp(8px, 1vw, 14px);
+  bottom: clamp(8px, 1vw, 14px);
+  width: clamp(42px, 4.4vw, 62px);
+  opacity: .8;
+  pointer-events: none;
+}
+
+/* плитки: две в ряд, иконка меньше и не лезет под текст */
+@media (min-width: 620px) {
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.tile { padding-right: clamp(64px, 6vw, 92px); }
+.tile__ico { width: clamp(38px, 3.6vw, 52px); opacity: .75; }
+
+/* иллюстрация рядом с текстом не должна перевешивать блок */
+.s6 .with-art__art img { max-width: clamp(180px, 22vw, 300px); margin-inline: auto; }
+.s7 .with-art__art img { max-width: clamp(200px, 26vw, 360px); margin-inline: auto; }
+
+/* на телефоне декор в углу карточки уходит: он подкладывался под текст */
+@media (max-width: 700px) {
+  .panel__deco { display: none; }
+}

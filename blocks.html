@@ -23,6 +23,7 @@
   <button data-v="v1" aria-pressed="true">1 — по макету</button>
   <button data-v="v2" aria-pressed="false">2 — с волной</button>
   <button data-v="v3" aria-pressed="false">3 — карточки</button>
+  <button data-v="v4" aria-pressed="false">4 — светлые блоки</button>
 </div>
 
 <!-- ПЕРВЫЙ ЭКРАН — копия боевого, чтобы видеть блоки в контексте. Не менялся. -->
@@ -191,7 +192,7 @@
   }
 
   // вариант можно открыть сразу: blocks.html?v=v2
-  var q = (location.search.match(/v=(v[123])/) || [])[1];
+  var q = (location.search.match(/v=(v[1234])/) || [])[1];
   if (q) document.body.className = q;
 
   var btns = document.querySelectorAll('.switch button');

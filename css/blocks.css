@@ -657,3 +657,194 @@ body:not(.v4) .key { color: #f0a5ad; }   /* на тёмном фоне борд�
 @media (max-width: 700px) {
   .panel__deco { display: none; }
 }
+
+/* ============================================================
+   ПЕРЕСБОРКА ПО ЗАМЕЧАНИЯМ: заголовки ВНЕ плашек,
+   фигуры внахлёст, крупные насыщенные иллюстрации.
+   ============================================================ */
+
+/* ---------- блок 2: имя персонажа на синем, текст в плашке ---------- */
+body.v4 .persona__body {
+  background: none; border: 0; box-shadow: none; backdrop-filter: none;
+  padding: 0; width: auto; min-width: 0; max-width: none;
+}
+body.v4 .persona__name { color: var(--ink); }        /* теперь на синем фоне */
+.persona .panel { padding: clamp(22px, 2.6vw, 36px); }
+/* у прочих вариантов плашки внутри персонажа нет */
+body:not(.v4) .persona .panel {
+  background: none; border: 0; box-shadow: none; padding: 0; backdrop-filter: none;
+}
+
+/* фигура стоит впритык и слегка заходит на плашку */
+@media (min-width: 700px) {
+  body.v4 .persona { align-items: end; gap: 0; }
+  body.v4 .persona__art { z-index: 2; margin-right: clamp(-70px, -5vw, -30px); }
+  body.v4 .persona--flip .persona__art { margin-right: 0; margin-left: clamp(-70px, -5vw, -30px); }
+  body.v4 .persona__body { z-index: 1; }
+  /* текст отодвинут от края, на который заходит фигура */
+  body.v4 .persona:not(.persona--flip) .persona .panel,
+  body.v4 .persona:not(.persona--flip) .panel { padding-left: clamp(64px, 6vw, 96px); }
+  body.v4 .persona--flip .panel { padding-right: clamp(64px, 6vw, 96px); padding-left: clamp(22px, 2.6vw, 36px); }
+}
+
+/* ---------- карточки «тебе с нами»: заголовок сверху, плашки вровень ---------- */
+.grid-2 { align-items: stretch; }
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.card__title {
+  font-family: "Aquarelle", cursive;
+  font-weight: 400;
+  color: var(--ink);
+  font-size: clamp(32px, 3.6vw, 52px);
+  line-height: 1.1;
+  margin: 0 0 clamp(12px, 1.4vw, 20px);
+  padding: .12em .06em;
+}
+.card > .panel {
+  flex: 1;                      /* низ всех четырёх плашек на одной линии */
+  display: flex;
+  align-items: flex-start;
+}
+.card__art {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 1;                   /* иллюстрации в полную силу */
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, .45));
+}
+.card__art--girl    { right: clamp(-30px, -2vw, -10px); bottom: clamp(-40px, -3vw, -16px); width: clamp(130px, 15vw, 230px); }
+.card__art--pom     { right: clamp(-34px, -2.4vw, -14px); bottom: clamp(-40px, -3vw, -18px); width: clamp(140px, 16vw, 250px); }
+.card__art--quarter { right: clamp(-26px, -1.8vw, -10px); bottom: clamp(-44px, -3.4vw, -20px); width: clamp(110px, 12vw, 185px); }
+.card__art--boy     { right: clamp(-30px, -2vw, -10px); bottom: clamp(-40px, -3vw, -16px); width: clamp(130px, 15vw, 230px); }
+/* чтобы текст не уходил под картинку */
+.card > .panel .list { padding-right: clamp(70px, 9vw, 150px); }
+
+/* ---------- плитки «свободы»: иконки крупнее и в полную силу ---------- */
+.tile__ico { width: clamp(56px, 6vw, 86px); opacity: 1; }
+.tile { padding-right: clamp(78px, 8vw, 116px); }
+.s6 .with-art { align-items: end; }
+.s6 .with-art__art img { max-width: clamp(220px, 26vw, 360px); }
+
+/* ---------- результат: заголовок вне плашки, два столбца ---------- */
+.result { margin-bottom: clamp(44px, 5vw, 92px); }
+.result:last-child { margin-bottom: 0; }
+.result__title { margin-bottom: clamp(18px, 2vw, 30px); }
+.result__stage {
+  display: block;
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 700;
+  color: var(--ink-dim);
+  font-size: clamp(17px, 1.6vw, 25px);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: .28em;
+}
+.result__name {
+  display: block;
+  font-family: "Aquarelle", cursive;
+  color: var(--ink);
+  font-size: clamp(38px, 4.6vw, 76px);
+  line-height: 1.06;
+  padding: .1em 0;
+}
+.result__row { display: grid; gap: clamp(20px, 2.6vw, 44px); align-items: center; }
+.result__cols { display: grid; gap: clamp(16px, 1.8vw, 26px); }
+@media (min-width: 900px) {
+  .result__row { grid-template-columns: minmax(0, 8fr) minmax(0, 5fr); }
+  .result__row--art-left { grid-template-columns: minmax(0, 5fr) minmax(0, 8fr); }
+  .result__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+}
+.result__art img {
+  display: block; width: 100%; height: auto;
+  max-width: clamp(260px, 34vw, 480px);
+  margin-inline: auto;
+  filter: drop-shadow(0 26px 50px rgba(0, 0, 0, .5));
+}
+/* иллюстрация слегка заходит на плашки */
+@media (min-width: 900px) {
+  .result__row--art-left .result__art { margin-right: clamp(-60px, -4vw, -20px); z-index: 3; position: relative; }
+  .result__row:not(.result__row--art-left) .result__art { margin-left: clamp(-60px, -4vw, -20px); z-index: 3; position: relative; }
+}
+
+/* ---------- финал: сцена во всю ширину, текст слева ---------- */
+.finale {
+  position: relative;
+  width: 100%;
+  margin-top: clamp(40px, 6vw, 110px);
+  background: var(--navy);
+  overflow: hidden;
+}
+.finale__bg { display: block; width: 100%; height: auto; }
+.finale__text {
+  position: absolute;
+  left: clamp(20px, 6vw, 120px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(46%, 620px);
+  z-index: 2;
+}
+.finale__text p {
+  color: var(--ink);
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 700;
+  font-size: clamp(15px, 1.55vw, 27px);
+  line-height: 1.45;
+  margin-bottom: clamp(14px, 1.8vw, 30px);
+  text-wrap: pretty;
+}
+.finale__script {
+  font-family: "Aquarelle", cursive;
+  font-weight: 400;
+  font-size: 2em;
+  line-height: 0;
+  vertical-align: -.12em;
+  margin-right: .1em;
+}
+.lace--under { margin-top: -2px; }
+
+/* ---------- ТЕЛЕФОН ---------- */
+@media (max-width: 700px) {
+  body.v4 .persona { gap: 0; }
+  body.v4 .persona__art { margin: 0 0 -24px; justify-content: flex-start; z-index: 2; }
+  .card__art { width: clamp(96px, 26vw, 150px) !important; right: -8px; bottom: -18px; }
+  .card > .panel .list { padding-right: clamp(56px, 26vw, 110px); }
+  .card__title { font-size: clamp(28px, 8.6vw, 40px); }
+  .result__cols { grid-template-columns: 1fr; }
+  .result__art img { max-width: 70vw; }
+  .finale__bg { min-height: 380px; object-fit: cover; object-position: 78% center; }
+  .finale__text {
+    position: static; transform: none; width: auto;
+    padding: clamp(20px, 6vw, 34px) clamp(20px, 6vw, 34px) clamp(28px, 8vw, 44px);
+    background: linear-gradient(180deg, rgba(11,18,34,0), var(--navy) 18%);
+    margin-top: -60px;
+  }
+  .finale__text p { font-size: clamp(16px, 4.2vw, 20px); }
+}
+
+/* ---------- доводка после пересборки ---------- */
+
+/* фигура должна касаться плашки, а не висеть посреди своей колонки */
+@media (min-width: 700px) {
+  body.v4 .persona__art { justify-content: flex-end; }
+  body.v4 .persona--flip .persona__art { justify-content: flex-start; }
+}
+
+/* все четыре карточки одной высоты, а не только внутри своего ряда */
+@media (min-width: 980px) {
+  .grid-2 { grid-auto-rows: 1fr; }
+}
+
+/* финал: текст выше и крупнее — в пустой части сцены */
+.finale__text { top: 40%; width: min(48%, 660px); }
+.finale__text p { font-size: clamp(15px, 1.75vw, 30px); }
+
+/* мобильный кегль финала — правило идёт последним, иначе его перебивает
+   десктопный clamp выше по файлу */
+@media (max-width: 700px) {
+  .finale__text p { font-size: clamp(16px, 4.3vw, 21px); }
+  .finale__text { width: auto; }
+}

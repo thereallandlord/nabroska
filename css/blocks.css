@@ -848,3 +848,231 @@ body:not(.v4) .persona .panel {
   .finale__text p { font-size: clamp(16px, 4.3vw, 21px); }
   .finale__text { width: auto; }
 }
+
+/* ============================================================
+   ПРАВКИ: сливочные плашки, без теней под иллюстрациями,
+   плотнее строки, зерно на фоне.
+   ============================================================ */
+
+/* 1. цвет плашек — сливочный, как текст и кнопка на обложке */
+body.v4 .persona__body,
+body.v4 .step,
+body.v4 .s4 .wrap,
+.panel,
+.card > .panel {
+  background: linear-gradient(158deg,
+              rgba(247, 242, 216, .97) 0%,
+              rgba(241, 235, 202, .93) 55%,
+              rgba(233, 226, 190, .88) 100%);
+  border: 1px solid rgba(255, 253, 242, .55);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .22);   /* мягче, чтобы не темнило вокруг */
+}
+
+/* 2. иллюстрации ложатся прямо поверх, без теней */
+.persona__art img,
+.card__art,
+.result__art img,
+.tile__ico,
+.with-art__art img,
+.panel__deco { filter: none; }
+
+/* 3. строки внутри плашек плотнее, но не тесно */
+.panel .list, .card > .panel .list { gap: clamp(8px, .8vw, 12px); }
+.panel .list li, .card > .panel .list li { line-height: 1.48; }
+.persona .panel .list { gap: clamp(9px, .9vw, 14px); }
+.persona .panel .list li { line-height: 1.5; }
+
+/* 4. имя персонажа не должно прятаться под фигурой */
+@media (min-width: 700px) {
+  body.v4 .persona:not(.persona--flip) .persona__name { padding-left: clamp(64px, 6vw, 96px); }
+  body.v4 .persona--flip .persona__name { padding-right: clamp(64px, 6vw, 96px); }
+  .persona { margin-bottom: clamp(30px, 3vw, 56px); }
+}
+
+/* 5. четвертинка граната — по диагонали, верхушкой к половинке */
+.card__art--quarter { transform: rotate(34deg); transform-origin: 50% 60%; }
+
+/* 6. плитки: иконки крупнее и частично за краем */
+.tile { overflow: visible; }
+.tile__ico {
+  position: absolute;
+  right: clamp(-16px, -1.2vw, -8px);
+  bottom: clamp(-18px, -1.4vw, -8px);
+  width: clamp(74px, 8vw, 112px);
+  opacity: 1;
+}
+.tiles { row-gap: clamp(22px, 2.4vw, 34px); }
+
+/* две плитки из четырёх — тёмное стекло вместо сливочного */
+.tile--glass {
+  background: linear-gradient(158deg, rgba(146, 20, 40, .30), rgba(11, 18, 34, .55));
+  border: 1px solid rgba(245, 240, 210, .28);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--ink);
+}
+.tile--glass b { color: #f3b8bf; }
+
+/* 8. «После этапа N» стоит над названием, с отступом на первую букву */
+.result__stage { padding-left: .9em; }
+
+/* 11. название курса — Aquarelle обычного начертания,
+   без него h3 включал синтетический жирный */
+.result__name, .card__title, .persona__name, .panel h3 { font-weight: 400; }
+
+/* 9. результат: два блока друг под другом, а не колонками */
+@media (min-width: 900px) {
+  .result__cols { grid-template-columns: 1fr; }
+}
+.result__cols > .panel { min-height: 0; }
+
+/* 10. ракушка и лошадь крупнее */
+.result__art img { max-width: clamp(300px, 40vw, 620px); }
+
+/* 13. финал: сцена крупнее; при обрезке жертвуем ЛЕВОЙ частью,
+   правая с девушкой остаётся целой */
+.finale__bg { width: 118%; max-width: none; margin-left: -18%; }
+
+/* 14. лёгкое зерно — только на тёмном фоне, поверх ничего не лежит */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.hero, .section, .finale, .lace, .switch { position: relative; z-index: 1; }
+
+/* ============================================================
+   КВЕСТ, АВТОР, ГАЛЕРЕЯ
+   ============================================================ */
+
+/* ---------- квест ---------- */
+.quest { display: grid; gap: clamp(20px, 3vw, 44px); align-items: center; }
+.quest__text .panel p {
+  color: #141c31;
+  font-size: clamp(16.5px, 1.4vw, 21px);
+  line-height: 1.5;
+  font-weight: 700;
+}
+.quest__text .panel p + p { margin-top: .8em; }
+.quest__house img, .quest__heroes img { display: block; width: 100%; height: auto; }
+.quest__heroes { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(12px, 1.6vw, 26px); align-items: end; }
+@media (min-width: 900px) {
+  .quest { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); grid-template-areas: "text house" "heroes heroes"; }
+  .quest__text { grid-area: text; }
+  .quest__house { grid-area: house; }
+  .quest__heroes { grid-area: heroes; grid-template-columns: 1.4fr .8fr; align-items: end; margin-top: clamp(-40px, -3vw, -10px); }
+  .quest__tea { max-width: 320px; margin-left: auto; }
+}
+
+/* ---------- автор ---------- */
+.author { display: grid; gap: clamp(22px, 3vw, 56px); align-items: center; }
+.author__art img {
+  display: block; width: 100%; height: auto;
+  border-radius: clamp(18px, 2vw, 30px);
+}
+.author__label {
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-dim); font-size: clamp(14px, 1.2vw, 19px);
+  margin-bottom: .5em;
+}
+.author__name {
+  font-family: "Aquarelle", cursive; font-weight: 400;
+  color: var(--ink); font-size: clamp(52px, 6vw, 104px);
+  line-height: 1; padding: .08em 0;
+}
+.author__nick {
+  font-family: "Champagne & Limousines", sans-serif; font-weight: 700;
+  color: #f0a5ad; font-size: clamp(16px, 1.4vw, 22px);
+  letter-spacing: .06em; margin: .1em 0 clamp(16px, 1.8vw, 26px);
+}
+@media (min-width: 900px) {
+  .author { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+}
+
+/* ---------- галерея ---------- */
+.g-label {
+  color: var(--ink-dim);
+  font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  font-size: clamp(13px, 1.1vw, 17px);
+  margin: clamp(26px, 3vw, 48px) 0 clamp(12px, 1.2vw, 18px);
+}
+.g-hint { color: var(--ink-dim); font-size: 15px; margin-top: 18px; opacity: .75; }
+
+.g-rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: clamp(210px, 24vw, 320px);
+  gap: clamp(12px, 1.4vw, 20px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+  /* следующая карточка выглядывает — видно, что лента продолжается */
+  scroll-padding-left: clamp(12px, 1.4vw, 20px);
+}
+.g-rail::-webkit-scrollbar { height: 6px; }
+.g-rail::-webkit-scrollbar-thumb { background: rgba(245,240,210,.35); border-radius: 4px; }
+.g-card {
+  scroll-snap-align: start;
+  margin: 0;
+  border-radius: clamp(12px, 1.2vw, 18px);
+  overflow: hidden;
+  background: rgba(245, 240, 210, .06);
+}
+.g-card img { display: block; width: 100%; height: clamp(160px, 18vw, 240px); object-fit: cover; }
+
+.g-rail--two {
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-columns: clamp(190px, 21vw, 280px);
+}
+.g-rail--two .g-card:nth-child(even) { margin-top: clamp(10px, 1.2vw, 20px); }
+
+.g-hero { display: grid; gap: clamp(12px, 1.4vw, 20px); }
+.g-hero__big { border-radius: clamp(14px, 1.4vw, 22px); overflow: hidden; background: rgba(245,240,210,.06); }
+.g-hero__big img { display: block; width: 100%; height: clamp(260px, 34vw, 520px); object-fit: cover; }
+.g-hero__thumbs {
+  display: grid; grid-auto-flow: column; grid-auto-columns: clamp(74px, 8vw, 110px);
+  gap: 10px; overflow-x: auto; padding-bottom: 8px;
+}
+.g-thumb {
+  padding: 0; border: 2px solid transparent; border-radius: 10px;
+  background: none; cursor: pointer; overflow: hidden; line-height: 0;
+}
+.g-thumb img { width: 100%; height: clamp(56px, 6vw, 82px); object-fit: cover; }
+.g-thumb.is-on { border-color: var(--cream); }
+
+.g-rail--fan { padding-top: 18px; }
+.g-card--fan { transition: transform .35s var(--ease); }
+.g-card--fan:nth-child(odd)  { transform: rotate(-2.2deg); }
+.g-card--fan:nth-child(even) { transform: rotate(2.2deg) translateY(10px); }
+.g-card--fan:hover { transform: rotate(0) translateY(-6px); }
+
+/* ---------- результаты по пунктам (переключатель в демо-панели) ---------- */
+body.micro .result__cols > .panel {
+  background: none; border: 0; box-shadow: none; backdrop-filter: none; padding: 0;
+}
+body.micro .result__cols .list { display: grid; gap: clamp(10px, 1vw, 16px); }
+@media (min-width: 760px) {
+  body.micro .result__cols .list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+body.micro .result__cols .list li {
+  padding: clamp(14px, 1.4vw, 20px) clamp(16px, 1.6vw, 22px) clamp(14px, 1.4vw, 20px) clamp(34px, 3vw, 44px);
+  border-radius: clamp(12px, 1.2vw, 18px);
+  background: linear-gradient(158deg, rgba(247,242,216,.97), rgba(235,228,193,.9));
+  border: 1px solid rgba(255, 253, 242, .55);
+}
+body.micro .result__cols .list li::before { left: clamp(14px, 1.3vw, 18px); top: 1.15em; }
+
+/* ---------- телефон ---------- */
+@media (max-width: 700px) {
+  .quest__heroes { grid-template-columns: 1fr 1fr; }
+  .author__art img { max-height: 60vh; object-fit: cover; object-position: 50% 20%; }
+  .g-rail { grid-auto-columns: 68vw; }
+  .g-rail--two { grid-auto-columns: 56vw; }
+  .g-card img { height: 42vw; }
+}

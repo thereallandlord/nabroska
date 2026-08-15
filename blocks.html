@@ -24,6 +24,7 @@
   <button data-v="v2" aria-pressed="false">2 — с волной</button>
   <button data-v="v3" aria-pressed="false">3 — карточки</button>
   <button data-v="v4" aria-pressed="false">4 — светлые блоки</button>
+  <button id="micro-toggle" aria-pressed="false">результаты по пунктам</button>
 </div>
 
 <!-- ПЕРВЫЙ ЭКРАН — копия боевого, чтобы видеть блоки в контексте. Не менялся. -->
@@ -197,8 +198,8 @@
       <p class="lead-line" style="text-align:left;margin-left:0">Диджитал рисование с тобой всегда и везде.</p>
       <div class="tiles">
         <div class="tile"><img class="tile__ico" src="img/blocks/drink.webp" alt="" loading="lazy"><b>Свободный график</b>рисуешь тогда, когда получается, а не когда открыта студия</div>
-        <div class="tile"><img class="tile__ico" src="img/blocks/airpods-case.webp" alt="" loading="lazy"><b>Мобильность</b>всего лишь небольшой планшет в рюкзаке</div>
-        <div class="tile"><img class="tile__ico" src="img/blocks/door.webp" alt="" loading="lazy"><b>Без привязки к месту</b>дом, поездка, чужой город — рабочее место всегда с тобой</div>
+        <div class="tile tile--glass"><img class="tile__ico" src="img/blocks/airpods-case.webp" alt="" loading="lazy"><b>Мобильность</b>всего лишь небольшой планшет в рюкзаке</div>
+        <div class="tile tile--glass"><img class="tile__ico" src="img/blocks/door.webp" alt="" loading="lazy"><b>Без привязки к месту</b>дом, поездка, чужой город — рабочее место всегда с тобой</div>
         <div class="tile"><img class="tile__ico" src="img/blocks/tulips.webp" alt="" loading="lazy"><b>Отдых от рутины</b>возможность переключиться и отвлечься</div>
       </div>
     </div>
@@ -271,6 +272,120 @@
   </div>
 </section>
 
+<!-- ======================= КВЕСТ / КОМИКС ======================= -->
+<section class="section s9">
+  <div class="wrap quest">
+    <div class="quest__text">
+      <h2 class="h2" style="text-align:left"><span class="script">К</span>вест внутри курса</h2>
+      <div class="panel">
+        <p>В основе курса — <b class="key">квест с историей о пропавшем художнике</b>. Персонажи комикса нашли его дневник с письмами и заданиями. Выполнив их, ты найдёшь ответ на вопрос <b class="key">«Что на пути художника важнее всего?»</b></p>
+        <p>Помогут тебе на этом пути персонажи квеста — <b class="key">Асия</b>, автор программы, и <b class="key">Алана</b>, спикер курса.</p>
+      </div>
+    </div>
+    <div class="quest__house"><img src="img/blocks/house.webp" alt="" loading="lazy" decoding="async"></div>
+    <div class="quest__heroes">
+      <img class="quest__trio" src="img/blocks/comic-trio.webp" alt="" loading="lazy" decoding="async">
+      <img class="quest__tea" src="img/blocks/comic-tea.webp" alt="" loading="lazy" decoding="async">
+    </div>
+  </div>
+</section>
+
+<!-- ======================= АВТОР ======================= -->
+<section class="section s10">
+  <div class="wrap author">
+    <div class="author__art"><img src="img/blocks/author.webp" alt="Асия, автор курса" loading="lazy" decoding="async"></div>
+    <div class="author__text">
+      <p class="author__label">Автор курсов</p>
+      <h2 class="author__name">Асия</h2>
+      <p class="author__nick">aszavra</p>
+      <div class="panel">
+        <ul class="list">
+          <li>художник-иллюстратор с опытом <b class="key">9+ лет</b>, 6 лет рисую в диджитал;</li>
+          <li>проиллюстрировала <b class="key">7 книг</b>, две из них с издательством <b class="key">Umma Land</b>, сейчас в процессе ещё одной;</li>
+          <li>создала больше <b class="key">30 упаковок для брендов</b> за последний год;</li>
+          <li>обучила рисованию <b class="key">200+ человек</b> онлайн и провела множество офлайн мастер-классов.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ГАЛЕРЕЯ: 4 ВАРИАНТА ======================= -->
+<section class="section s11">
+  <div class="wrap">
+    <h2 class="h2"><span class="script">М</span>ои работы</h2>
+
+    <p class="g-label">Вариант 1 — лента с прокруткой</p>
+    <div class="g-rail" tabindex="0">
+        <figure class="g-card"><img src="img/works/w01.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w02.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w03.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w04.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w05.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w06.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w07.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w08.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w09.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w10.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w11.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w12.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+    </div>
+
+    <p class="g-label">Вариант 2 — две строки в шахматном порядке</p>
+    <div class="g-rail g-rail--two" tabindex="0">
+        <figure class="g-card"><img src="img/works/w01.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w02.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w03.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w04.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w05.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w06.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w07.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w08.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w09.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w10.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w11.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card"><img src="img/works/w12.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+    </div>
+
+    <p class="g-label">Вариант 3 — крупный кадр и миниатюры</p>
+    <div class="g-hero">
+      <div class="g-hero__big"><img id="g-big" src="img/works/w01.webp" alt="Работа Асии"></div>
+      <div class="g-hero__thumbs">
+        <button class="g-thumb is-on" data-src="img/works/w01.webp"><img src="img/works/w01.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w02.webp"><img src="img/works/w02.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w03.webp"><img src="img/works/w03.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w04.webp"><img src="img/works/w04.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w05.webp"><img src="img/works/w05.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w06.webp"><img src="img/works/w06.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w07.webp"><img src="img/works/w07.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w08.webp"><img src="img/works/w08.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w09.webp"><img src="img/works/w09.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w10.webp"><img src="img/works/w10.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w11.webp"><img src="img/works/w11.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w12.webp"><img src="img/works/w12.webp" alt="" loading="lazy"></button>
+      </div>
+    </div>
+
+    <p class="g-label">Вариант 4 — карточки веером</p>
+    <div class="g-rail g-rail--fan" tabindex="0">
+        <figure class="g-card g-card--fan"><img src="img/works/w01.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w02.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w03.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w04.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w05.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w06.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w07.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w08.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w09.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w10.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w11.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w12.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+    </div>
+
+    <p class="g-hint">Ленты листаются мышью, трекпадом или пальцем.</p>
+  </div>
+</section>
+
 <!-- ======================= ФИНАЛ ======================= -->
 <section class="finale">
   <img class="finale__bg" src="img/blocks/scene-flowers.webp" alt="" loading="lazy" decoding="async">
@@ -299,7 +414,21 @@
   var q = (location.search.match(/v=(v[1234])/) || [])[1];
   if (q) document.body.className = q;
 
-  var btns = document.querySelectorAll('.switch button');
+  var micro = document.getElementById('micro-toggle');
+  if (micro) micro.onclick = function () {
+    var on = document.body.classList.toggle('micro');
+    micro.setAttribute('aria-pressed', String(on));
+  };
+
+  var big = document.getElementById('g-big');
+  document.querySelectorAll('.g-thumb').forEach(function (t) {
+    t.onclick = function () {
+      big.src = t.dataset.src;
+      document.querySelectorAll('.g-thumb').forEach(function (o) { o.classList.toggle('is-on', o === t); });
+    };
+  });
+
+  var btns = document.querySelectorAll('.switch button[data-v]');
   btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.v === (q || 'v1'))); });
   btns.forEach(function (b) {
     b.onclick = function () {

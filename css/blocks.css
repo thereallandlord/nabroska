@@ -1491,3 +1491,69 @@ img.p-line {
 .p-scene--6 .p-note--d { top: 8%; }
 .p-scene--6 .p-note--e { top: 38%; }
 .p-scene--6 .p-note--f { top: 68%; }
+
+/* ============================================================
+   ФИНАЛЬНАЯ РАСКЛАДКА — СНЯТА С РЕФЕРЕНСА IMG_4254 (2944 px ширины)
+   Все величины в долях кадра, поэтому пропорции держатся на любом экране.
+   Линии — присланные файлы IMG_4248/4249/4250: они лежали на той же
+   канве, что и референс, поэтому их вертикальное место вычислено точно.
+   ============================================================ */
+
+/* пропорции кадров как в референсе */
+.p-scene--4 .p-scene__stage { aspect-ratio: 2944 / 1080; }   /* 2.726 */
+.p-scene--6 .p-scene__stage { aspect-ratio: 2944 / 1210; }   /* 2.433 */
+.p-scene--2 .p-scene__stage { aspect-ratio: 2944 /  860; }   /* 3.423 */
+.p-scene { margin-bottom: clamp(30px, 3.6vw, 74px); }
+
+/* линии: во всю ширину страницы, вертикаль — по замеру с канвы */
+img.p-line { left: calc(50% - 50vw); width: 100vw; height: auto; z-index: 0; }
+.p-scene--4 img.p-line { top: 13.5%; }
+.p-scene--6 img.p-line { top:  5.9%; }
+.p-scene--2 img.p-line { top: 33.4%; }
+
+/* фигуры */
+.p-scene__hero { transform: translateX(-50%); }
+.p-scene--4 .p-scene__hero { left: 46.5%; bottom: 13.7%; }
+.p-scene--6 .p-scene__hero { left: 48%;   bottom: 19.3%; }
+.p-scene--2 .p-scene__hero { left: 49%;   bottom: 10.0%; }
+.p-scene--4 .p-scene__hero img { height: 73.6cqw * 0; }        /* перебивается ниже */
+.p-scene--4 .p-scene__hero img { height: 27.0cqw; }  /* 73.6% высоты кадра */
+.p-scene--6 .p-scene__hero img { height: 26.0cqw; }  /* 63.3% высоты кадра */
+.p-scene--2 .p-scene__hero img { height: 24.5cqw; }  /* 83.7% высоты кадра */
+
+/* заголовки: в сценах 2 и 3 они разнесены по сторонам, как в референсе */
+.p-scene__name { position: absolute; margin: 0; z-index: 4; font-size: 5.4cqw; }
+.p-scene--4 .p-scene__name { left: 20.9%; top: 0%; }
+.p-scene--6 .p-name--l { left: 18.1%; top: 4%; }
+.p-scene--6 .p-name--r { left: 60.5%; top: 4%; }
+.p-scene--2 .p-name--l { left: 16.5%; top: 2%; }
+.p-scene--2 .p-name--r { left: 62.5%; top: 2%; }
+
+/* плашки — ровно по замеру референса */
+.p-note { padding: 1.15cqw 1.3cqw; border-radius: 1cqw; }
+.p-note p { font-size: 1.12cqw; line-height: 1.4; }
+.p-note__num { font-size: 3.2cqw; left: -2.1cqw; top: -2.4cqw; z-index: 5; }
+
+.p-scene--4 .p-note--a { left: 13.2%; top: 30.4%; width: 18.5%; }
+.p-scene--4 .p-note--b { left: 19.2%; top: 56.1%; width: 16.4%; }
+.p-scene--4 .p-note--c { left: 67.5%; top: 23.0%; width: 16.4%; }
+.p-scene--4 .p-note--d { left: 62.6%; top: 55.7%; width: 20.1%; }
+
+.p-scene--6 .p-note--a { left: 13.8%; top: 29.8%; width: 16.4%; }
+.p-scene--6 .p-note--b { left: 18.1%; top: 52.6%; width: 15.9%; }
+.p-scene--6 .p-note--c { left: 21.1%; top: 72.9%; width: 15.8%; }
+.p-scene--6 .p-note--d { left: 61.1%; top: 72.9%; width: 16.4%; }
+.p-scene--6 .p-note--e { left: 64.7%; top: 54.0%; width: 18.5%; }
+.p-scene--6 .p-note--f { left: 68.8%; top: 29.8%; width: 16.4%; }
+
+.p-scene--2 .p-note--a { left: 23.2%; top: 57.2%; width: 20.5%; }
+.p-scene--2 .p-note--b { left: 64.1%; top: 56.5%; width: 15.6%; }
+
+@media (max-width: 860px) {
+  .p-scene__name { position: static; font-size: clamp(32px, 9.5vw, 50px); }
+  .p-name--r { display: none; }
+  .p-scene__hero { position: static; transform: none; }
+  .p-note { width: auto !important; left: auto !important; top: auto !important; padding: 14px 16px 14px 44px; }
+  .p-note p { font-size: clamp(14px, 3.8vw, 17px); }
+  .p-note__num { left: 12px; top: 50%; transform: translateY(-50%); font-size: clamp(26px, 8vw, 34px); }
+}

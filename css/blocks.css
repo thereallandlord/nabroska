@@ -1396,3 +1396,98 @@ img.p-line {
   .p-scene--6 .p-scene__hero img,
   .p-scene--2 .p-scene__hero img { height: clamp(210px, 55vw, 320px); }
 }
+
+/* ============================================================
+   ПЛОТНАЯ КОМПОЗИЦИЯ ПО РЕФЕРЕНСУ
+   Меньше пустоты, крупнее фигура, блоки и шрифт.
+   Цифры лежат ПОВЕРХ блоков. Линия — присланный файл, во всю ширину
+   экрана, утолщённый, проходит через 1, 2, фигуру, 3, 4.
+   ============================================================ */
+
+/* затемнение начинается ПОД кружевом и продолжается вниз одним куском */
+.lace {
+  background-color: transparent;
+  background-image: url("../img/blocks/lace.webp");
+}
+body.light-theme .lace {
+  background-image: url("../img/blocks/lace.webp"),
+                    linear-gradient(180deg, rgba(150,140,128,.42), rgba(150,140,128,.42));
+  background-repeat: repeat-x, no-repeat;
+  background-position: top center, bottom center;
+  background-size: auto 100%, 100% 42%;
+}
+body.light-theme .lace + .section::before,
+body.light-theme .lace + .light::before {
+  height: clamp(90px, 11vw, 190px);
+  background: linear-gradient(180deg, rgba(150,140,128,.42), rgba(233,227,219,0));
+}
+
+/* сцена плотнее */
+.p-scene--4 .p-scene__stage { aspect-ratio: 1440 / 640; }
+.p-scene--6 .p-scene__stage { aspect-ratio: 1440 / 760; }
+.p-scene--2 .p-scene__stage { aspect-ratio: 1440 / 560; }
+.p-scene { margin-bottom: clamp(24px, 2.6vw, 52px); }
+
+/* линия: во всю ширину ЭКРАНА, толще, проходит через всю композицию */
+img.p-line {
+  left: calc(50% - 50vw);
+  width: 100vw;
+  top: 16%;
+  height: auto;
+  z-index: 0;
+}
+
+/* фигура крупнее и плотно в кадре */
+.p-scene--4 .p-scene__hero img,
+.p-scene--6 .p-scene__hero img,
+.p-scene--2 .p-scene__hero img { height: 39cqw; }
+.p-scene__hero { bottom: 4%; }
+
+/* заголовок — рядом с фигурой, крупный, чуть выше неё */
+.p-scene__name { left: 22%; top: -7%; font-size: 7.4cqw; }
+.p-scene--6 .p-scene__name { left: 14%; }
+.p-scene--2 .p-scene__name { left: 20%; }
+
+/* блоки крупнее, цифры поверх них */
+.p-note { width: 26%; padding: 1.5cqw 1.7cqw; border-radius: 1.1cqw; }
+.p-note p { font-size: 1.52cqw; line-height: 1.42; }
+.p-note__num {
+  z-index: 5;
+  left: -1.4cqw;
+  top: -3.4cqw;
+  font-size: 4.6cqw;
+}
+
+/* «Новичок»: 1 и 2 слева на равном расстоянии, 3 и 4 справа */
+.p-scene--4 .p-note--a { left: 2%;  top: 30%; }
+.p-scene--4 .p-note--b { left: 2%;  top: 62%; }
+.p-scene--4 .p-note--c { left: 72%; top: 22%; }
+.p-scene--4 .p-note--d { left: 72%; top: 58%; }
+
+.p-scene--6 .p-note--a { left: 1%;  top: 10%; width: 25%; }
+.p-scene--6 .p-note--b { left: 1%;  top: 40%; width: 25%; }
+.p-scene--6 .p-note--c { left: 1%;  top: 70%; width: 25%; }
+.p-scene--6 .p-note--d { left: 73%; top: 10%; width: 26%; }
+.p-scene--6 .p-note--e { left: 73%; top: 40%; width: 26%; }
+.p-scene--6 .p-note--f { left: 73%; top: 70%; width: 26%; }
+
+.p-scene--2 .p-note--a { left: 2%;  top: 46%; width: 27%; }
+.p-scene--2 .p-note--b { left: 71%; top: 34%; width: 27%; }
+
+/* сцены не должны налезать на следующий заголовок */
+.p-scene--4 .p-scene__stage { aspect-ratio: 1440 / 700; }
+.p-scene--6 .p-scene__stage { aspect-ratio: 1440 / 900; }
+.p-scene--2 .p-scene__stage { aspect-ratio: 1440 / 600; }
+.p-scene { margin-bottom: clamp(34px, 4vw, 76px); }
+
+.p-scene--4 .p-note--a { top: 28%; }
+.p-scene--4 .p-note--b { top: 58%; }
+.p-scene--4 .p-note--c { top: 22%; }
+.p-scene--4 .p-note--d { top: 54%; }
+
+.p-scene--6 .p-note--a { top: 8%; }
+.p-scene--6 .p-note--b { top: 38%; }
+.p-scene--6 .p-note--c { top: 68%; }
+.p-scene--6 .p-note--d { top: 8%; }
+.p-scene--6 .p-note--e { top: 38%; }
+.p-scene--6 .p-note--f { top: 68%; }

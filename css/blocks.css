@@ -1336,3 +1336,63 @@ body.light-theme .light .p-scene__name { color: var(--ink-dark); }
   .p-scene__hero { position: static; transform: none; }
   .p-note { width: auto !important; left: auto !important; top: auto !important; }
 }
+
+/* ============================================================
+   Линия — ПРИСЛАННЫЙ ФАЙЛ, не нарисованный мной путь.
+   Пропорция картинки сохраняется, ширина = ширине сцены,
+   вертикальное положение — как в макете (ink лежит на 13…69% кадра).
+   ============================================================ */
+img.p-line {
+  position: absolute;
+  left: 0; width: 100%;
+  top: 13%; height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---------- масштаб как в макете ---------- */
+.p-scene__stage { container-type: inline-size; }
+
+/* фигура: в макете её высота — 77% высоты кадра, и она ПО ЦЕНТРУ */
+.p-scene--4 .p-scene__hero,
+.p-scene--6 .p-scene__hero,
+.p-scene--2 .p-scene__hero {
+  left: 50%;
+  bottom: 11%;
+}
+.p-scene__hero img { height: 77cqw * 0; }          /* перебивается ниже */
+.p-scene--4 .p-scene__hero img,
+.p-scene--6 .p-scene__hero img,
+.p-scene--2 .p-scene__hero img {
+  width: auto;
+  height: 35.5cqw;      /* 77% высоты кадра, а кадр = 0.4616 ширины */
+  max-width: none;
+}
+
+/* текст в заметках — как в макете, но чуть крупнее для чтения */
+.p-note p   { font-size: 1.22cqw; line-height: 1.4; }
+.p-note__num{ font-size: 3.3cqw; left: -2cqw; top: -1.8cqw; }
+.p-note     { padding: 1cqw 1.2cqw; border-radius: .9cqw; }
+.p-scene__name { font-size: 5.4cqw; }
+
+/* ---------- «Иллюстратор без системы»: фигура по центру, 6 заметок ---------- */
+.p-scene--6 .p-note--a { left: 3%;  top: 12%; width: 22%; }
+.p-scene--6 .p-note--b { left: 3%;  top: 40%; width: 22%; }
+.p-scene--6 .p-note--c { left: 3%;  top: 68%; width: 22%; }
+.p-scene--6 .p-note--d { left: 72%; top: 12%; width: 24%; }
+.p-scene--6 .p-note--e { left: 72%; top: 40%; width: 24%; }
+.p-scene--6 .p-note--f { left: 72%; top: 68%; width: 24%; }
+
+/* ---------- «Традиционный художник»: фигура по центру, 2 заметки ---------- */
+.p-scene--2 .p-note--a { left: 4%;  top: 44%; width: 24%; }
+.p-scene--2 .p-note--b { left: 68%; top: 34%; width: 25%; }
+
+@media (max-width: 860px) {
+  img.p-line { display: none; }
+  .p-note p { font-size: clamp(14px, 3.8vw, 17px); }
+  .p-note__num { font-size: clamp(26px, 8vw, 36px); left: 10px; top: 50%; }
+  .p-scene__name { font-size: clamp(34px, 10vw, 52px); }
+  .p-scene--4 .p-scene__hero img,
+  .p-scene--6 .p-scene__hero img,
+  .p-scene--2 .p-scene__hero img { height: clamp(210px, 55vw, 320px); }
+}

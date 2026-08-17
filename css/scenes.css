@@ -1,0 +1,159 @@
+/* ============================================================
+   БЛОК «ДЛЯ КОГО ЭТО ОБУЧЕНИЕ» — единая канва.
+
+   Система координат совпадает с макетом IMG_4254:
+     x — доля ШИРИНЫ СТРАНИЦЫ, y — доля высоты канвы.
+   Канва макета: 2944 × 3382 (от низа плашки «Этап 1» до конца контента).
+   Значения ниже сняты с макета измерением, не на глаз.
+   ============================================================ */
+.scenes {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  aspect-ratio: 2944 / 3382;
+  container-type: inline-size;
+  z-index: 1;
+
+  /* подгоняемые величины (в cqw = доля ширины страницы) */
+  --tt-fs: 4.43cqw;   /* размер рукописных подписей */
+  --tt1-fs: 4.68cqw;  /* «Новичок» в макете крупнее остальных */
+  --nt-fs: 1.16cqw;   /* текст в плашках */
+  --nt-lh: 1.20;      /* межстрочный в плашках */
+  --nt-pad-y: .80cqw; /* поля плашки по вертикали */
+  --nt-pad-x: 1cqw;
+  --nm-fs: 2.19cqw;   /* цифры */
+  --nm-dx: -1.02cqw;  /* цифра левее плашки */
+  --nm-dy: -1.10cqw;  /* и выше */
+}
+
+/* ---------- линии: положение вычислено с той же канвы ---------- */
+.scenes .ln { position: absolute; left: 0; width: 100%; height: auto; z-index: 0; pointer-events: none; }
+.ln-1 { top:  5.00%; }
+.ln-2 { top: 35.90%; }
+.ln-3 { top: 82.20%; }
+
+/* ---------- фигуры ----------
+   🔴 Высота — в cqw, НЕ в cqh: при container-type:inline-size единица cqh
+   не работает и молча падает на высоту окна (персонажи раздувались в 3 раза).
+   1% высоты канвы = 1.14878cqw. Значения сняты подгонкой PNG к макету
+   (совпадение ширины подола с макетом — 1 px). */
+.scenes .fg {
+  position: absolute;
+  transform: translateX(-50%);
+  width: auto;
+  z-index: 2;
+  filter: none;
+}
+.fg-1 { left: 49.896%; top:  3.788%; height: 28.808cqw; }  /* 24.42% канвы */
+/* 🔴 в макете первая фигура ОТРАЖЕНА по горизонтали; селектор с тем же весом,
+   что у .scenes .fg — иначе базовый transform перебьёт отражение */
+.scenes .fg-1 { transform: translateX(-50%) scaleX(-1); }
+.fg-2 { left: 50.14%; top: 40.10%; height: 30.91cqw; }  /* 26.91% */
+.fg-3 { left: 52.500%; top: 74.628%; height: 29.074cqw; }  /* 25.43% */
+
+/* ---------- заголовки ---------- */
+.scenes .tt {
+  position: absolute;
+  z-index: 3;
+  font-family: "Aquarelle", cursive;
+  font-weight: 400;
+  color: var(--ink-dark);
+  font-size: var(--tt-fs);
+  line-height: 1;
+  white-space: nowrap;
+}
+.tt-1  { left: 23.040%; top:  3.536%; }
+.scenes .tt-1 { font-size: var(--tt1-fs); }  /* в макете «Новичок» крупнее */
+.tt-2a { left: 18.836%; top: 38.452%; }
+.tt-2b { left: 58.498%; top: 38.570%; }
+.tt-3a { left: 16.255%; top: 78.844%; }
+.tt-3b { left: 63.247%; top: 78.903%; }
+
+/* ---------- плашки ---------- */
+.scenes .nt {
+  position: absolute;
+  z-index: 3;
+  padding: var(--nt-pad-y) var(--nt-pad-x);
+  border-radius: .9cqw;
+  /* в макете плашка — РОВНАЯ заливка без рамки и без тени (замерено: #f3eeea) */
+  background: #f3eeea;
+}
+.scenes .nt p {
+  margin: 0;
+  color: var(--ink-dark);
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 700;
+  font-size: var(--nt-fs);
+  line-height: var(--nt-lh);
+  text-wrap: pretty;
+}
+.scenes .nm {
+  position: absolute;
+  left: var(--nm-dx); top: var(--nm-dy);
+  z-index: 4;
+  font-family: "Aquarelle", cursive;
+  color: var(--wine-line);
+  font-size: var(--nm-fs);
+  line-height: 1;
+}
+
+/* координаты и ширина всех двенадцати — с макета */
+.nt-1a { left: 13.25%; top: 10.41%; width: 18.48%; }
+.nt-1b { left: 19.23%; top: 18.63%; width: 16.44%; }
+.nt-1c { left: 67.46%; top:  8.04%; width: 16.44%; }
+.nt-1d { left: 62.64%; top: 18.45%; width: 20.11%; }
+
+.nt-2a { left: 13.79%; top: 44.41%; width: 16.44%; }
+.nt-2f { left: 68.75%; top: 44.41%; width: 16.44%; }
+.nt-2b { left: 18.14%; top: 52.57%; width: 15.90%; }
+.nt-2e { left: 64.67%; top: 53.16%; width: 18.48%; }
+.nt-2c { left: 21.13%; top: 59.85%; width: 15.76%; }
+.nt-2d { left: 61.14%; top: 59.85%; width: 16.37%; }
+
+.nt-3b { left: 64.13%; top: 88.11%; width: 15.56%; }
+.nt-3a { left: 23.23%; top: 88.23%; width: 20.52%; }
+
+/* ---------- телефон ----------
+   На канве элементы лежат по типам (линии, подписи, фигуры, плашки),
+   поэтому в столбик их надо пересобрать по сценам через order. */
+@media (max-width: 860px) {
+  .scenes {
+    width: auto; margin-left: 0; aspect-ratio: auto;
+    display: flex; flex-direction: column; gap: 14px; padding: 0 20px;
+  }
+  .scenes .ln { display: none; }
+
+  .scenes .fg {
+    position: static; transform: none; height: auto;
+    width: min(62vw, 280px); align-self: center; margin: 6px 0 2px;
+  }
+  .scenes .fg-1 { transform: scaleX(-1); }
+
+  .scenes .tt {
+    position: static; white-space: normal; text-align: center;
+    font-size: clamp(30px, 8.6vw, 46px); line-height: 1.05;
+  }
+  .tt-2b, .tt-3b { display: block; margin-top: -.12em; }
+
+  .scenes .nt {
+    /* relative, а не static: иначе цифра внутри плашки цепляется
+       за .scenes и все двенадцать съезжают в одну точку */
+    position: relative; width: auto !important;
+    left: 0 !important; top: 0 !important;   /* координаты канвы на телефоне не нужны */
+    padding: 14px 16px 14px 52px; border-radius: 14px;
+  }
+  .scenes .nt p { font-size: clamp(14px, 3.9vw, 17px); line-height: 1.34; }
+  .scenes .nm {
+    left: 16px; top: 50%; transform: translateY(-50%);
+    font-size: clamp(26px, 8vw, 34px);
+  }
+
+  /* порядок: подпись -> фигура -> её плашки */
+  .tt-1  { order: 1 }  .fg-1 { order: 2 }
+  .nt-1a { order: 3 }  .nt-1b { order: 4 }  .nt-1c { order: 5 }  .nt-1d { order: 6 }
+  .tt-2a { order: 7 }  .tt-2b { order: 8 }  .fg-2 { order: 9 }
+  .nt-2a { order: 10 } .nt-2b { order: 11 } .nt-2c { order: 12 }
+  .nt-2d { order: 13 } .nt-2e { order: 14 } .nt-2f { order: 15 }
+  .tt-3a { order: 16 } .tt-3b { order: 17 } .fg-3 { order: 18 }
+  .nt-3a { order: 19 } .nt-3b { order: 20 }
+}

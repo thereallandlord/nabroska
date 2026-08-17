@@ -15,6 +15,7 @@
 <link rel="preload" href="fonts/ChampagneLimousines-Bold.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/blocks.css">
+<link rel="stylesheet" href="css/scenes.css">
 </head>
 <body class="v4 light-theme">
 
@@ -57,98 +58,80 @@
 <div class="lace" aria-hidden="true"></div>
 
 <!-- ======================= БЛОК 2 ======================= -->
+<!-- Одна канва на все три сцены: система координат = система макета
+     (x — доля ширины страницы, y — доля высоты канвы). -->
 <section class="section s2 light">
   <div class="wrap">
     <h2 class="h2"><span class="script">Д</span>ля кого это обучение</h2>
     <p class="stage stage--edge">Этап 1 — рисование</p>
+  </div>
 
-    <article class="p-scene p-scene--4">
-      <h3 class="p-scene__name" data-in-stage>Новичок</h3>
-      <div class="p-scene__stage">
-        <img class="p-line" src="img/blocks/line-1.webp" alt="" aria-hidden="true">
-        <div class="p-scene__hero">
-          <picture>
-            <source srcset="img/blocks/tradition.webp" type="image/webp">
-            <img src="img/blocks/tradition.png" alt="Новичок" loading="lazy" decoding="async">
-          </picture>
-        </div>
-        <div class="p-note p-note--a">
-          <span class="p-note__num">1</span>
-          <p>Не рисовала прежде и хочешь обрести <b class="key">хобби или профессию</b></p>
-        </div>
-        <div class="p-note p-note--b">
-          <span class="p-note__num">2</span>
-          <p>Неуверенно владеешь <b class="key">программой</b>, хочешь узнать больше фишек и <b class="key">ускорить</b> процесс рисования.</p>
-        </div>
-        <div class="p-note p-note--c">
-          <span class="p-note__num">3</span>
-          <p>Ищешь <b class="key">обучение</b>, где в фокусе не рисование лиц, а окружение, смыслы и сюжет.</p>
-        </div>
-        <div class="p-note p-note--d">
-          <span class="p-note__num">4</span>
-          <p>Хочешь раскрыть <b class="key">потенциал</b>, воплотить идеи на холсте, но пока <b class="key">даже не знаешь, с какой кисти подступиться</b>.</p>
-        </div>
-      </div>
-    </article>
-    <article class="p-scene p-scene--6">
-      <h3 class="p-scene__name p-name--l" data-in-stage>Иллюстратор</h3>
-        <span class="p-scene__name p-name--r" aria-hidden="false">без системы</span>
-      <div class="p-scene__stage">
-        <img class="p-line" src="img/blocks/line-2.webp" alt="" aria-hidden="true">
-        <div class="p-scene__hero">
-          <picture>
-            <source srcset="img/blocks/illustrator.webp" type="image/webp">
-            <img src="img/blocks/illustrator.png" alt="Иллюстратор без системы" loading="lazy" decoding="async">
-          </picture>
-        </div>
-        <div class="p-note p-note--a">
-          <span class="p-note__num">1</span>
-          <p>Рисуешь, но <b class="key">хаотично</b> — нет ощущения прогресса, нет понимания, куда расти дальше.</p>
-        </div>
-        <div class="p-note p-note--b">
-          <span class="p-note__num">2</span>
-          <p>Сложно переносить идею <b class="key">из головы на холст</b>.</p>
-        </div>
-        <div class="p-note p-note--c">
-          <span class="p-note__num">3</span>
-          <p>Хочешь <b class="key">освежить свои техники</b>, отточить навыки.</p>
-        </div>
-        <div class="p-note p-note--d">
-          <span class="p-note__num">4</span>
-          <p>Развить свой <b class="key">уникальный стиль</b> и научиться влиять на него.</p>
-        </div>
-        <div class="p-note p-note--e">
-          <span class="p-note__num">5</span>
-          <p>Восхищаешься работами других и хочешь <b class="key">перенять то, что нравится</b>, не копируя чужие работы.</p>
-        </div>
-        <div class="p-note p-note--f">
-          <span class="p-note__num">6</span>
-          <p>Жаждешь экспериментов, но не знаешь, <b class="key">как выйти из рамок привычного</b>.</p>
-        </div>
-      </div>
-    </article>
-    <article class="p-scene p-scene--2">
-      <h3 class="p-scene__name p-name--l" data-in-stage>Традиционный</h3>
-        <span class="p-scene__name p-name--r" aria-hidden="false">художник</span>
-      <div class="p-scene__stage">
-        <img class="p-line" src="img/blocks/line-3.webp" alt="" aria-hidden="true">
-        <div class="p-scene__hero">
-          <picture>
-            <source srcset="img/blocks/novichok.webp" type="image/webp">
-            <img src="img/blocks/novichok.png" alt="Традиционный художник" loading="lazy" decoding="async">
-          </picture>
-        </div>
-        <div class="p-note p-note--a">
-          <span class="p-note__num">1</span>
-          <p>Рисуешь красками или карандашами и хочешь <b class="key">перейти в диджитал</b>.</p>
-        </div>
-        <div class="p-note p-note--b">
-          <span class="p-note__num">2</span>
-          <p>Разобраться с <b class="key">Procreate</b> от азов до уверенного владения программой.</p>
-        </div>
-      </div>
-    </article>
+  <div class="scenes">
+    <img class="ln ln-1" src="img/blocks/line-1.webp" alt="" aria-hidden="true">
+    <img class="ln ln-2" src="img/blocks/line-2.webp" alt="" aria-hidden="true">
+    <img class="ln ln-3" src="img/blocks/line-3.webp" alt="" aria-hidden="true">
 
+    <h3 class="tt tt-1">Новичок</h3>
+    <span class="tt tt-2a">Иллюстратор</span>
+    <span class="tt tt-2b">без системы</span>
+    <span class="tt tt-3a">Традиционный</span>
+    <span class="tt tt-3b">художник</span>
+
+    <img class="fg fg-1" src="img/blocks/tradition.webp" alt="Новичок" loading="lazy">
+    <img class="fg fg-2" src="img/blocks/illustrator.webp" alt="Иллюстратор без системы" loading="lazy">
+    <img class="fg fg-3" src="img/blocks/novichok.webp" alt="Традиционный художник" loading="lazy">
+
+      <div class="nt nt-1a">
+        <span class="nm">1</span>
+        <p>Не рисовала прежде и хочешь обрести <b class="key">хобби или профессию</b></p>
+      </div>
+      <div class="nt nt-1b">
+        <span class="nm">2</span>
+        <p>Неуверенно владеешь <b class="key">программой</b>, хочешь узнать больше фишек и <b class="key">ускорить</b> процесс рисования.</p>
+      </div>
+      <div class="nt nt-1c">
+        <span class="nm">3</span>
+        <p>Ищешь <b class="key">обучение</b>, где в фокусе не рисование лиц, а окружение, смыслы и сюжет.</p>
+      </div>
+      <div class="nt nt-1d">
+        <span class="nm">4</span>
+        <p>Хочешь раскрыть <b class="key">потенциал</b>, воплотить идеи на холсте, но пока <b class="key">даже не знаешь, с какой кисти подступиться</b>.</p>
+      </div>
+      <div class="nt nt-2a">
+        <span class="nm">1</span>
+        <p>Рисуешь, но <b class="key">хаотично</b> — нет ощущения прогресса, нет понимания, куда расти дальше.</p>
+      </div>
+      <div class="nt nt-2b">
+        <span class="nm">2</span>
+        <p>Жаждешь экспериментов, но не знаешь, как выйти из <b class="key">рамок привычного</b>.</p>
+      </div>
+      <div class="nt nt-2c">
+        <span class="nm">3</span>
+        <p>Хочешь освежить свои <b class="key">техники</b>, отточить навыки</p>
+      </div>
+      <div class="nt nt-2d">
+        <span class="nm">4</span>
+        <p>Сложно переносить идею <b class="key">из головы на холст</b>.</p>
+      </div>
+      <div class="nt nt-2e">
+        <span class="nm">5</span>
+        <p>Развить свой <b class="key">уникальный стиль</b> и научиться влиять на него.</p>
+      </div>
+      <div class="nt nt-2f">
+        <span class="nm">6</span>
+        <p>Восхищаешься работами других и хочешь <b class="key">перенять</b> то, что нравится, не копируя чужие работы.</p>
+      </div>
+      <div class="nt nt-3a">
+        <span class="nm">1</span>
+        <p>Рисуешь красками или карандашами и хочешь <b class="key">перейти в диджитал</b></p>
+      </div>
+      <div class="nt nt-3b">
+        <span class="nm">2</span>
+        <p>Разобраться с <b class="key">Procreate</b> от азов до уверенного владения программой.</p>
+      </div>
+  </div>
+
+  <div class="wrap">
     <p class="stage stage--edge stage--next">Этап 2 — профессия</p>
   </div>
 </section>

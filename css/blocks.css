@@ -33,12 +33,12 @@
 .h2 {
   font-family: "Champagne & Limousines", sans-serif;
   font-weight: 400;
-  font-size: clamp(34px, 4.4vw, 76px);
+  font-size: clamp(30px, 3.87vw, 67px);
   line-height: 1.08;
   letter-spacing: .012em;
   color: var(--ink);
   text-align: center;
-  margin-bottom: clamp(40px, 5vw, 92px);
+  margin-bottom: clamp(36px, 4.46vw, 82px);
 }
 .h2 .script {
   font-family: "Aquarelle", cursive;
@@ -52,10 +52,10 @@
 .stage {
   display: inline-block;
   margin: 0 0 clamp(28px, 3.4vw, 64px);
-  padding: clamp(9px, 1vw, 15px) clamp(46px, 4vw, 74px) clamp(9px, 1vw, 15px) clamp(20px, 2.6vw, 46px);
+  padding: clamp(8px, .9vw, 14px) clamp(46px, 4vw, 74px) clamp(8px, .9vw, 14px) clamp(20px, 2.6vw, 46px);
   background: var(--tag);
   color: var(--ink);
-  font-size: clamp(15px, 1.5vw, 25px);
+  font-size: clamp(14px, 1.36vw, 23px);
   font-weight: 700;
   letter-spacing: .02em;
   clip-path: polygon(0 0, 100% 0, calc(100% - 26px) 50%, 100% 100%, 0 100%);
@@ -127,14 +127,14 @@
 .lace {
   position: relative;
   z-index: 3;
-  height: clamp(46px, 6vw, 118px);
+  height: clamp(58px, 8.6vw, 165px);   /* высота полосы кружева — с макета */
   margin-top: 0;
   background: url("../img/blocks/lace.webp") repeat-x top center;
   background-size: auto 100%;
   pointer-events: none;
 }
 /* второй блок начинается сразу под кружевом — свой верхний отступ ему уже не нужен */
-.s2 { padding-top: clamp(28px, 4vw, 76px); }
+.s2 { padding-top: clamp(22px, 2.79vw, 54px); }
 
 /* ============================================================
    ВАРИАНТ 1 — «по макету»
@@ -1004,6 +1004,9 @@ body::before {
 .g-hint { color: var(--ink-dim); font-size: 15px; margin-top: 18px; opacity: .75; }
 
 .g-rail {
+  /* 🔴 без min-width:0 лента-скроллер растягивает страницу и рвёт мобильную вёрстку */
+  min-width: 0;
+  max-width: 100%;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: clamp(210px, 24vw, 320px);
@@ -1084,7 +1087,7 @@ body.micro .result__cols .list li::before { left: clamp(14px, 1.3vw, 18px); top:
    иначе белое кружево на светлом пропадает.
    ============================================================ */
 :root {
-  --paper:      #e9e3db;   /* фон сайта */
+  --paper:      #e4ddd7;   /* фон сайта — замерено с макета */
   --paper-soft: #f3efe8;   /* плашки */
   --ink-dark:   #1b2338;   /* основной текст */
   --ink-mid:    #4a5165;
@@ -1411,15 +1414,17 @@ img.p-line {
 }
 body.light-theme .lace {
   background-image: url("../img/blocks/lace.webp"),
-                    linear-gradient(180deg, rgba(150,140,128,.42), rgba(150,140,128,.42));
+                    linear-gradient(180deg, #d5c8bf, #d5c8bf);
   background-repeat: repeat-x, no-repeat;
   background-position: top center, bottom center;
   background-size: auto 100%, 100% 42%;
 }
 body.light-theme .lace + .section::before,
 body.light-theme .lace + .light::before {
-  height: clamp(90px, 11vw, 190px);
-  background: linear-gradient(180deg, rgba(150,140,128,.42), rgba(233,227,219,0));
+  /* глубина и длина затемнения сняты с макета: тёмное сразу под кружевом
+     (#d5c8bf), держится, потом мягко уходит в фон на ~33% ширины страницы */
+  height: 36vw;
+  background: linear-gradient(180deg, #d5c8bf 0%, #d5c8bf 20%, rgba(228,221,215,0) 100%);
 }
 
 /* сцена плотнее */

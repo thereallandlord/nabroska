@@ -1076,3 +1076,183 @@ body.micro .result__cols .list li::before { left: clamp(14px, 1.3vw, 18px); top:
   .g-rail--two { grid-auto-columns: 56vw; }
   .g-card img { height: 42vw; }
 }
+
+/* ============================================================
+   СВЕТЛАЯ ТЕМА САЙТА (по референсу)
+   Первый экран остаётся тёмным — он сам себе фон.
+   Ниже фон светлый, а сразу под кружевом лёгкое затемнение,
+   иначе белое кружево на светлом пропадает.
+   ============================================================ */
+:root {
+  --paper:      #e9e3db;   /* фон сайта */
+  --paper-soft: #f3efe8;   /* плашки */
+  --ink-dark:   #1b2338;   /* основной текст */
+  --ink-mid:    #4a5165;
+  --wine-line:  #7d1220;
+}
+
+body.light-theme { background: var(--paper); }
+body.light-theme::before { opacity: .04; }        /* зерно на светлом заметнее — приглушаем */
+
+/* затемнение под кружевом */
+body.light-theme .lace + .section::before,
+body.light-theme .lace + .light::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: clamp(120px, 16vw, 260px);
+  background: linear-gradient(180deg, rgba(150, 140, 128, .45), rgba(233, 227, 219, 0));
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* секции, которые ещё не переделаны, остаются на своём тёмном фоне,
+   чтобы страница не выглядела сломанной, пока дойдём до них */
+body.light-theme .s5,
+body.light-theme .s6,
+body.light-theme .s7,
+body.light-theme .s9,
+body.light-theme .s10,
+body.light-theme .s11 { background: var(--navy); }
+
+body.light-theme .light .h2,
+body.light-theme .light .p-scene__name { color: var(--ink-dark); }
+
+/* ============================================================
+   СЦЕНА ПЕРСОНАЖА: фигура по центру, пронумерованные заметки
+   вокруг, бордовая линия прошивает композицию.
+   ============================================================ */
+.p-scene { position: relative; margin-bottom: clamp(40px, 5vw, 90px); }
+.p-scene:last-of-type { margin-bottom: 0; }
+
+.p-scene__name {
+  font-family: "Aquarelle", cursive;
+  font-weight: 400;
+  color: var(--ink-dark);
+  font-size: clamp(38px, 5vw, 88px);
+  line-height: 1.05;
+  padding: .1em 0;
+  margin-left: clamp(0px, 8vw, 150px);
+  margin-bottom: clamp(-10px, -1vw, 0px);
+  position: relative;
+  z-index: 3;
+}
+.p-scene--6 .p-scene__name,
+.p-scene--2 .p-scene__name { margin-left: clamp(0px, 4vw, 90px); }
+
+.p-scene__stage { position: relative; }
+.p-scene--4 .p-scene__stage { aspect-ratio: 1440 / 760; }
+.p-scene--6 .p-scene__stage { aspect-ratio: 1440 / 860; }
+.p-scene--2 .p-scene__stage { aspect-ratio: 1440 / 620; }
+
+/* линия — ровно та форма, что на референсе, тянется во всю ширину */
+.p-line {
+  position: absolute;
+  left: calc(50% - 50vw); width: 100vw;
+  top: 0; height: 100%;
+  overflow: visible;
+  z-index: 0;
+  pointer-events: none;
+}
+.p-line path {
+  fill: none;
+  stroke: var(--wine-line);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+}
+
+/* фигура — по центру, стоит на гребне линии */
+.p-scene__hero {
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  bottom: 16%;
+  z-index: 2;
+}
+.p-scene__hero img {
+  display: block;
+  height: clamp(190px, 26vw, 400px);
+  width: auto;
+  filter: none;
+}
+
+/* заметка */
+.p-note {
+  position: absolute;
+  z-index: 2;
+  width: clamp(150px, 19vw, 268px);
+  padding: clamp(10px, 1.1vw, 16px) clamp(12px, 1.2vw, 18px);
+  border-radius: clamp(10px, 1vw, 15px);
+  background: linear-gradient(158deg, rgba(250, 247, 241, .97), rgba(240, 234, 224, .93));
+  border: 1px solid rgba(255, 255, 255, .8);
+  box-shadow: 0 10px 24px rgba(80, 60, 50, .12);
+}
+.p-note p {
+  color: var(--ink-dark);
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 700;
+  font-size: clamp(11px, 1.02vw, 16px);
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+.p-note__num {
+  position: absolute;
+  left: clamp(-26px, -2vw, -14px);
+  top: clamp(-22px, -1.8vw, -12px);
+  font-family: "Aquarelle", cursive;
+  color: var(--wine-line);
+  font-size: clamp(30px, 3.4vw, 58px);
+  line-height: 1;
+}
+
+/* раскладка на 4 заметки — как на референсе */
+.p-scene--4 .p-note--a { left: 2%;  top: 30%; }
+.p-scene--4 .p-note--b { left: 8%;  top: 56%; }
+.p-scene--4 .p-note--c { left: 64%; top: 24%; }
+.p-scene--4 .p-note--d { left: 59%; top: 52%; }
+
+/* на 6 заметок — по три с каждой стороны */
+.p-scene--6 .p-note--a { left: 1%;  top: 18%; }
+.p-scene--6 .p-note--b { left: 6%;  top: 44%; }
+.p-scene--6 .p-note--c { left: 2%;  top: 68%; }
+.p-scene--6 .p-note--d { left: 66%; top: 16%; }
+.p-scene--6 .p-note--e { left: 71%; top: 42%; }
+.p-scene--6 .p-note--f { left: 64%; top: 68%; }
+
+/* на 2 заметки */
+.p-scene--2 .p-note--a { left: 4%;  top: 34%; }
+.p-scene--2 .p-note--b { left: 64%; top: 30%; }
+
+/* ---------- телефон: складываем в колонку ---------- */
+@media (max-width: 860px) {
+  .p-scene__stage { aspect-ratio: auto !important; display: grid; gap: clamp(14px, 4vw, 22px); }
+  .p-line { display: none; }
+  .p-scene__hero { position: static; transform: none; justify-self: center; }
+  .p-scene__hero img { height: clamp(200px, 52vw, 300px); }
+  .p-note { position: static; width: auto; padding-left: clamp(34px, 9vw, 44px); }
+  .p-note__num { left: clamp(8px, 2.4vw, 12px); top: 50%; transform: translateY(-50%); font-size: clamp(26px, 8vw, 36px); }
+  .p-note p { font-size: clamp(14px, 3.8vw, 17px); }
+  .p-scene__name { margin-left: 0; }
+}
+
+/* ---------- геометрия сцены: линия внизу, фигура стоит на её гребне ---------- */
+.p-scene--6 .p-scene__stage { aspect-ratio: 1440 / 900; }
+.p-scene--2 .p-scene__stage { aspect-ratio: 1440 / 640; }
+
+/* низ фигуры совпадает с гребнем линии (0.789 высоты сцены) */
+.p-scene__hero { bottom: 21%; }
+
+.p-scene--4 .p-note--a { left: 1%;  top: 34%; }
+.p-scene--4 .p-note--b { left: 8%;  top: 60%; }
+.p-scene--4 .p-note--c { left: 65%; top: 28%; }
+.p-scene--4 .p-note--d { left: 61%; top: 56%; }
+
+.p-scene--6 .p-note--a { left: 0%;  top: 14%; }
+.p-scene--6 .p-note--b { left: 5%;  top: 38%; }
+.p-scene--6 .p-note--c { left: 1%;  top: 62%; }
+.p-scene--6 .p-note--d { left: 68%; top: 12%; }
+.p-scene--6 .p-note--e { left: 72%; top: 36%; }
+.p-scene--6 .p-note--f { left: 66%; top: 60%; }
+
+.p-scene--2 .p-note--a { left: 3%;  top: 40%; }
+.p-scene--2 .p-note--b { left: 65%; top: 36%; }

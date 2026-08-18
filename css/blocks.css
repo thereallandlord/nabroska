@@ -1614,3 +1614,7 @@ body.light-theme .light .g-card { background: rgba(255,255,255,.5); }
 body.light-theme .light .g-thumb { border-color: rgba(27,35,56,.18); }
 body.light-theme .light .g-hint,
 body.light-theme .light .g-label { color: var(--ink-mid); }
+
+/* работы Аланы — вертикальные, карточкам нужна своя высота */
+.s11b .g-rail { grid-auto-columns: clamp(170px, 19vw, 260px); }
+.s11b .g-card img { height: clamp(230px, 26vw, 360px); }

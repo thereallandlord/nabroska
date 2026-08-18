@@ -342,6 +342,66 @@
   </div>
 </section>
 
+<!-- ======================= СПИКЕР КУРСА ======================= -->
+<!-- та же канва, что у блока автора: доли совпали с референсом до сотых -->
+<section class="section s10b light">
+  <div class="au">
+    <img class="au__art" src="img/blocks/speaker.webp" alt="Алана, спикер курса" loading="lazy" decoding="async">
+    <div class="au__head">
+      <p class="au__name">Алана — спикер курса</p>
+      <p class="au__nick">Mudaliif</p>
+    </div>
+    <div class="au__panel">
+      <p>Иллюстратор, живописец, аниматор<br>с опытом работы <b class="key">9+ лет</b>.</p>
+      <p>Работает в стилистике <b class="key">чувственного символизма</b>.</p>
+      <p>Создавала иллюстрации для <b class="key">зарубежных</b> клиентов, ее открытки есть у людей по всему миру.</p>
+      <p>Будет вести <b class="key">спец модуль «Индивидуальность в творчестве»</b>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= РАБОТЫ СПИКЕРА ======================= -->
+<section class="section s11b light">
+  <div class="wrap">
+    <h2 class="h2"><span class="script">Р</span>аботы Аланы</h2>
+
+    <div class="g-rail g-rail--fan g-desktop" tabindex="0">
+        <figure class="g-card g-card--fan"><img src="img/works/a01.webp" alt="Работа Аланы" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/a02.webp" alt="Работа Аланы" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/a03.webp" alt="Работа Аланы" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/a04.webp" alt="Работа Аланы" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/a05.webp" alt="Работа Аланы" loading="lazy" decoding="async"></figure>
+    </div>
+
+    <div class="g-hero g-mobile">
+      <div class="g-hero__big"><img id="g-big-2" src="img/works/a01.webp" alt="Работа Аланы"></div>
+      <div class="g-hero__thumbs">
+        <button class="g-thumb is-on" data-src="img/works/a01.webp"><img src="img/works/a01.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/a02.webp"><img src="img/works/a02.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/a03.webp"><img src="img/works/a03.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/a04.webp"><img src="img/works/a04.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/a05.webp"><img src="img/works/a05.webp" alt="" loading="lazy"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ДВА ЭТАПА + ПРОГРАММА ======================= -->
+<section class="section s12 light">
+  <div class="split">
+    <img class="split__fl split__fl--l" src="img/blocks/sprig-tall.webp" alt="" loading="lazy" decoding="async">
+    <img class="split__fl split__fl--r" src="img/blocks/sprig-small.webp" alt="" loading="lazy" decoding="async">
+    <p class="split__text"><span class="scr">Я</span> поделила процесс обучения <span class="scr">на 2 этапа</span> не просто так.<br>
+      Один посвящен <b class="key">навыку рисования</b>, второй — <b class="key">монетизации</b> этого<br>
+      навыка, <b class="key">продвижению</b> себя как иллюстратора, обретению <b class="key">дохода</b>.<br>
+      Первый этап мы проходим на курсе <span class="scr">Письма художника</span>,<br>
+      второй — на курсе <span class="scr">Из наброска в профессию</span>.</p>
+  </div>
+
+  <p class="prog__label">Программа курса</p>
+  <p class="prog__name">Письма художника</p>
+</section>
+
 <script>
 (function () {
   var hero = document.querySelector('.hero');
@@ -360,12 +420,15 @@
   var q = (location.search.match(/v=(v[1234])/) || [])[1];
   if (q) document.body.className = q + ' light-theme';
 
-  var big = document.getElementById('g-big');
-  document.querySelectorAll('.g-thumb').forEach(function (t) {
-    t.onclick = function () {
-      big.src = t.dataset.src;
-      document.querySelectorAll('.g-thumb').forEach(function (o) { o.classList.toggle('is-on', o === t); });
-    };
+  document.querySelectorAll('.g-hero').forEach(function (hero) {
+    var big = hero.querySelector('.g-hero__big img');
+    var thumbs = hero.querySelectorAll('.g-thumb');
+    thumbs.forEach(function (t) {
+      t.onclick = function () {
+        big.src = t.dataset.src;
+        thumbs.forEach(function (o) { o.classList.toggle('is-on', o === t); });
+      };
+    });
   });
 
   var btns = document.querySelectorAll('.switch button[data-v]');

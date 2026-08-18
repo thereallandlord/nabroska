@@ -96,3 +96,65 @@
   .qt-1 { order: 3 } .qt-2 { order: 4 } .qt-3 { order: 5 }
   .au__head { order: 1 } .au__art { order: 2 } .au__panel { order: 3 }
 }
+
+/* ============================================================
+   «Я поделила процесс обучения…» и заголовок программы курса
+   ============================================================ */
+.split {
+  position: relative;
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  padding: clamp(30px, 4vw, 70px) 0;
+}
+.split__fl {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: clamp(120px, 17vw, 300px); height: auto; z-index: 1; pointer-events: none;
+}
+.split__fl--l { left: clamp(-30px, -2vw, 0px); }
+.split__fl--r { right: clamp(-30px, -2vw, 0px); }
+.split__text {
+  position: relative; z-index: 2;
+  width: max-content; max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--ink-dark);
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 700;
+  font-size: clamp(15px, 1.32vw, 25px);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+.split__text .scr {
+  font-family: "Aquarelle", cursive;
+  font-weight: 400;
+  color: #571d17;
+  font-size: 1.5em;
+  line-height: 0;
+  vertical-align: -.1em;
+}
+.prog__label {
+  margin: clamp(26px, 4vw, 70px) 0 0;
+  text-align: center;
+  color: var(--ink-dark);
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 700;
+  font-size: clamp(13px, 1.2vw, 22px);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.prog__name {
+  margin: .12em 0 0;
+  text-align: center;
+  font-family: "Aquarelle", cursive;
+  font-weight: 400;
+  color: #571d17;
+  font-size: clamp(36px, 5.2vw, 96px);
+  line-height: 1.05;
+  padding: .12em 0;
+}
+@media (max-width: 699px) {
+  .split { padding: 18px 0 6px; }
+  .split__fl { width: clamp(78px, 26vw, 130px); opacity: .95; }
+  .split__text { font-size: clamp(14px, 3.8vw, 17px); line-height: 1.7; width: min(100%, 76vw); }
+  .split__text br { display: none; }   /* на телефоне переносы по месту */
+}

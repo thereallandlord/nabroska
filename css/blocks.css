@@ -1111,8 +1111,6 @@ body.light-theme .lace + .light::before {
 
 /* секции, которые ещё не переделаны, остаются на своём тёмном фоне,
    чтобы страница не выглядела сломанной, пока дойдём до них */
-body.light-theme .s5,
-body.light-theme .s6,
 body.light-theme .s7,
 body.light-theme .s9,
 body.light-theme .s10,
@@ -1120,6 +1118,30 @@ body.light-theme .s11 { background: var(--navy); }
 
 body.light-theme .light .h2,
 body.light-theme .light .p-scene__name { color: var(--ink-dark); }
+
+/* ---------- светлые разделы: тот же фон и те же плашки, что во втором блоке ----------
+   Плашка — ровная заливка #f3eeea без рамки, тени и подложек:
+   так же, как у пронумерованных блоков в «Для кого это обучение». */
+body.light-theme .light .card__title,
+body.light-theme .light .lead-line,
+body.light-theme .light .list li,
+body.light-theme .light .tile { color: var(--ink-dark); }
+
+body.light-theme .light .panel,
+body.light-theme .light .tile,
+body.light-theme .light .tile--glass {
+  background: #f3eeea;
+  border: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+}
+body.light-theme .light .tile b,
+body.light-theme .light .tile--glass b { color: var(--wine-line); }
+
+/* иллюстрации без тёмной тени — на светлом она читается грязью */
+body.light-theme .light .card__art,
+body.light-theme .light .with-art__art img { filter: none; }
 
 /* ============================================================
    СЦЕНА ПЕРСОНАЖА: фигура по центру, пронумерованные заметки

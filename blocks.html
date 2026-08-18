@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/blocks.css">
 <link rel="stylesheet" href="css/scenes.css">
+<link rel="stylesheet" href="css/result.css">
 </head>
 <body class="v4 light-theme">
 
@@ -25,7 +26,6 @@
   <button data-v="v2" aria-pressed="false">2 — с волной</button>
   <button data-v="v3" aria-pressed="false">3 — карточки</button>
   <button data-v="v4" aria-pressed="false">4 — светлые блоки</button>
-  <button id="micro-toggle" aria-pressed="false">результаты по пунктам</button>
 </div>
 
 <!-- ПЕРВЫЙ ЭКРАН — копия боевого, чтобы видеть блоки в контексте. Не менялся. -->
@@ -213,65 +213,45 @@
 </section>
 
 <!-- ======================= РЕЗУЛЬТАТ ======================= -->
-<section class="section s7">
+<section class="section s7 light">
+  <!-- Раздел собран по референсу IMG_4289: заголовок, название курса,
+       затем канва с иллюстрацией (в ней же стрелки) и текстовыми блоками.
+       Часть блоков на плашке, часть — прямо на фоне, как в макете. -->
   <div class="wrap">
-    <h2 class="h2"><span class="script">Т</span>вой потенциальный результат</h2>
+    <p class="res-h">Твой потенциальный <b>результат</b> после <b>этапа 1</b></p>
+    <p class="res-name">Письма художника</p>
+  </div>
 
-    <div class="result">
-      <h3 class="result__title">
-        <span class="result__stage">После этапа 1</span>
-        <span class="result__name">Письма художника</span>
-      </h3>
-      <div class="result__row result__row--art-left">
-        <div class="result__art"><img src="img/blocks/scene-shell.webp" alt="" loading="lazy" decoding="async"></div>
-        <div class="result__cols">
-          <div class="panel">
-            <ul class="list">
-              <li>освоишь <b class="key">базу диджитал рисования</b> — практики будет очень много;</li>
-              <li>будешь чувствовать себя в <b class="key">Procreate</b> как рыба в воде — в программе, на которой рисуют профессиональные художники по всему миру;</li>
-              <li>наберёшь <b class="key">большое количество работ</b> в своё портфолио;</li>
-              <li>научишься создавать <b class="key">стикеры</b>, от идеи до печати;</li>
-            </ul>
-          </div>
-          <div class="panel">
-            <ul class="list">
-              <li><b class="key">ускоришься</b> в рисовании, используя лайфхаки автора;</li>
-              <li>нащупаешь <b class="key">собственный стиль</b>, найдя новые фишки и комбинируя техники;</li>
-              <li>научишься работать <b class="key">со смыслом и с ТЗ</b> — что критично важно в работе с клиентами;</li>
-              <li>найдёшь <b class="key">круг единомышленников</b>, где можно обсудить всё о творчестве и получить поддержку.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="res res--1">
+    <img class="res__art" src="img/blocks/result-1.webp" alt="" loading="lazy" decoding="async">
 
-    <div class="result">
-      <h3 class="result__title">
-        <span class="result__stage">После этапа 2</span>
-        <span class="result__name">Из наброска в профессию</span>
-      </h3>
-      <div class="result__row">
-        <div class="result__cols">
-          <div class="panel">
-            <ul class="list">
-              <li>выберешь свою <b class="key">нишу</b> и определишься с направлением монетизации;</li>
-              <li>оформишь <b class="key">портфолио, Instagram и Behance</b> так, чтобы заказчики находили тебя сами;</li>
-              <li>поймёшь, как <b class="key">ставить цену</b> на свои услуги без внутреннего страха, и сможешь её обосновать;</li>
-              <li>снимешь, смонтируешь и выложишь <b class="key">7 рилсов</b> — научишься писать сценарий, снимать и даже монтировать;</li>
-            </ul>
-          </div>
-          <div class="panel">
-            <ul class="list">
-              <li>выстроишь <b class="key">систему контента</b> и Stories для регулярного ведения и поймёшь, какой контент привлекает клиентов;</li>
-              <li>научишься вести переписку с заказчиками, работать с <b class="key">правками, сроками и оплатой</b> без стресса;</li>
-              <li>поймёшь, как устроена работа с <b class="key">издательствами и брендами</b>, и как к ним подступиться;</li>
-              <li>выстроишь <b class="key">личную стратегию роста</b> дохода и соцсетей, чтобы двигаться вперёд и после курса.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="result__art"><img src="img/blocks/scene-horse.webp" alt="" loading="lazy" decoding="async"></div>
-      </div>
-    </div>
+    <div class="rt rt-1a rt--card"><p>Освоишь <b class="key">базу</b> диджитал рисования — <b class="key">практики</b> будет очень много;</p></div>
+    <div class="rt rt-1b"><p>Будешь чувствовать себя в <b class="key">Procreate</b>, на котором рисуют профессиональные художники по всему миру, <b class="key">как рыба в воде</b>;</p></div>
+    <div class="rt rt-1c rt--card"><p>Научишься работать со <b class="key">смыслом</b> и с <b class="key">ТЗ</b> — что критично важно в работе с <b class="key">клиентами</b>;</p></div>
+
+    <div class="rt rt-1d"><p>Нащупаешь собственный <b class="key">стиль</b>, найдя новые <b class="key">фишки</b> и комбинируя <b class="key">техники</b>;</p></div>
+    <div class="rt rt-1e rt--card"><p><b class="key">Ускоришься</b> в рисовании, используя <b class="key">лайфхаки</b> автора;</p></div>
+    <div class="rt rt-1f"><p>Найдёшь поддержку в кругу <b class="key">единомышленниц</b>, где можно обсудить всё о творчестве.</p></div>
+    <div class="rt rt-1g rt--card"><p>Научишься создавать <b class="key">стикеры</b>, от идеи до печати;</p></div>
+  </div>
+
+  <div class="wrap">
+    <p class="res-h">Твой потенциальный <b>результат</b> после <b>этапа 2</b></p>
+    <p class="res-name">Из наброска в профессию</p>
+  </div>
+
+  <div class="res res--2">
+    <img class="res__art" src="img/blocks/result-2.webp" alt="" loading="lazy" decoding="async">
+
+    <div class="rt rt-2a rt--card"><p>Выберешь свою <b class="key">нишу</b> и определишься с <b class="key">направлением монетизации</b>;</p></div>
+    <div class="rt rt-2b"><p>Оформишь <b class="key">портфолио, Instagram</b> и <b class="key">Behance</b> так, чтобы заказчики находили тебя сами;</p></div>
+    <div class="rt rt-2c rt--card"><p>Поймёшь, как ставить <b class="key">цену</b> на свои услуги без внутреннего страха, и сможешь её <b class="key">обосновать</b>;</p></div>
+    <div class="rt rt-2d"><p>Снимешь, смонтируешь и выложишь <b class="key">7 рилсов</b>: научишься писать сценарий, снимать и даже монтировать;</p></div>
+
+    <div class="rt rt-2e"><p>Выстроишь <b class="key">систему контента</b> и <b class="key">Stories</b> для регулярного ведения и поймёшь, какой контент <b class="key">привлекает клиентов</b>;</p></div>
+    <div class="rt rt-2f rt--card"><p>Научишься вести <b class="key">переписку</b> с заказчиками, работать с <b class="key">правками, сроками и оплатой</b> без стресса;</p></div>
+    <div class="rt rt-2g"><p>Поймёшь, как устроена работа с <b class="key">издательствами</b> и <b class="key">брендами</b>, и как к ним подступиться;</p></div>
+    <div class="rt rt-2h rt--card"><p>Выстроишь личную <b class="key">стратегию роста дохода и соцсетей</b>, чтобы двигаться вперёд и после курса.</p></div>
   </div>
 </section>
 
@@ -415,13 +395,7 @@
 
   // вариант можно открыть сразу: blocks.html?v=v2
   var q = (location.search.match(/v=(v[1234])/) || [])[1];
-  if (q) document.body.className = q;
-
-  var micro = document.getElementById('micro-toggle');
-  if (micro) micro.onclick = function () {
-    var on = document.body.classList.toggle('micro');
-    micro.setAttribute('aria-pressed', String(on));
-  };
+  if (q) document.body.className = q + ' light-theme';
 
   var big = document.getElementById('g-big');
   document.querySelectorAll('.g-thumb').forEach(function (t) {
@@ -435,7 +409,7 @@
   btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.v === (q || 'v1'))); });
   btns.forEach(function (b) {
     b.onclick = function () {
-      document.body.className = b.dataset.v;
+      document.body.className = b.dataset.v + ' light-theme';
       btns.forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
       scrollTo({ top: innerHeight * 0.92, behavior: 'smooth' });
     };

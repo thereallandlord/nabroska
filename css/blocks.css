@@ -1111,7 +1111,6 @@ body.light-theme .lace + .light::before {
 
 /* секции, которые ещё не переделаны, остаются на своём тёмном фоне,
    чтобы страница не выглядела сломанной, пока дойдём до них */
-body.light-theme .s7,
 body.light-theme .s9,
 body.light-theme .s10,
 body.light-theme .s11 { background: var(--navy); }

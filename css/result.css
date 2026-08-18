@@ -1,0 +1,117 @@
+/* ============================================================
+   РАЗДЕЛ «ТВОЙ ПОТЕНЦИАЛЬНЫЙ РЕЗУЛЬТАТ» — по референсу IMG_4289.
+
+   Канва повторяет систему координат макета (артборд 2944 px = 2× ширины
+   сайта): x — доля ширины страницы, y — доля высоты канвы. Иллюстрация
+   и стрелки — один слой (IMG_4290), поэтому стрелки всегда стоят там же,
+   где их нарисовала автор.
+     канва 1: строки макета 765..2073  -> 2944 × 1309
+     канва 2: строки макета 2883..4534 -> 2944 × 1652
+   ============================================================ */
+.res {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  container-type: inline-size;
+  z-index: 1;
+
+  /* подгоняемые величины */
+  --rt-fs: 1.38cqw;    /* текст блоков */
+  --rt-lh: 1.26;       /* межстрочный */
+  --rt-pad-y: 1.00cqw;  /* поля плашки */
+  --rt-pad-x: 1.2cqw;
+}
+.res--1 { aspect-ratio: 2944 / 1309; }
+.res--2 { aspect-ratio: 2944 / 1652; }
+
+.res__art { position: absolute; height: auto; z-index: 1; }
+.res--1 .res__art { left: 28.09%; top: 0; width: 44.06%; }
+.res--2 .res__art { left: 28.29%; top: 0; width: 40.76%; }
+
+/* текстовый блок: часть на плашке, часть прямо на фоне — как в макете */
+.res .rt { position: absolute; z-index: 2; }
+.res .rt p {
+  margin: 0;
+  text-align: center;
+  color: var(--ink-dark);
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 700;
+  font-size: var(--rt-fs);
+  line-height: var(--rt-lh);
+  text-wrap: pretty;
+}
+.res .rt--card {
+  padding: var(--rt-pad-y) var(--rt-pad-x);
+  border-radius: 1.1cqw;
+  background: #f3eeea;
+}
+
+/* ---------- координаты сняты с макета ---------- */
+/* блок 1 — слева */
+.rt-1a { left: 10.77%; top:  5.88%; width: 19.36%; }
+.rt-1b { left:  6.282%; top: 30.175%; width: 20.890%; }
+.rt-1c { left:  4.89%; top: 57.07%; width: 23.61%; }
+/* блок 1 — справа */
+.rt-1d { left: 69.906%; top:  5.651%; width: 17.600%; }
+.rt-1e { left: 75.44%; top: 24.14%; width: 16.37%; }
+.rt-1f { left: 74.419%; top: 46.518%; width: 18.680%; }
+.rt-1g { left: 72.86%; top: 68.07%; width: 21.30%; }
+
+/* блок 2 — слева */
+.rt-2a { left:  5.43%; top: 10.59%; width: 23.07%; }
+.rt-2b { left:  5.981%; top: 31.655%; width: 22.830%; }
+.rt-2c { left:  5.50%; top: 46.00%; width: 22.45%; }
+.rt-2d { left:  6.692%; top: 68.945%; width: 20.620%; }
+/* блок 2 — справа */
+.rt-2e { left: 68.714%; top: 12.045%; width: 22.010%; }
+.rt-2f { left: 67.80%; top: 30.51%; width: 25.85%; }
+.rt-2g { left: 70.852%; top: 50.307%; width: 21.400%; }
+.rt-2h { left: 70.28%; top: 65.50%; width: 21.10%; }
+
+/* ---------- заголовок и название курса ---------- */
+.res-h {
+  margin: 0;
+  text-align: center;
+  color: var(--ink-dark);
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 400;
+  font-size: clamp(19px, 2.94vw, 60px);
+  line-height: 1.2;
+  letter-spacing: .01em;
+}
+.res-h b { font-weight: 700; }
+.res-name {
+  margin: 1.975vw 0 0;
+  text-align: center;
+  font-family: "Aquarelle", cursive;
+  font-weight: 400;
+  color: #571d17;                 /* замерено с макета */
+  font-size: clamp(34px, 4.69vw, 100px);
+  line-height: 1.05;
+  /* 🔴 у Aquarelle росчерки выходят за объявленную высоту — запас, чтобы не срезало */
+  padding: .18em 0;
+}
+.res--1 { margin-top: 6.0vw; }
+.res--2 { margin-top: 4.428vw; }
+.res--1 { margin-bottom: 10.953vw; }   /* до заголовка второго блока */
+.res--2 { margin-bottom: clamp(40px, 5.6vw, 100px); }
+
+/* ---------- телефон ---------- */
+@media (max-width: 860px) {
+  .res {
+    width: auto; margin-left: 0; aspect-ratio: auto;
+    display: flex; flex-direction: column; gap: 14px; padding: 0 20px;
+  }
+  .res__art {
+    position: static; width: min(78vw, 360px) !important;
+    align-self: center; margin: 4px 0 10px;
+  }
+  .res .rt {
+    position: static; width: auto !important;
+    left: 0 !important; top: 0 !important;
+  }
+  .res .rt p { font-size: clamp(15px, 4vw, 18px); line-height: 1.4; }
+  .res .rt--card { padding: 14px 16px; border-radius: 14px; }
+  .res-h { font-size: clamp(17px, 4.4vw, 24px); }
+  .res-name { font-size: clamp(30px, 8.4vw, 46px); }
+}

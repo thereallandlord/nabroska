@@ -1,0 +1,98 @@
+/* ============================================================
+   КВЕСТ И АВТОР КУРСА — по референсу IMG_4293 (артборд 2942).
+   Канва: x — доля ширины страницы, y — доля высоты канвы.
+     квест: строки макета 139..1200  -> 2942 × 1061
+     автор: строки макета 1358..2338 -> 2942 ×  980
+   ============================================================ */
+.qz, .au {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  container-type: inline-size;
+  z-index: 1;
+
+  --q-fs: 1.49cqw;     /* текст */
+  --q-lh: 1.30;
+  --q-h-fs: 4.69cqw;   /* рукописные заголовки */
+}
+.qz { aspect-ratio: 2942 / 1061; }
+.au { aspect-ratio: 2942 /  980; }
+
+.qz__art, .au__art { position: absolute; display: block; object-fit: cover; z-index: 1; }
+.qz__art { left: 3.774%; top: 0; width: 65.60%; aspect-ratio: 1930 / 899; }
+.au__art { left: 16.05%; top: 0; width: 23.11%; aspect-ratio: 680 / 980; border-radius: .7cqw; }
+
+.qz-h, .au__name {
+  font-family: "Aquarelle", cursive;
+  font-weight: 400;
+  color: #571d17;
+  line-height: 1;
+  white-space: nowrap;
+}
+.qz-h { position: absolute; z-index: 2; font-size: var(--q-h-fs); }
+.qz-h1 { left: 71.72%; top:  8.39%; }
+.qz-h2 { left: 71.75%; top: 21.87%; }
+
+.qt { position: absolute; z-index: 2; }
+.qt p, .au__panel p {
+  margin: 0;
+  color: var(--ink-dark);
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 700;
+  font-size: var(--q-fs);
+  line-height: var(--q-lh);
+  text-wrap: pretty;
+}
+.qt-1 { left: 71.79%; top: 42.41%; width: 19.2%; }
+.qt-2 { left: 71.79%; top: 57.30%; width: 23.4%; }
+.qt-3 { left: 16.14%; top: 94.72%; width: 62.0%; }
+/* в макете эта строка крупнее остальных */
+.qt-3 p { font-size: 1.94cqw; }
+
+/* ---------- автор ---------- */
+.au__head { position: absolute; left: 43.98%; top: 5.62%; z-index: 2; }
+.au__name { margin: 0; font-size: var(--q-h-fs); }
+.au__nick {
+  margin: .25em 0 0;
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 400;
+  font-size: 1.15cqw;
+  color: var(--ink-mid);
+  letter-spacing: .04em;
+}
+.au__panel {
+  position: absolute; left: 42.66%; top: 28.37%; width: 42.35%;
+  z-index: 2;
+  padding: 2.08cqw 1.9cqw 1.5cqw;
+  border-radius: 1.1cqw;
+  background: #f3eeea;
+  display: grid;
+  gap: 1.35cqw;
+}
+
+/* ---------- телефон ---------- */
+@media (max-width: 699px) {
+  .qz, .au {
+    width: auto; margin-left: 0; aspect-ratio: auto;
+    max-width: 620px; margin-inline: auto;
+    display: flex; flex-direction: column; gap: 16px; padding: 0 20px;
+  }
+  .qz__art, .au__art {
+    position: static; width: 100%; height: auto; aspect-ratio: auto;
+  }
+  .au__art { max-width: 320px; align-self: center; }
+  .qz-h { position: static; font-size: clamp(30px, 8.4vw, 44px); white-space: normal; }
+  .qz-h2 { margin-top: -.18em; }
+  .qt { position: static; width: auto !important; }
+  .qt p, .au__panel p { font-size: clamp(15px, 4vw, 18px); line-height: 1.4; }
+  .au__head { position: static; }
+  .au__name { font-size: clamp(28px, 7.6vw, 40px); white-space: normal; }
+  .au__nick { font-size: clamp(13px, 3.4vw, 15px); }
+  .au__panel {
+    position: static; width: auto; padding: 16px 18px; border-radius: 14px; gap: 12px;
+  }
+  /* порядок: заголовок, картинка, текст */
+  .qz__art { order: 2 } .qz-h1 { order: 1 } .qz-h2 { order: 1 }
+  .qt-1 { order: 3 } .qt-2 { order: 4 } .qt-3 { order: 5 }
+  .au__head { order: 1 } .au__art { order: 2 } .au__panel { order: 3 }
+}

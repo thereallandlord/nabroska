@@ -10,10 +10,8 @@
    ============================================================ */
 .res {
   position: relative;
-  /* как и в блоке «Для кого это обучение»: до 1920px во всю ширину,
-     дальше рост прекращается, канва стоит по центру */
-  width: min(100vw, 1920px);
-  margin-left: calc(50% - min(50vw, 960px));
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   container-type: inline-size;
   z-index: 1;
 
@@ -98,8 +96,9 @@
 .res--1 { margin-bottom: min(10.953vw, 210px); }   /* до заголовка второго блока */
 .res--2 { margin-bottom: clamp(40px, 5.6vw, 100px); }
 
-/* ---------- всё, что уже 1280px: канва раскладывается в поток ---------- */
-@media (max-width: 1279px) {
+/* ---------- телефон: канва раскладывается в поток ----------
+   Планшет остаётся с той же композицией, что и компьютер. */
+@media (max-width: 699px) {
   .res {
     width: auto; margin-left: 0; aspect-ratio: auto;
     max-width: 620px; margin-inline: auto;
@@ -117,18 +116,4 @@
   .res .rt--card { padding: 14px 16px; border-radius: 14px; }
   .res-h { font-size: clamp(17px, 4.4vw, 24px); }
   .res-name { font-size: clamp(30px, 8.4vw, 46px); }
-}
-
-/* ---------- планшет: иллюстрация сверху, блоки по два в ряд ---------- */
-@media (min-width: 700px) and (max-width: 1279px) {
-  .res { max-width: 960px; flex-flow: row wrap; align-items: flex-start; gap: 18px 20px; }
-  /* см. заметку в scenes.css: размер задаём высотой, а не шириной */
-  .res__art {
-    flex: 0 0 100%; width: 100% !important; height: min(58vw, 470px);
-    object-fit: contain; margin: 6px 0 4px;
-  }
-  .res .rt { flex: 0 1 calc(50% - 10px); align-self: stretch; }
-  .res .rt p { font-size: clamp(15px, 1.9vw, 19px); }
-  .res-h { font-size: clamp(18px, 2.5vw, 30px); }
-  .res-name { font-size: clamp(32px, 5.2vw, 60px); }
 }

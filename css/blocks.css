@@ -1113,9 +1113,7 @@ body.light-theme .lace + .light::before {
 
 /* секции, которые ещё не переделаны, остаются на своём тёмном фоне,
    чтобы страница не выглядела сломанной, пока дойдём до них */
-body.light-theme .s9,
-body.light-theme .s10,
-body.light-theme .s11 { background: var(--navy); }
+
 
 body.light-theme .light .h2,
 body.light-theme .light .p-scene__name { color: var(--ink-dark); }
@@ -1143,6 +1141,16 @@ body.light-theme .light .tile--glass b { color: var(--wine-line); }
 /* иллюстрации без тёмной тени — на светлом она читается грязью */
 body.light-theme .light .card__art,
 body.light-theme .light .with-art__art img { filter: none; }
+
+/* блок «Вместе оба этапа дают…» на светлом */
+body.light-theme .finale.light { background: var(--paper); }
+body.light-theme .finale.light .finale__text p { color: var(--ink-dark); }
+body.light-theme .finale.light .finale__script { color: var(--wine-line); }
+@media (max-width: 700px) {
+  body.light-theme .finale.light .finale__text {
+    background: linear-gradient(180deg, rgba(228,221,215,0), var(--paper) 18%);
+  }
+}
 
 /* ============================================================
    СЦЕНА ПЕРСОНАЖА: фигура по центру, пронумерованные заметки
@@ -1435,12 +1443,14 @@ img.p-line {
   background-color: transparent;
   background-image: url("../img/blocks/lace.webp");
 }
+/* 🔴 Под кружевом НЕ должно быть резкой границы цвета: затемнение начинается
+   там же, где начинается кружево, и мягко уходит в обычный фон ниже. */
 body.light-theme .lace {
   background-image: url("../img/blocks/lace.webp"),
-                    linear-gradient(180deg, #d5c8bf, #d5c8bf);
+                    linear-gradient(180deg, var(--paper) 0%, #d5c8bf 100%);
   background-repeat: repeat-x, no-repeat;
-  background-position: top center, bottom center;
-  background-size: auto 100%, 100% 42%;
+  background-position: top center, top center;
+  background-size: auto 100%, 100% 100%;
 }
 body.light-theme .lace + .section::before,
 body.light-theme .lace + .light::before {
@@ -1585,3 +1595,22 @@ img.p-line { left: calc(50% - 50vw); width: 100vw; height: auto; z-index: 0; }
   .p-note p { font-size: clamp(14px, 3.8vw, 17px); }
   .p-note__num { left: 12px; top: 50%; transform: translateY(-50%); font-size: clamp(26px, 8vw, 34px); }
 }
+
+/* ---------- МОИ РАБОТЫ ----------
+   Компьютер — веер: карточки чуть повёрнуты, но по вертикали НЕ гуляют,
+   лента мотается только влево-вправо. Телефон — крупный кадр и миниатюры. */
+.g-desktop { display: grid; }
+.g-mobile  { display: none; }
+@media (max-width: 699px) {
+  .g-desktop { display: none; }
+  .g-mobile  { display: grid; }
+}
+.g-card--fan:nth-child(even) { transform: rotate(2.2deg); }   /* без вертикального сдвига */
+.g-card--fan:hover { transform: rotate(0); }                   /* тоже без подъёма */
+.g-rail--fan { align-items: center; padding-top: 22px; padding-bottom: 22px; }
+
+/* на светлом фоне у карточек своя мягкая подложка */
+body.light-theme .light .g-card { background: rgba(255,255,255,.5); }
+body.light-theme .light .g-thumb { border-color: rgba(27,35,56,.18); }
+body.light-theme .light .g-hint,
+body.light-theme .light .g-label { color: var(--ink-mid); }

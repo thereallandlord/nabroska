@@ -8,10 +8,8 @@
    ============================================================ */
 .scenes {
   position: relative;
-  /* до 1920px канва во всю ширину экрана (обычные мониторы — целиком),
-     дальше перестаёт расти и стоит по центру */
-  width: min(100vw, 1920px);
-  margin-left: calc(50% - min(50vw, 960px));
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   aspect-ratio: 2944 / 3382;
   container-type: inline-size;
   z-index: 1;
@@ -115,11 +113,11 @@
 .nt-3b { left: 64.13%; top: 88.11%; width: 15.56%; }
 .nt-3a { left: 23.23%; top: 88.23%; width: 20.52%; }
 
-/* ---------- всё, что уже 1280px ----------
-   Ниже этой ширины канва даёт нечитаемо мелкий текст (шрифт задан долей
-   ширины), поэтому композиция раскладывается в поток. На канве элементы
-   лежат по типам, поэтому порядок по сценам собирается через order. */
-@media (max-width: 1279px) {
+/* ---------- телефон ----------
+   Планшет и компьютер показывают ОДНУ И ТУ ЖЕ композицию (канву) — она
+   просто масштабируется. В поток раскладываемся только на телефоне.
+   На канве элементы лежат по типам, поэтому порядок по сценам — через order. */
+@media (max-width: 699px) {
   .scenes {
     width: auto; margin-left: 0; aspect-ratio: auto;
     max-width: 620px; margin-inline: auto;
@@ -160,24 +158,4 @@
   .nt-2d { order: 13 } .nt-2e { order: 14 } .nt-2f { order: 15 }
   .tt-3a { order: 16 } .tt-3b { order: 17 } .fg-3 { order: 18 }
   .nt-3a { order: 19 } .nt-3b { order: 20 }
-}
-
-/* ---------- планшет: те же блоки, но по два в ряд ---------- */
-@media (min-width: 700px) and (max-width: 1279px) {
-  .scenes {
-    max-width: 960px;
-    flex-flow: row wrap; align-items: flex-start;
-    gap: 18px 20px;
-  }
-  .scenes .tt { flex: 0 0 100%; margin-top: 10px; }
-  .tt-2b, .tt-3b { margin-top: -.16em; }
-  /* 🔴 flex-basis:100% перебивает width, поэтому размер картинки задаём
-     высотой + object-fit, иначе фигура растягивается на всю строку */
-  .scenes .fg {
-    flex: 0 0 100%; width: 100%; height: min(52vw, 420px);
-    object-fit: contain; margin: 6px 0 4px;
-  }
-  .scenes .nt { flex: 0 1 calc(50% - 10px); align-self: stretch; }
-  .scenes .nt p { font-size: clamp(15px, 1.9vw, 19px); }
-  .scenes .nm { font-size: clamp(28px, 3.4vw, 38px); }
 }

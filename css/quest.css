@@ -225,7 +225,7 @@
   display: grid; place-items: center;
   width: clamp(44px, 4.2vw, 78px); aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--wine-line);
+  background: var(--mod-bg, var(--wine-line));
   color: #f6efe4;
   font-family: "Aquarelle", cursive;
   font-weight: 400;
@@ -250,3 +250,42 @@
   .mod__lessons { font-size: clamp(14px, 4vw, 17px); }
   .mod__res p { font-size: clamp(14px, 4vw, 17px); }
 }
+
+/* ---------- модули 1–5 и спец: цвет карточки у каждого свой ----------
+   Цвета взяты из палитры первого экрана (замер по обложке), не из иллюстраций. */
+.mod__card { background: var(--mod-bg, var(--wine-line)); }
+.mod--1 { --mod-bg: #1c556c; }   /* бирюза с обложки */
+.mod--2 { --mod-bg: #422e2e; }   /* тёплый тёмно-коричневый */
+.mod--3 { --mod-bg: #1d2737; }   /* синий сумеречный */
+.mod--4 { --mod-bg: #6a0109; }   /* тёмно-кровавый */
+.mod--5 { --mod-bg: #0b1222; }   /* глубокий синий фона обложки */
+.mod--s { --mod-bg: #930a26; }   /* алый */
+
+
+
+/* картинки разной формы: колонка должна быть соразмерна карточке,
+   поэтому при двух картинках они идут в две строки во всю ширину колонки */
+.mod__pic--tall { aspect-ratio: 1200 / 1690; }
+.mod__pics--1 .mod__pic { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
+.mod__pics--2 .mod__pic { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
+
+/* итог модуля отдельной строкой */
+.mod__out { display: block; margin-top: .5em; }
+.mod__out b { color: var(--wine-line); }
+
+/* бонусы */
+.bonus {
+  background: #f3eeea;
+  border-radius: clamp(14px, 1.8vw, 30px);
+  padding: clamp(20px, 2.4vw, 44px) clamp(20px, 2.6vw, 46px);
+}
+.bonus p {
+  margin: 0;
+  color: var(--ink-dark);
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 700;
+  font-size: clamp(15px, 1.42vw, 27px);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.s-mod, .s-bonus { padding-top: clamp(26px, 3vw, 56px); padding-bottom: clamp(26px, 3vw, 56px); }

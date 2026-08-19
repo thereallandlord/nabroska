@@ -93,13 +93,18 @@
   if (c.saveData || /(^|-)2g$/.test(c.effectiveType || '')) return;
 
   function collect() {
-    var urls = [], seen = {};
+    /* сначала то, что видно на странице, потом крупные версии для просмотра —
+       так первый проход лёгкий, а к клику по картинке она уже готова */
+    var shown = [], full = [], seen = {};
     [].slice.call(document.images).forEach(function (n) {
-      [n.getAttribute('src'), n.dataset && n.dataset.full].forEach(function (u) {
-        if (u && !seen[u]) { seen[u] = 1; urls.push(u); }
-      });
+      var u = n.getAttribute('src');
+      if (u && !seen[u]) { seen[u] = 1; shown.push(u); }
     });
-    return urls;
+    [].slice.call(document.querySelectorAll('[data-full],[data-src]')).forEach(function (n) {
+      var u = n.dataset.full || n.dataset.src;
+      if (u && !seen[u]) { seen[u] = 1; full.push(u); }
+    });
+    return shown.concat(full);
   }
   function warm(urls) {
     var i = 0, active = 0, MAX = 4;

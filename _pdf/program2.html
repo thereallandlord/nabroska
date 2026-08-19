@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>Программа курса «Из наброска в профессию»</title>
+<style>
+@font-face { font-family: "Santa Catarina"; src: url("../fonts/SantaCatarina.otf") format("opentype"); font-display: block; }
+@font-face { font-family: "Champagne & Limousines"; src: url("../fonts/ChampagneLimousines-Regular.ttf") format("truetype"); font-weight: 400; font-display: block; }
+@font-face { font-family: "Champagne & Limousines"; src: url("../fonts/ChampagneLimousines-Bold.ttf") format("truetype"); font-weight: 700; font-display: block; }
+
+@page { size: 338.67mm 190.5mm; margin: 0; }
+:root { --pad-y: 12mm; --row-h: calc(190.5mm - 2 * var(--pad-y)); --lesson-fs: 7.2mm; }
+/* 7.2 мм — максимум, при котором самая длинная фаза «Фундамент» ещё помещается */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #e4ddd7; }
+.slide { width: 338.67mm; height: 190.5mm; background: #e4ddd7;
+  display: grid; place-items: center; page-break-after: always; break-after: page; overflow: hidden; }
+.slide:last-child { page-break-after: auto; break-after: auto; }
+.ph { width: 318mm; height: var(--row-h);
+  display: grid; grid-template-columns: 30% 68%; gap: 2%; align-items: stretch; }
+.art { width: 100%; height: 100%; object-fit: cover; object-position: 50% 52%;
+  border-radius: 5mm; display: block; }
+.art--p5 { object-position: 50% 88%; }
+.card { background: var(--bg); color: var(--ink); border-radius: 5mm; padding: 6.5mm 8.5mm;
+  display: flex; flex-direction: column; gap: 3.4mm; overflow: hidden; }
+.title { margin: 0; display: grid; gap: 0.6mm; }
+.label { font-family: "Santa Catarina", cursive; font-weight: 400; font-size: 11mm; line-height: 1.05; }
+.name { font-family: "Champagne & Limousines", sans-serif; font-weight: 700; font-size: 8mm;
+  text-transform: uppercase; letter-spacing: .04em; line-height: 1.1; }
+.lessons { margin: 0; padding-left: 7mm; display: grid; gap: 2mm; list-style: decimal;
+  font-family: "Champagne & Limousines", sans-serif; font-weight: 700;
+  font-size: var(--lesson-fs); line-height: 1.2; }
+b.key { color: var(--key); }
+</style></head>
+<body>
+  <section class="slide" style="--bg: #7d1220; --ink: #f6efe4; --key: #f3c7c0">
+    <div class="ph">
+      <img class="art" src="img/p1.jpg">
+      <div class="card">
+        <p class="title"><span class="label">Фаза 1</span><span class="name">Фундамент</span></p>
+        <ol class="lessons">
+          <li>Внутреннее состояние, <b class="key">страхи</b>, настрой, энергия, мотивация, ожидания, потребности, прокрастинация</li>
+          <li>Актуализация проблем, путь иллюстратора, как работает рынок, правила курса, <b class="key">карта пути от нуля до первых заказов</b>; зачем нам продвигаться и продавать</li>
+          <li>Способы <b class="key">монетизации</b> и направления в иллюстрации</li>
+          <li>Выбор <b class="key">направления и стилистики</b>. Особенности <b class="key">исламского рынка</b>. Вектор каждой участницы</li>
+          <li><b class="key">Личный бренд</b></li>
+          <li><b class="key">Ценообразование</b></li>
+          <li>Мой способ планирования, постановки целей. Составляем план с целями по всем направлениям</li>
+          <li>Нейросети</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="slide" style="--bg: #f3eeea; --ink: #1b2338; --key: #7d1220">
+    <div class="ph">
+      <img class="art" src="img/p2.jpg">
+      <div class="card">
+        <p class="title"><span class="label">Фаза 2</span><span class="name">Портфолио</span></p>
+        <ol class="lessons">
+          <li>Что такое <b class="key">идеальное портфолио</b>, его функции, ошибки в формировании портфолио</li>
+          <li>Навыки рисования, поиск пробелов, личный стиль</li>
+          <li>Практика: создаём и упаковываем <b class="key">3 проекта</b> в выбранном направлении</li>
+          <li><b class="key">Instagram</b>: упаковка профиля</li>
+          <li><b class="key">Behance</b></li>
+          <li><b class="key">PDF-портфолио</b></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="slide" style="--bg: #422e2e; --ink: #f6efe4; --key: #f3c7c0">
+    <div class="ph">
+      <img class="art" src="img/p3.jpg">
+      <div class="card">
+        <p class="title"><span class="label">Фаза 3</span><span class="name">Продвижение и соцсети</span></p>
+        <ol class="lessons">
+          <li>Страхи, мотивация, влияние. Я — блогер</li>
+          <li><b class="key">Система ведения социальных сетей</b>: образ, регулярность, стиль и форматы</li>
+          <li><b class="key">Stories</b> — как говорить с аудиторией?</li>
+          <li><b class="key">Эстетичная съёмка</b></li>
+          <li><b class="key">Контент-план</b> и карусели</li>
+          <li><b class="key">Reels</b></li>
+          <li>Челлендж <b class="key">7 Reels</b></li>
+          <li>Telegram, VK, Pinterest, YouTube</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="slide" style="--bg: #f3eeea; --ink: #1b2338; --key: #7d1220">
+    <div class="ph">
+      <img class="art" src="img/p4.jpg">
+      <div class="card">
+        <p class="title"><span class="label">Фаза 4</span><span class="name">Клиенты</span></p>
+        <ol class="lessons">
+          <li><b class="key">Кто мой клиент?</b> Бренды</li>
+          <li><b class="key">Общение с клиентами</b> и продажи</li>
+          <li>Трудности в работе с клиентами: к чему надо быть готовым. Договорённости, <b class="key">сроки, правки, конфликты, оплата</b></li>
+          <li><b class="key">Оффер</b> в упаковке и в общении. Как перестать продавать картинки и начать продавать решение?</li>
+          <li><b class="key">Издательства</b></li>
+          <li>Дополнительные источники дохода и клиентов</li>
+          <li><b class="key">Бонусный урок</b>: типографии и создание, продажа собственного мерча</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="slide" style="--bg: #7d1220; --ink: #f6efe4; --key: #f3c7c0">
+    <div class="ph">
+      <img class="art art--p5" src="img/p5.jpg">
+      <div class="card">
+        <p class="title"><span class="label">Фаза 5</span><span class="name">Итоговая</span></p>
+        <ol class="lessons">
+          <li>Подведение итогов</li>
+          <li>Планирование следующих месяцев и года</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</body></html>

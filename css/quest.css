@@ -403,3 +403,43 @@
 
 /* любую иллюстрацию можно открыть в просмотре */
 .zoomable { cursor: zoom-in; }
+
+/* ============================================================
+   ПРОГРАММА ВТОРОГО КУРСА — одна иллюстрация на фазу.
+   Картинка слева, уже; карточка с уроками шире; обе одинаковой высоты
+   (высоту задаёт текст, картинка подстраивается object-fit: cover).
+   ============================================================ */
+.ph {
+  display: grid;
+  grid-template-columns: 30% 68%;
+  gap: 2%;
+  align-items: stretch;
+  /* короткая фаза не должна сплющивать иллюстрацию в полоску */
+  min-height: clamp(280px, 26vw, 460px);
+}
+.ph__art {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 52%;
+  border-radius: clamp(12px, 1.5vw, 24px);
+  display: block;
+}
+.ph__card {
+  border-radius: clamp(12px, 1.5vw, 24px);
+  background: var(--mod-bg);
+  color: var(--mod-ink);
+  padding: clamp(18px, 2.2vw, 38px) clamp(16px, 2vw, 34px);
+  display: flex; flex-direction: column; gap: clamp(10px, 1.3vw, 22px);
+}
+.ph__card .mod__lessons b.key,
+.ph__card .mod__title b.key { color: var(--mod-key); }
+.mod--wine .ph__card b.key, .mod--brown .ph__card b.key { color: #f3c7c0; }
+.mod--light .ph__card b.key { color: var(--wine-line); }
+
+@media (max-width: 699px) {
+  .ph { grid-template-columns: 1fr; gap: 12px; }
+  .ph__art { height: auto; aspect-ratio: 3500 / 5000; max-height: 62vh; }
+  .ph__card { padding: 16px 16px 20px; }
+}
+
+/* у бедуина фигура в нижней части кадра — показываем низ */
+.ph--p5 .ph__art { object-position: 50% 88%; }

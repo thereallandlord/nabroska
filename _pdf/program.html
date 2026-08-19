@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>Программа курса «Письма художника»</title>
+<style>
+@font-face { font-family: "Santa Catarina"; src: url("../fonts/SantaCatarina.otf") format("opentype"); font-display: block; }
+@font-face { font-family: "Champagne & Limousines"; src: url("../fonts/ChampagneLimousines-Regular.ttf") format("truetype"); font-weight: 400; font-display: block; }
+@font-face { font-family: "Champagne & Limousines"; src: url("../fonts/ChampagneLimousines-Bold.ttf") format("truetype"); font-weight: 700; font-display: block; }
+
+@page { size: 338.67mm 190.5mm; margin: 0; }   /* 16:9 */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #e4ddd7; }
+.slide {
+  width: 338.67mm; height: 190.5mm;
+  background: #e4ddd7;
+  display: grid; place-items: center;
+  page-break-after: always; break-after: page;
+  overflow: hidden;
+}
+.slide:last-child { page-break-after: auto; break-after: auto; }
+.mod {
+  width: 268mm;
+  display: grid; grid-template-columns: 48.7% 49.2%; gap: 2.05%;
+  align-items: stretch;
+}
+.pics { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 3.4mm; align-content: start; }
+.pic { width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover; border-radius: 4mm; display: block; }
+.pic--big { grid-column: 1 / -1; aspect-ratio: 760/768; }
+.card {
+  background: var(--bg); color: var(--ink);
+  border-radius: 5mm; padding: 9mm 8mm;
+  display: flex; flex-direction: column; gap: 5mm;
+}
+.title { margin: 0; display: grid; gap: 0.4mm; }
+.label { font-family: "Santa Catarina", cursive; font-weight: 400; font-size: 13mm; line-height: 1.05; }
+.name { font-family: "Champagne & Limousines", sans-serif; font-weight: 700; font-size: 9mm;
+        text-transform: uppercase; letter-spacing: .04em; line-height: 1.1; }
+.lessons { margin: 0; padding-left: 6mm; display: grid; gap: 2.6mm; list-style: decimal;
+           font-family: "Champagne & Limousines", sans-serif; font-weight: 700;
+           font-size: 5.4mm; line-height: 1.32; }
+.plain { display: grid; gap: 3.4mm; font-family: "Champagne & Limousines", sans-serif;
+         font-weight: 700; font-size: 5.4mm; line-height: 1.38; }
+.plain p { margin: 0; }
+.plain b { color: var(--key); }
+b.key { color: var(--key); }
+</style></head>
+<body>
+  <section class="slide" style="--bg: #7d1220; --ink: #f6efe4; --key: #f3c7c0">
+    <div class="mod">
+      <div class="pics">
+        <img class="pic pic--big" src="img/m0-1.jpg">
+        <img class="pic" src="img/m0-2.jpg">
+        <img class="pic" src="img/m0-3.jpg">
+      </div>
+      <div class="card">
+        <p class="title"><span class="label">Модуль 0</span><span class="name">Введение</span></p>
+        <ol class="lessons">
+          <li>Старый Адам — комикс, начало квеста</li>
+          <li>Знакомство со мной</li>
+          <li>Иллюстратор: что за фрукт</li>
+          <li>Procreate: библиотека функций</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="slide" style="--bg: #f3eeea; --ink: #1b2338; --key: #7d1220">
+    <div class="mod">
+      <div class="pics">
+        <img class="pic pic--big" src="img/m1-1.jpg">
+        <img class="pic" src="img/m1-2.jpg">
+        <img class="pic" src="img/m1-3.jpg">
+      </div>
+      <div class="card">
+        <p class="title"><span class="label">Модуль 1</span><span class="name">Раскачка</span></p>
+        <ol class="lessons">
+          <li>Референсы — пользование, поиск и другие нюансы</li>
+          <li>Первые шаги в рисовании</li>
+          <li>Раскраска — осваиваем кисти</li>
+          <li>Пятно, линия, точка: задание на развитие креативности, насмотренности, мышления художника</li>
+          <li>Текстуры и фактуры — передаём материал объекта через рисунок</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="slide" style="--bg: #7d1220; --ink: #f6efe4; --key: #f3c7c0">
+    <div class="mod">
+      <div class="pics">
+        <img class="pic pic--big" src="img/m2-1.jpg">
+        <img class="pic" src="img/m2-2.jpg">
+        <img class="pic" src="img/m2-3.jpg">
+      </div>
+      <div class="card">
+        <p class="title"><span class="label">Модуль 2</span><span class="name">Скетчинг</span></p>
+        <ol class="lessons">
+          <li>Скетч карандашом — делаем наброски и красиво оформляем скетч, учимся передавать форму</li>
+          <li>Скетч в цвете — без эскизов быстрые наброски цветом</li>
+          <li>Двери — один и тот же объект с разной историей и атмосферой</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="slide" style="--bg: #422e2e; --ink: #f6efe4; --key: #f3c7c0">
+    <div class="mod">
+      <div class="pics">
+        <img class="pic pic--big" src="img/m3-1.jpg">
+        <img class="pic" src="img/m3-2.jpg">
+        <img class="pic" src="img/m3-3.jpg">
+      </div>
+      <div class="card">
+        <p class="title"><span class="label">Модуль 3</span><span class="name">Стилизация</span></p>
+        <ol class="lessons">
+          <li>Начало: основы стиля. Вписываем 1 предмет в 6 разных стилей</li>
+          <li>Кради как художник: анализ стилей других художников, порядок повтора техники</li>
+          <li>Растительность</li>
+          <li>Упрощение: рисуем дом</li>
+          <li>Пейзаж: стилизуем рисование природы</li>
+          <li>Паттерн: создаём бесшовный паттерн из 2 композиций, стилизуя цветы</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="slide" style="--bg: #f3eeea; --ink: #1b2338; --key: #7d1220">
+    <div class="mod">
+      <div class="pics">
+        <img class="pic pic--big" src="img/m4-1.jpg">
+        <img class="pic" src="img/m4-2.jpg">
+        <img class="pic" src="img/m4-3.jpg">
+      </div>
+      <div class="card">
+        <p class="title"><span class="label">Модуль 4</span><span class="name">Композиция</span></p>
+        <ol class="lessons">
+          <li>Теория: цели, приёмы, правила, баланс, статика и динамика в композиции</li>
+          <li>Практика: используем изученные композиционные приёмы</li>
+          <li>Коллаж-постер: композиция из текста и фотографий, как аппликации из детства</li>
+          <li>Стикерпак: создаём пак наклеек от А до Я, готовим к печати</li>
+          <li>Пригласительная: собираем дизайн пригласительного из рисунка и текстовых элементов</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="slide" style="--bg: #7d1220; --ink: #f6efe4; --key: #f3c7c0">
+    <div class="mod">
+      <div class="pics">
+        <img class="pic pic--big" src="img/m5-1.jpg">
+        <img class="pic" src="img/m5-2.jpg">
+        <img class="pic" src="img/m5-3.jpg">
+      </div>
+      <div class="card">
+        <p class="title"><span class="label">Модуль 5</span><span class="name">Смысл</span></p>
+        <ol class="lessons">
+          <li>Начинаем мыслить проектами</li>
+          <li>Персонажи: не бывает историй без действующих лиц</li>
+          <li>Ассоциации: поиск смыслов, связь текста с иллюстрацией</li>
+          <li>Дом, атмосфера</li>
+          <li>Комната</li>
+          <li>Спец задание</li>
+          <li>Комикс</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="slide" style="--bg: #f3eeea; --ink: #1b2338; --key: #7d1220">
+    <div class="mod">
+      <div class="pics">
+        <img class="pic pic--big" src="img/ms-1.jpg">
+        <img class="pic" src="img/ms-2.jpg">
+        <img class="pic" src="img/ms-3.jpg">
+      </div>
+      <div class="card">
+        <p class="title"><span class="label">Спец модуль</span><span class="name">Индивидуальность</span></p>
+        <ol class="lessons">
+          <li>Как прийти к индивидуальности и своему собственному творчеству?</li>
+          <li>Что есть «работа = поклонение»?</li>
+          <li>Как строить сюжет для коммерческой иллюстрации?</li>
+          <li>Эфир с защитой работ и их разбором от Аланы</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="slide" style="--bg: #7d1220; --ink: #f6efe4; --key: #f3c7c0">
+    <div class="mod">
+      <div class="pics">
+        <img class="pic pic--big" src="img/mb-1.jpg">
+        <img class="pic" src="img/mb-2.jpg">
+        <img class="pic" src="img/mb-3.jpg">
+      </div>
+      <div class="card">
+        <p class="title"><span class="name">Бонусы</span></p>
+        <div class="plain"><p>В <b>каждом</b> из этих модулей есть <b>секретные бонусные уроки</b> — они открываются тем, кто <b>выполнил все дз</b>.</p>
+          <p>Продолжение квеста ты найдёшь как раз там. В одном из таких уроков мы рисуем <b>набор стикеров для телеграм-канала</b> — от идеи до технической реализации.</p>
+          <p>Остальное палить не буду.))</p></div>
+      </div>
+    </div>
+  </section>
+</body></html>

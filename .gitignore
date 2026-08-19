@@ -1,3 +1,6 @@
 .DS_Store
 _reference/
 _shots/
+_pdf/img/
+_pdf/*.pdf
+_pdf/pages.jpg

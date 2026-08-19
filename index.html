@@ -83,5 +83,46 @@
 <!-- Стилус вместо курсора. На телефонах и планшетах не включается. -->
 <script src="js/stylus-cursor.js" defer></script>
 
+
+<script>
+/* Прогрев картинок: как только загрузился первый экран, тихо тянем остальные,
+   по порядку сверху вниз, по 4 одновременно — чтобы к моменту прокрутки они
+   уже лежали в кэше. На экономии трафика и медленной сети не трогаем. */
+(function () {
+  var c = navigator.connection || {};
+  if (c.saveData || /(^|-)2g$/.test(c.effectiveType || '')) return;
+
+  function collect() {
+    var urls = [], seen = {};
+    [].slice.call(document.images).forEach(function (n) {
+      [n.getAttribute('src'), n.dataset && n.dataset.full].forEach(function (u) {
+        if (u && !seen[u]) { seen[u] = 1; urls.push(u); }
+      });
+    });
+    return urls;
+  }
+  function warm(urls) {
+    var i = 0, active = 0, MAX = 4;
+    function next() {
+      while (active < MAX && i < urls.length) {
+        var u = urls[i++]; active++;
+        var im = new Image();
+        if ('fetchPriority' in im) im.fetchPriority = 'low';
+        im.onload = im.onerror = function () { active--; next(); };
+        im.src = u;
+      }
+    }
+    next();
+  }
+  function start() {
+    // ленивым картинкам разрешаем грузиться сразу — они уже в кэше или подтянутся
+    [].slice.call(document.querySelectorAll('img[loading="lazy"]'))
+      .forEach(function (n) { n.loading = 'eager'; });
+    warm(collect());
+  }
+  if (document.readyState === 'complete') setTimeout(start, 200);
+  else addEventListener('load', function () { setTimeout(start, 200); });
+})();
+</script>
 </body>
 </html>

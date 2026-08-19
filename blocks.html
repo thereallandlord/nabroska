@@ -730,20 +730,47 @@
   var q = (location.search.match(/v=(v[1234])/) || [])[1];
   if (q) document.body.className = q + ' light-theme';
 
-  // просмотр работ учениц: клик — увеличить, стрелки/свайп — листать
+  // ---------- просмотр иллюстраций: открывается ЛЮБАЯ картинка ----------
   (function () {
-    var cards = [].slice.call(document.querySelectorAll('.stu__card'));
-    if (!cards.length) return;
-    var lb = document.getElementById('lb'), img = document.getElementById('lb-img'),
-        count = document.getElementById('lb-count'), cur = 0;
+    var lb = document.getElementById('lb');
+    if (!lb) return;
+    var img = document.getElementById('lb-img'),
+        count = document.getElementById('lb-count'),
+        list = [], cur = 0;
+
+    // всё, что имеет смысл рассматривать: иллюстрации в блоках, галереях и модулях.
+    // линии-росчерки и кружево не берём.
+    var nodes = [].slice.call(document.querySelectorAll('section img, .finale img'))
+      .filter(function (n) {
+        return !n.classList.contains('ln') && !n.closest('.hero') && n.getAttribute('src');
+      });
+    nodes.forEach(function (n) { n.classList.add('zoomable'); });
+
+    function fullSrc(n) { return n.dataset.full || n.currentSrc || n.src; }
+
     function show(i) {
-      cur = (i + cards.length) % cards.length;
-      img.src = cards[cur].querySelector('img').dataset.full;
-      count.textContent = (cur + 1) + ' / ' + cards.length;
+      cur = (i + list.length) % list.length;
+      img.src = fullSrc(list[cur]);
+      img.alt = list[cur].alt || 'Иллюстрация';
+      count.textContent = list.length > 1 ? (cur + 1) + ' / ' + list.length : '';
     }
-    function open(i) { show(i); lb.hidden = false; document.body.style.overflow = 'hidden'; }
+    function open(node) {
+      // листаем внутри своего раздела; если он один — по всем картинкам страницы
+      var box = node.closest('section') || node.closest('.finale') || document;
+      var group = [].slice.call(box.querySelectorAll('img.zoomable'));
+      list = group.length > 1 ? group : nodes;
+      show(list.indexOf(node));
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
     function close() { lb.hidden = true; document.body.style.overflow = ''; }
-    cards.forEach(function (c, i) { c.onclick = function () { open(i); }; });
+
+    nodes.forEach(function (n) {
+      var target = n.closest('.stu__card') || n;
+      target.style.cursor = 'zoom-in';
+      target.addEventListener('click', function (e) { e.preventDefault(); open(n); });
+    });
+
     document.getElementById('lb-close').onclick = close;
     document.getElementById('lb-prev').onclick = function (e) { e.stopPropagation(); show(cur - 1); };
     document.getElementById('lb-next').onclick = function (e) { e.stopPropagation(); show(cur + 1); };
@@ -788,5 +815,46 @@
 </script>
 <script src="js/stylus-cursor.js" defer></script>
 
+
+<script>
+/* Прогрев картинок: как только загрузился первый экран, тихо тянем остальные,
+   по порядку сверху вниз, по 4 одновременно — чтобы к моменту прокрутки они
+   уже лежали в кэше. На экономии трафика и медленной сети не трогаем. */
+(function () {
+  var c = navigator.connection || {};
+  if (c.saveData || /(^|-)2g$/.test(c.effectiveType || '')) return;
+
+  function collect() {
+    var urls = [], seen = {};
+    [].slice.call(document.images).forEach(function (n) {
+      [n.getAttribute('src'), n.dataset && n.dataset.full].forEach(function (u) {
+        if (u && !seen[u]) { seen[u] = 1; urls.push(u); }
+      });
+    });
+    return urls;
+  }
+  function warm(urls) {
+    var i = 0, active = 0, MAX = 4;
+    function next() {
+      while (active < MAX && i < urls.length) {
+        var u = urls[i++]; active++;
+        var im = new Image();
+        if ('fetchPriority' in im) im.fetchPriority = 'low';
+        im.onload = im.onerror = function () { active--; next(); };
+        im.src = u;
+      }
+    }
+    next();
+  }
+  function start() {
+    // ленивым картинкам разрешаем грузиться сразу — они уже в кэше или подтянутся
+    [].slice.call(document.querySelectorAll('img[loading="lazy"]'))
+      .forEach(function (n) { n.loading = 'eager'; });
+    warm(collect());
+  }
+  if (document.readyState === 'complete') setTimeout(start, 200);
+  else addEventListener('load', function () { setTimeout(start, 200); });
+})();
+</script>
 </body>
 </html>

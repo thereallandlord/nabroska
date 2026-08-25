@@ -49,8 +49,27 @@
 /* в макете эта строка крупнее остальных */
 .qt-3 p { font-size: 1.94cqw; }
 
-/* ---------- автор ---------- */
-.au__head { position: absolute; left: 43.98%; top: 5.62%; z-index: 2; }
+/* ---------- автор и спикер ----------
+   Картинка и текст одной высоты: низ плашки совпадает с низом иллюстрации. */
+.au {
+  aspect-ratio: auto;
+  display: grid;
+  grid-template-columns: 23.11% 65%;
+  gap: 3.5%;
+  justify-content: center;
+  align-items: stretch;
+  padding: 0 clamp(16px, 3vw, 60px);
+}
+/* 🔴 height:100% у самой картинки в grid даёт 0: процент считается от строки
+   неопределённой высоты. Поэтому картинка лежит в растянутой обёртке. */
+.au__figure { position: relative; border-radius: .7cqw; overflow: hidden; }
+.au__art {
+  position: absolute; inset: 0; display: block;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 40%;
+}
+.au__right { display: flex; flex-direction: column; gap: 1.1cqw; }
+.au__head { position: static; }
 .au__name { margin: 0; font-size: var(--q-h-fs); }
 .au__nick {
   margin: .25em 0 0;
@@ -61,13 +80,14 @@
   letter-spacing: .04em;
 }
 .au__panel {
-  position: absolute; left: 42.66%; top: 28.37%; width: 42.35%;
-  z-index: 2;
-  padding: 2.08cqw 1.9cqw 1.5cqw;
+  position: static; width: auto;
+  flex: 1;
+  padding: 1.6cqw 1.9cqw;
   border-radius: 1.1cqw;
   background: #f3eeea;
   display: grid;
   gap: 1.35cqw;
+  align-content: center;
 }
 
 /* ---------- телефон ---------- */
@@ -77,9 +97,9 @@
     max-width: 620px; margin-inline: auto;
     display: flex; flex-direction: column; gap: 16px; padding: 0 20px;
   }
-  .qz__art, .au__art {
-    position: static; width: 100%; height: auto; aspect-ratio: auto;
-  }
+  .qz__art { position: static; width: 100%; height: auto; aspect-ratio: auto; }
+  .au__figure { position: static; }
+  .au__art { position: static; width: 100%; height: auto; aspect-ratio: 680 / 980; }
   .au__art { max-width: 320px; align-self: center; }
   .qz-h { position: static; font-size: clamp(30px, 8.4vw, 44px); white-space: normal; }
   .qz-h2 { margin-top: -.18em; }
@@ -198,8 +218,8 @@
   display: flex; flex-direction: column; gap: clamp(10px, 1.3vw, 22px);
 }
 /* тон карточки: бордовый / коричневый / светлый */
-.mod--wine  { --mod-bg: #7d1220; --mod-ink: #f6efe4; --mod-key: #f3c7c0; --mod-accent: #7d1220; }
-.mod--brown { --mod-bg: #422e2e; --mod-ink: #f6efe4; --mod-key: #f3c7c0; --mod-accent: #422e2e; }
+.mod--wine  { --mod-bg: #7d1220; --mod-ink: #f6efe4; --mod-key: #f6efe4; --mod-accent: #7d1220; }
+.mod--brown { --mod-bg: #422e2e; --mod-ink: #f6efe4; --mod-key: #f6efe4; --mod-accent: #422e2e; }
 .mod--light { --mod-bg: #f3eeea; --mod-ink: var(--ink-dark); --mod-key: var(--wine-line); --mod-accent: var(--wine-line); }
 
 .mod__title { margin: 0; display: grid; gap: .05em; }
@@ -275,7 +295,9 @@
 .mod__out { display: inline-block; margin-top: .35em; }
 .mod__out b { color: var(--wine-line); }
 
-.s-mod { padding-top: clamp(18px, 2vw, 38px); padding-bottom: clamp(18px, 2vw, 38px); }
+/* свёрнутые модули стоят близко друг к другу; когда раскрыты — дышат */
+.s-mod { padding-top: clamp(6px, .7vw, 13px); padding-bottom: clamp(6px, .7vw, 13px); }
+.s-mod:has(.modbox[open]) { padding-top: clamp(18px, 2vw, 38px); padding-bottom: clamp(18px, 2vw, 38px); }
 /* заголовок программы и первый модуль идут подряд */
 .s12 { padding-bottom: clamp(10px, 1.2vw, 22px); }
 
@@ -316,14 +338,14 @@
 .modbar__sign {
   margin-left: auto; align-self: center;
   width: .78em; height: .78em; flex: none;
-  border-right: 2px solid var(--mod-accent, var(--mod-bg)); border-bottom: 2px solid var(--mod-accent, var(--mod-bg));
+  border-right: 2px solid var(--wine-line); border-bottom: 2px solid var(--wine-line);
   transform: rotate(45deg) translateY(-15%);
   transition: transform .25s ease;
   font-size: clamp(15px, 1.3vw, 23px);
 }
 .modbox[open] .modbar__sign { transform: rotate(-135deg) translateY(-15%); }
 /* у светлого модуля полоса чуть темнее, чтобы читалась на фоне */
-.modbox.mod--light .modbar { background: #ece4de; }
+
 
 /* ============================================================
    РАБОТЫ УЧЕНИЦ — две строки, листается вбок; клик открывает просмотр
@@ -432,7 +454,7 @@
 }
 .ph__card .mod__lessons b.key,
 .ph__card .mod__title b.key { color: var(--mod-key); }
-.mod--wine .ph__card b.key, .mod--brown .ph__card b.key { color: #f3c7c0; }
+.mod--wine .ph__card b.key, .mod--brown .ph__card b.key { color: #f6efe4; }
 .mod--light .ph__card b.key { color: var(--wine-line); }
 
 @media (max-width: 699px) {
@@ -443,3 +465,13 @@
 
 /* у бедуина фигура в нижней части кадра — показываем низ */
 .ph--p5 .ph__art { object-position: 50% 88%; }
+
+/* 13. эмодзи в кружке спец модуля — без рукописного шрифта */
+.mod__num--emoji { font-family: system-ui, "Apple Color Emoji", sans-serif; font-size: clamp(16px, 1.5vw, 26px); padding-top: 0; }
+
+/* 11. меньше пустоты между блоком спикера и «Я поделила» */
+.s12 { padding-top: clamp(10px, 1.2vw, 24px); }
+
+/* Заголовок программы второго курса живёт по тем же отступам, что и первого:
+   иначе между «Из наброска в профессию» и первой фазой зияет 128px против 28px. */
+.s12b { padding-top: clamp(26px, 3vw, 56px); padding-bottom: clamp(10px, 1.2vw, 22px); }

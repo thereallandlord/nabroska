@@ -1618,3 +1618,40 @@ body.light-theme .light .g-label { color: var(--ink-mid); }
 /* работы Аланы — вертикальные, карточкам нужна своя высота */
 .s11b .g-rail { grid-auto-columns: clamp(170px, 19vw, 260px); }
 .s11b .g-card img { height: clamp(230px, 26vw, 360px); }
+
+/* ---------- доводка по замечаниям ---------- */
+
+/* 3. плитки: иконки визуально одного размера — стакан меньше, цветы чуть крупнее */
+.tile__ico[src*="drink"]  { width: clamp(40px, 4.2vw, 58px); }
+.tile__ico[src*="tulips"] { width: clamp(84px, 9vw, 126px); }
+
+/* 6. «Вместе оба этапа…» стоит ближе к результатам, но не впритык */
+.finale.light { margin-top: clamp(18px, 2.2vw, 44px); }
+
+/* 10. у лент прокрутки не должно быть полос прокрутки */
+.g-rail, .stu, .g-hero__thumbs {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.g-rail::-webkit-scrollbar, .stu::-webkit-scrollbar, .g-hero__thumbs::-webkit-scrollbar { display: none; }
+
+/* 8-9-14. заголовки галерей: тем же цветом и шрифтом, что подписи разделов */
+body.light-theme .s11 .h2,
+body.light-theme .s11b .h2,
+body.light-theme .s-stu .h2 {
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 700;
+  color: #571d17;
+  font-size: clamp(19px, 1.94vw, 34px);
+  letter-spacing: .01em;
+  margin-bottom: clamp(16px, 1.8vw, 30px);
+}
+body.light-theme .s11 .h2 .script,
+body.light-theme .s11b .h2 .script,
+body.light-theme .s-stu .h2 .script {
+  font-family: inherit; font-size: inherit; line-height: inherit;
+  vertical-align: baseline; margin-right: 0;
+}
+/* галерея вплотную к разделу об авторе — читается как один блок */
+.s10, .s10b { padding-bottom: clamp(8px, 1vw, 18px); }
+.s11, .s11b { padding-top: clamp(10px, 1.2vw, 22px); }

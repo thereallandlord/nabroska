@@ -311,3 +311,152 @@
 .s5 { overflow-x: clip; }
 /* правая веточка в «Я поделила процесс» — та же история */
 .split { overflow-x: clip; }
+
+/* ---------- вычеркнутая старая цена ---------- */
+.tar__was {
+  margin: .1em 0 0;
+  text-align: center;
+  color: var(--ink-mid);
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 700;
+  font-size: clamp(13px, 1.05vw, 18px);
+  text-decoration: line-through;
+  text-decoration-color: rgba(125, 18, 32, .55);
+  text-decoration-thickness: 1.5px;
+  opacity: .85;
+}
+.s-tar .h2 { margin-bottom: clamp(46px, 5vw, 88px); }
+
+/* ============================================================
+   ЧАСТЫЕ ВОПРОСЫ
+   Другой тип раскрывашки, чем у модулей: не плашки, а тонкий список
+   с волосяными линиями. Тот же шрифт и тот же бордовый — родство есть,
+   спора между блоками нет.
+   ============================================================ */
+.s-faq { padding-top: clamp(20px, 2.4vw, 44px); }
+.faq {
+  width: min(100%, 900px);
+  margin-inline: auto;
+  border-top: 1px solid rgba(87, 29, 23, .18);
+}
+.faq__i { border-bottom: 1px solid rgba(87, 29, 23, .18); }
+
+.faq__q {
+  list-style: none;
+  cursor: pointer;
+  display: flex; align-items: center; gap: clamp(14px, 1.6vw, 28px);
+  padding: clamp(18px, 1.9vw, 32px) clamp(4px, .6vw, 10px);
+  color: var(--ink-dark);
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 700;
+  font-size: clamp(16px, 1.42vw, 26px);
+  line-height: 1.3;
+  transition: color .2s ease;
+}
+.faq__q::-webkit-details-marker { display: none; }
+.faq__q:hover { color: var(--wine-line); }
+.faq__i[open] .faq__q { color: var(--wine-line); }
+
+/* кружок с плюсом: при открытии поворачивается в крестик */
+.faq__ico {
+  position: relative;
+  margin-left: auto;
+  flex: none;
+  width: clamp(28px, 2.4vw, 42px);
+  height: clamp(28px, 2.4vw, 42px);
+  border-radius: 50%;
+  border: 1.5px solid var(--wine-line);
+  transition: transform .3s ease, background .2s ease;
+}
+.faq__ico::before, .faq__ico::after {
+  content: "";
+  position: absolute; inset: 50% 26%;
+  border-top: 1.5px solid var(--wine-line);
+  transform: translateY(-50%);
+}
+.faq__ico::after { transform: translateY(-50%) rotate(90deg); }
+.faq__q:hover .faq__ico { background: rgba(125, 18, 32, .07); }
+.faq__i[open] .faq__ico { transform: rotate(135deg); }
+
+.faq__a { padding: 0 clamp(4px, .6vw, 10px) clamp(20px, 2vw, 34px); }
+.faq__a p {
+  margin: 0;
+  max-width: 66ch;
+  padding-right: clamp(40px, 4vw, 70px);
+  color: var(--ink-mid);
+  font-family: "Champagne & Limousines", sans-serif;
+  font-weight: 700;
+  font-size: clamp(14px, 1.16vw, 21px);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* плавное раскрытие там, где браузер это умеет (Chrome 131+, Safari 18.2+);
+   в остальных просто открывается сразу — поведение не ломается */
+@supports (interpolate-size: allow-keywords) {
+  :root { interpolate-size: allow-keywords; }
+  .faq__i::details-content {
+    block-size: 0; overflow: clip;
+    transition: block-size .34s ease, content-visibility .34s allow-discrete;
+  }
+  .faq__i[open]::details-content { block-size: auto; }
+}
+
+/* ---------- ползунки прокрутки в галереях не показываем ----------
+   🔴 .stu объявлен со `scrollbar-width: thin` в quest.css, а он грузится
+   после blocks.css — гасим здесь, в последнем файле. */
+.stu, .g-rail, .g-hero__thumbs { scrollbar-width: none; -ms-overflow-style: none; }
+.stu::-webkit-scrollbar,
+.g-rail::-webkit-scrollbar,
+.g-hero__thumbs::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
+@media (max-width: 699px) {
+  .faq__q { font-size: 17px; gap: 14px; }
+  .faq__a p { font-size: 16px; padding-right: 0; }
+  .tar__was { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq__ico, .faq__q { transition: none; }
+}
+
+/* ============================================================
+   «Я ПОДЕЛИЛА ПРОЦЕСС ОБУЧЕНИЯ…» — цветы обнимают текст
+   Были прижаты к краям канвы (1180 px) и висели далеко от строк.
+   Ставим их в один ряд с текстом: тогда расстояние задаёт сам текст,
+   а наехать они не могут — это разные колонки строки.
+   ============================================================ */
+.split {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1.4vw, 30px);
+}
+.split__fl {
+  position: static;
+  transform: none;
+  width: clamp(96px, 14vw, 250px);
+  flex: none;
+}
+.split__text { margin: 0; }
+/* в разметке обе веточки идут перед текстом — расставляем порядком */
+.split__fl--l { order: 1; }
+.split__text  { order: 2; }
+.split__fl--r { order: 3; }
+
+/* цифра/подпись на закрытой полосе модуля — всегда бордовая:
+   у «Стилизации» и 3-й фазы тон коричневый, и подпись выбивалась */
+.modbar__label { color: var(--wine-line); }
+
+@media (max-width: 699px) {
+  /* на телефоне по бокам места нет — веточки становятся в столбик,
+     сверху и снизу текста. Так они по-прежнему обрамляют его и при этом
+     ни на одну строку не наезжают (раньше текст лежал прямо на цветах). */
+  .split { flex-direction: column; gap: clamp(6px, 2vw, 14px); }
+  .split__fl { position: static; transform: none; width: clamp(74px, 24vw, 120px); }
+  .split__fl--r { transform: scaleX(-1); }
+}
+
+/* переход по якорю «Программы курсов» — плавный, но не у тех,
+   кто просил уменьшить движение */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

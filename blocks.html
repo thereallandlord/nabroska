@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="css/result.css">
 <link rel="stylesheet" href="css/quest.css">
 <link rel="stylesheet" href="css/offer.css">
+<link rel="stylesheet" href="css/mobile.css">
 </head>
 <body class="v4 light-theme">
 
@@ -202,7 +203,7 @@
       <h2 class="h2" style="text-align:left"><span class="script">С</span>тудентка, мама<br>или фрилансер</h2>
       <p class="lead-line" style="text-align:left;margin-left:0">Диджитал рисование с тобой всегда и везде.</p>
       <div class="tiles">
-        <div class="tile"><img class="tile__ico" src="img/blocks/drink.webp" alt="" loading="lazy"><b>Свободный график</b>рисуешь тогда, когда получается, а не когда открыта студия</div>
+        <div class="tile"><img class="tile__ico" src="img/blocks/drink.webp" alt="" loading="lazy"><b>Свободный график</b>рисуешь тогда, когда хочешь, без расписания от начальства</div>
         <div class="tile"><img class="tile__ico" src="img/blocks/airpods-case.webp" alt="" loading="lazy"><b>Мобильность</b>всего лишь небольшой планшет в рюкзаке</div>
         <div class="tile"><img class="tile__ico" src="img/blocks/door.webp" alt="" loading="lazy"><b>Без привязки к месту</b>дом, поездка, чужой город — рабочее место всегда с тобой</div>
         <div class="tile"><img class="tile__ico" src="img/blocks/tulips.webp" alt="" loading="lazy"><b>Отдых от рутины</b>возможность переключиться и отвлечься</div>
@@ -225,7 +226,7 @@
   </div>
 
   <div class="res res--1">
-    <img class="res__art" src="img/blocks/result-1.webp" alt="" loading="lazy" decoding="async">
+    <picture class="res__pic"><source media="(max-width: 699px)" srcset="img/blocks/result-1-mob.webp"><img class="res__art" src="img/blocks/result-1.webp" alt="" loading="lazy" decoding="async"></picture>
 
     <div class="rt rt-1a rt--card"><p>Освоишь <b class="key">базу</b> диджитал рисования — <b class="key">практики</b> будет очень много;</p></div>
     <div class="rt rt-1b"><p>Будешь чувствовать себя в <b class="key">Procreate</b>, на котором рисуют профессиональные художники по всему миру, <b class="key">как рыба в воде</b>;</p></div>
@@ -243,7 +244,7 @@
   </div>
 
   <div class="res res--2">
-    <img class="res__art" src="img/blocks/result-2.webp" alt="" loading="lazy" decoding="async">
+    <picture class="res__pic"><source media="(max-width: 699px)" srcset="img/blocks/result-2-mob.webp"><img class="res__art" src="img/blocks/result-2.webp" alt="" loading="lazy" decoding="async"></picture>
 
     <div class="rt rt-2a rt--card"><p>Выберешь свою <b class="key">нишу</b> и определишься с <b class="key">направлением монетизации</b>;</p></div>
     <div class="rt rt-2b"><p>Оформишь <b class="key">портфолио, Instagram</b> и <b class="key">Behance</b> так, чтобы заказчики находили тебя сами;</p></div>
@@ -379,11 +380,11 @@
     </div>
 
     <div class="g-hero g-mobile">
-      <div class="g-hero__big"><img id="g-big-2" src="img/works/a01.webp" alt="Работа Аланы"></div>
+      <div class="g-hero__big"><img id="g-big-2" src="img/works/a03.webp" alt="Работа Аланы"></div>
       <div class="g-hero__thumbs">
-        <button class="g-thumb is-on" data-src="img/works/a01.webp"><img src="img/works/a01-t.webp" data-full="img/works/a01.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/a01.webp"><img src="img/works/a01-t.webp" data-full="img/works/a01.webp" alt="" loading="lazy"></button>
         <button class="g-thumb" data-src="img/works/a02.webp"><img src="img/works/a02-t.webp" data-full="img/works/a02.webp" alt="" loading="lazy"></button>
-        <button class="g-thumb" data-src="img/works/a03.webp"><img src="img/works/a03-t.webp" data-full="img/works/a03.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb is-on" data-src="img/works/a03.webp"><img src="img/works/a03-t.webp" data-full="img/works/a03.webp" alt="" loading="lazy"></button>
         <button class="g-thumb" data-src="img/works/a04.webp"><img src="img/works/a04-t.webp" data-full="img/works/a04.webp" alt="" loading="lazy"></button>
         <button class="g-thumb" data-src="img/works/a05.webp"><img src="img/works/a05-t.webp" data-full="img/works/a05.webp" alt="" loading="lazy"></button>
       </div>
@@ -396,11 +397,13 @@
   <div class="split">
     <img class="split__fl split__fl--l" src="img/blocks/sprig-small.webp" alt="" loading="lazy" decoding="async">
     <img class="split__fl split__fl--r" src="img/blocks/sprig-tall.webp" alt="" loading="lazy" decoding="async">
-    <p class="split__text"><span class="scr">Я</span> поделила процесс обучения <span class="scr">на 2 этапа</span> не просто так.<br>
-      Один посвящен <b class="key">навыку рисования</b>, второй — <b class="key">монетизации</b> этого<br>
-      навыка, <b class="key">продвижению</b> себя как иллюстратора, обретению <b class="key">дохода</b>.<br>
-      Первый этап мы проходим на курсе <span class="scr">Письма художника</span>,<br>
-      второй — на курсе <span class="scr">Из наброска в профессию</span>.</p>
+    <div class="split__body">
+      <p class="split__text"><span class="scr">Я</span> поделила процесс обучения <span class="scr">на 2 этапа</span> не просто так.<br>
+        Один посвящен <b class="key">навыку рисования</b>, второй — <b class="key">монетизации</b> этого<br>
+        навыка, <b class="key">продвижению</b> себя как иллюстратора, обретению <b class="key">дохода</b>.</p>
+      <p class="split__text"><span class="scr">Первый</span> этап мы проходим на курсе <span class="scr">Письма художника</span>,<br>
+        второй — на курсе <span class="scr">Из наброска в профессию</span>.</p>
+    </div>
   </div>
 
   <p class="prog__label">Программа курса</p>
@@ -932,7 +935,7 @@
       <p class="tar__course">Курс «Письма художника»</p>
       <p class="tar__sub">Что внутри</p>
       <ul class="tar__list">
-        <li>первые 3 модуля курса по рисованию в Procreate</li>
+        <li>первые 3 модуля курса по рисованию</li>
         <li>доступ к урокам на год</li>
         <li>домашние задания и бонусные уроки по каждому модулю</li>
       </ul>
@@ -1002,6 +1005,7 @@
         <li>личная стратегия роста дохода на год вперёд</li>
       </ul>
       <p class="tar__note">Купить курс по монетизации отдельно позже будет дороже, чем взять его сейчас вместе с курсом по рисованию.</p>
+      <a class="tar__btn tar__btn--ask" href="https://t.me/aszavra" target="_blank" rel="noopener">Хочу купить 2-й курс отдельно, без первого — написать Асие</a>
       <div class="tar__foot">
         <div class="tar__seats">
           <div class="tar__bar"><span style="width: 50%"></span></div>
@@ -1032,6 +1036,14 @@
       </div>
     </article>
     </div>
+  </div>
+</section>
+
+<!-- ======================= СВЯЗЬ С АСИЕЙ ======================= -->
+<section class="section s-ask light">
+  <div class="wrap">
+    <p class="ask__text"><span class="ask__script">Есть</span> вопросы? Напиши мне в личку, помогу.</p>
+    <a class="ask__btn" href="https://t.me/aszavra" target="_blank" rel="noopener">Написать Асие</a>
   </div>
 </section>
 
@@ -1107,7 +1119,9 @@
     // линии-росчерки и кружево не берём.
     var nodes = [].slice.call(document.querySelectorAll('section img, .finale img'))
       .filter(function (n) {
-        return !n.classList.contains('ln') && !n.closest('.hero') && n.getAttribute('src');
+        // миниатюры под крупным кадром только переключают его — просмотр не открывают
+        return !n.classList.contains('ln') && !n.closest('.hero')
+               && !n.closest('.g-thumb') && n.getAttribute('src');
       });
     nodes.forEach(function (n) { n.classList.add('zoomable'); });
 
@@ -1129,6 +1143,10 @@
       document.body.style.overflow = 'hidden';
     }
     function close() { lb.hidden = true; document.body.style.overflow = ''; }
+
+    // dev: ?lbopen=N — открыть просмотр на N-й картинке, чтобы снять кадром
+    var lbq = (location.search.match(/lbopen=(\d+)/) || [])[1];
+    if (lbq) addEventListener('load', function () { setTimeout(function () { open(nodes[+lbq] || nodes[0]); }, 300); });
 
     nodes.forEach(function (n) {
       var target = n.closest('.stu__card') || n;
@@ -1241,6 +1259,25 @@
     if (hide) document.querySelectorAll(hide).forEach(function(e){ e.style.display = 'none'; });
     spec.split(';').forEach(function(sel){
       if (!sel) return;
+      if (sel === '__cards') {     // не накрывает ли иллюстрация текст в карточках
+        out[sel] = [].slice.call(document.querySelectorAll('.card')).map(function(card, ci){
+          var art = card.querySelector('.card__art');
+          var a = art.getBoundingClientRect();
+          var bad = [];
+          [].slice.call(card.querySelectorAll('.list li')).forEach(function(li, i, all){
+            // считаем по ТЕКСТУ, а не по коробке: отступ справа коробку не сужает
+            var rng = document.createRange(); rng.selectNodeContents(li);
+            var r = rng.getBoundingClientRect(); rng.detach && rng.detach();
+            var over = Math.min(r.right, a.right) - Math.max(r.left, a.left) > 4 &&
+                       Math.min(r.bottom, a.bottom) - Math.max(r.top, a.top) > 4;
+            if (over) bad.push({ пункт: i + 1, последний: i === all.length - 1,
+                                 заход: Math.round(Math.min(r.right, a.right) - Math.max(r.left, a.left)) });
+          });
+          return { карточка: ci + 1, пунктов: card.querySelectorAll('.list li').length,
+                   накрыты: bad };
+        });
+        return;
+      }
       if (sel === '__wide2') {      // кто торчит вправо вне лент-прокруток
         out[sel] = [].slice.call(document.querySelectorAll('*')).filter(function(e){
           var r = e.getBoundingClientRect();

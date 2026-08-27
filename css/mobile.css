@@ -1,0 +1,94 @@
+/* ============================================================
+   ТЕЛЕФОННЫЙ СЛОЙ
+   🔴 Всё в этом файле живёт ТОЛЬКО внутри @media (max-width: 699px).
+   Компьютерная версия отсюда не меняется ни одной строкой —
+   файл подключён последним, поэтому правки адресные и предсказуемые.
+   ============================================================ */
+@media (max-width: 699px) {
+
+  /* ---------- сцены персонажей ---------- */
+  /* перед новой сценой нужен воздух: раньше заголовок шёл вплотную
+     к последнему пункту предыдущего персонажа */
+  .scenes .tt-2a, .scenes .tt-3a { margin-top: 26px; }
+  /* третья фигура вытянутая и была на 170 px выше соседей */
+  .scenes .fg-3 { width: min(44vw, 196px); }
+
+  /* ---------- «Тебе с нами, если ты» ---------- */
+  /* строки шли до середины карточки, хотя иллюстрация мешает
+     только последнему пункту — отступ оставляем ему одному */
+  .card > .panel .list { padding-right: 0; }
+  .card > .panel .list li:last-child { padding-right: clamp(70px, 27vw, 124px); }
+  /* иллюстрация опущена ниже: так она попадает только в полосу последнего
+     пункта, которому отступ и оставлен */
+  .card__art { width: clamp(92px, 25vw, 132px) !important; bottom: -36px; right: -6px; }
+  /* у «портфолио, которое не работает» последний пункт короткий — одной строки
+     не хватает, чтобы закрыть рисунок, поэтому отступ и предпоследнему */
+  .card:has(.card__art--quarter) .list li:nth-last-child(2) { padding-right: clamp(70px, 27vw, 124px); }
+
+  /* ---------- результаты ---------- */
+  /* стрелки уместны на широком экране, на телефоне — шум.
+     Подменяем картинку вариантом без них (см. <picture> в разметке). */
+  .res__pic { display: contents; }
+  /* плашки во втором блоке должны чередоваться: подряд шли два текста без неё */
+  .res--2 .rt.rt--card { padding: 0; background: none; border-radius: 0; }
+  .res--2 .rt:nth-of-type(odd) {
+    padding: 14px 16px; border-radius: 14px; background: #f3eeea;
+  }
+
+  /* ---------- «Вместе оба этапа…» ---------- */
+  /* иллюстрация прижата вправо (обрезается платок слева, а не девушка),
+     текст — рядом слева, на фоне сайта, без наложения */
+  body.light-theme .finale.light {
+    display: grid;
+    grid-template-columns: minmax(0, 45%) minmax(0, 55%);
+    align-items: stretch;
+    gap: clamp(8px, 2.6vw, 16px);
+  }
+  .finale__bg {
+    grid-column: 2; grid-row: 1;
+    width: 100%; max-width: none; margin: 0;
+    height: 100%; min-height: clamp(300px, 74vw, 420px);
+    object-fit: cover; object-position: 100% center;
+  }
+  body.light-theme .finale.light .finale__text {
+    grid-column: 1; grid-row: 1;
+    position: static; transform: none; width: auto;
+    margin: 0; background: none;
+    padding: clamp(14px, 4vw, 22px) 0 clamp(14px, 4vw, 22px) clamp(16px, 4.5vw, 24px);
+    align-self: center;
+  }
+  .finale__text p { font-size: clamp(13px, 3.5vw, 17px); line-height: 1.4; }
+  .finale.light .btn { padding: 12px 20px; font-size: clamp(13px, 3.5vw, 16px); }
+
+  /* ---------- автор и спикер ---------- */
+  .qz, .au { gap: 22px; }                       /* воздух между кадром и подписью */
+  .au__art {
+    max-width: 230px;                            /* влезает в экран вместе с текстом */
+    border-radius: clamp(16px, 4vw, 22px);       /* края как у блоков */
+  }
+  .au__nick { font-size: clamp(15px, 4vw, 17px); }
+
+  /* ---------- «Я поделила процесс обучения…» ---------- */
+  /* веточки кладём горизонтально: стоймя они съедали экран и
+     отодвигали заголовок программы. Верхняя смотрит вправо, нижняя влево. */
+  .split { --fl-w: min(46vw, 210px); gap: clamp(4px, 1.6vw, 10px); }
+  .split__fl {
+    width: var(--fl-w);
+    /* поворот не меняет место в потоке — лишнюю высоту снимаем полями */
+    margin-block: calc(var(--fl-w) * -0.4);
+  }
+  .split__fl--l { transform: rotate(90deg); }    /* вправо, над текстом */
+  .split__fl--r { transform: rotate(-90deg); }   /* влево, под текстом */
+  .split__body { gap: .85em; }                   /* два абзаца с просветом */
+  .s12 { padding-bottom: clamp(6px, 2vw, 14px); }
+
+  /* ---------- просмотр иллюстраций ---------- */
+  /* на телефоне тёмная подложка выглядит чужой — делаем светлую */
+  .lb { background: rgba(238, 232, 227, .97); padding: 44px 12px 40px; }
+  .lb__img { filter: drop-shadow(0 12px 30px rgba(87, 29, 23, .18)); }
+  .lb__close, .lb__nav {
+    background: rgba(125, 18, 32, .10); color: var(--wine-line);
+  }
+  .lb__close:hover, .lb__nav:hover { background: rgba(125, 18, 32, .18); }
+  .lb__count { color: var(--ink-mid); }
+}

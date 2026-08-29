@@ -20,7 +20,13 @@
   .card > .panel .list li:last-child { padding-right: clamp(70px, 27vw, 124px); }
   /* иллюстрация опущена ниже: так она попадает только в полосу последнего
      пункта, которому отступ и оставлен */
-  .card__art { width: clamp(92px, 25vw, 132px) !important; bottom: -36px; right: -6px; }
+  .card__art { bottom: -36px; right: -6px; }
+  /* «четвертинка» повёрнута на 34°, поэтому при равной ширине её габарит
+     был вдвое больше соседей — равняем по видимому размеру, а не по width */
+  .card__art--girl    { width: clamp(96px, 26vw, 136px) !important; }
+  .card__art--pom     { width: clamp(112px, 32vw, 170px) !important; }
+  .card__art--boy     { width: clamp(104px, 29.5vw, 158px) !important; }
+  .card__art--quarter { width: clamp(62px, 17.6vw, 96px) !important; }
   /* у «портфолио, которое не работает» последний пункт короткий — одной строки
      не хватает, чтобы закрыть рисунок, поэтому отступ и предпоследнему */
   .card:has(.card__art--quarter) .list li:nth-last-child(2) { padding-right: clamp(70px, 27vw, 124px); }
@@ -36,29 +42,23 @@
   }
 
   /* ---------- «Вместе оба этапа…» ---------- */
-  /* иллюстрация прижата вправо (обрезается платок слева, а не девушка),
-     текст — рядом слева, на фоне сайта, без наложения */
-  body.light-theme .finale.light {
-    display: grid;
-    grid-template-columns: minmax(0, 45%) minmax(0, 55%);
-    align-items: stretch;
-    gap: clamp(8px, 2.6vw, 16px);
-  }
+  /* иллюстрация целиком, без обрезки девушки: она шире экрана и прижата
+     вправо, поэтому красный платок идёт по всей нижней линии и обрывается
+     только краем экрана. Текст лежит в пустом левом верхнем углу. */
+  body.light-theme .finale.light { display: block; position: relative; overflow: hidden; }
   .finale__bg {
-    grid-column: 2; grid-row: 1;
-    width: 100%; max-width: none; margin: 0;
-    height: 100%; min-height: clamp(300px, 74vw, 420px);
-    object-fit: cover; object-position: 100% center;
+    position: absolute; right: 0; bottom: 0;
+    width: 128%; max-width: none; margin: 0;
+    height: auto; min-height: 0; object-fit: fill;
   }
   body.light-theme .finale.light .finale__text {
-    grid-column: 1; grid-row: 1;
-    position: static; transform: none; width: auto;
-    margin: 0; background: none;
-    padding: clamp(14px, 4vw, 22px) 0 clamp(14px, 4vw, 22px) clamp(16px, 4.5vw, 24px);
-    align-self: center;
+    position: relative; z-index: 2;
+    transform: none; margin: 0; background: none;
+    width: min(64%, 320px);
+    padding: clamp(12px, 3.6vw, 20px) 0 clamp(120px, 30vw, 170px) clamp(16px, 4.5vw, 24px);
   }
   .finale__text p { font-size: clamp(13px, 3.5vw, 17px); line-height: 1.4; }
-  .finale.light .btn { padding: 12px 20px; font-size: clamp(13px, 3.5vw, 16px); }
+  .finale.light .btn { padding: 11px 18px; font-size: clamp(13px, 3.4vw, 16px); }
 
   /* ---------- автор и спикер ---------- */
   .qz, .au { gap: 22px; }                       /* воздух между кадром и подписью */
@@ -71,16 +71,38 @@
   /* ---------- «Я поделила процесс обучения…» ---------- */
   /* веточки кладём горизонтально: стоймя они съедали экран и
      отодвигали заголовок программы. Верхняя смотрит вправо, нижняя влево. */
-  .split { --fl-w: min(46vw, 210px); gap: clamp(4px, 1.6vw, 10px); }
+  .split { --fl-w: min(42vw, 192px); gap: clamp(4px, 1.6vw, 10px); }
   .split__fl {
     width: var(--fl-w);
-    /* поворот не меняет место в потоке — лишнюю высоту снимаем полями */
-    margin-block: calc(var(--fl-w) * -0.4);
+    /* поворот не меняет место в потоке — лишнюю высоту снимаем полями.
+       Оставляем запас: у веточки есть диагональные листья, которые
+       выходят за квадрат поворота и иначе лезут в заголовок ниже. */
+    margin-block: calc(var(--fl-w) * -0.32);
   }
-  .split__fl--l { transform: rotate(90deg); }    /* вправо, над текстом */
-  .split__fl--r { transform: rotate(-90deg); }   /* влево, под текстом */
-  .split__body { gap: .85em; }                   /* два абзаца с просветом */
+  .split__fl--l { transform: rotate(90deg); }               /* вправо, над текстом */
+  /* нижняя веточка: тоже горизонтально влево, но отражена — листья вниз,
+     стебель кверху, к тексту */
+  .split__fl--r { transform: scaleY(-1) rotate(-90deg); }
+  .split__body { gap: .85em; }                              /* два абзаца с просветом */
+  /* текст по центру: в общем файле у абзаца сброшены поля ради ряда на компьютере */
+  .split__text { margin-inline: auto; }
   .s12 { padding-bottom: clamp(6px, 2vw, 14px); }
+
+  /* ---------- по центру ---------- */
+  /* общий мобильный сброс делает все заголовки левыми — эти возвращаем в центр */
+  .s2 .h2, .s5 .h2, .s11 .h2, .s11b .h2, .s-book .h2 { text-align: center; }
+  /* «Квест внутри курса» — одной строкой по центру */
+  .qz-head { display: block; order: 1; text-align: center; }
+  .qz-h { display: inline; }
+  /* в акварельном начертании пробел между словами почти незаметен */
+  .qz-h1 { margin-right: .3em; }
+  .qz-h2 { margin-top: 0; }
+  /* автор и спикер: кадр, имя и ник по центру */
+  .au__art { margin-inline: auto; }
+  .au__head { text-align: center; }
+  .au__nick { font-size: clamp(17px, 4.6vw, 20px); }
+  /* текст под «Общим проектом» — по левому краю */
+  .book__text { text-align: left; margin-inline: 0; }
 
   /* ---------- просмотр иллюстраций ---------- */
   /* на телефоне тёмная подложка выглядит чужой — делаем светлую */

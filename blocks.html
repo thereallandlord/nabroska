@@ -951,7 +951,7 @@
       </ul>
       <div class="tar__foot">
         <a class="tar__btn tar__btn--main" href="#">Оплатить</a>
-        <a class="tar__btn" href="#">Забронировать место</a>
+        <button class="tar__btn tar__btn--book" type="button">Забронировать место</button>
         <a class="tar__btn" href="#">Купить в рассрочку без банков %</a>
       </div>
     </article>
@@ -983,7 +983,7 @@
           <p>12 из 40 мест занято</p>
         </div>
         <a class="tar__btn tar__btn--main" href="#">Оплатить</a>
-        <a class="tar__btn" href="#">Забронировать место</a>
+        <button class="tar__btn tar__btn--book" type="button">Забронировать место</button>
         <a class="tar__btn" href="#">Купить в рассрочку без банков %</a>
       </div>
     </article>
@@ -1013,7 +1013,7 @@
           <p>5 из 10 мест занято</p>
         </div>
         <a class="tar__btn tar__btn--main" href="#">Оплатить</a>
-        <a class="tar__btn" href="#">Забронировать место</a>
+        <button class="tar__btn tar__btn--book" type="button">Забронировать место</button>
         <a class="tar__btn" href="#">Купить в рассрочку без банков %</a>
         <a class="tar__btn tar__btn--ask" href="https://t.me/aszavra" target="_blank" rel="noopener">Уже брала 1-й курс, хочу 2-й. Написать Асие</a>
       </div>
@@ -1082,6 +1082,20 @@
     </div>
   </div>
 </section>
+
+<!-- ======================= ОКНО БРОНИРОВАНИЯ ======================= -->
+<!-- 🔴 Виджет GetCourse вставляет iframe ВМЕСТО своего <script> и задаёт
+     высоту его РОДИТЕЛЮ, поэтому у него отдельная обёртка .gcm__form.
+     Скрипт отрабатывает на DOMContentLoaded, а не по клику, поэтому окно
+     прячем видимостью, а не display:none — иначе iframe не измерит высоту. -->
+<div class="gcm" id="gcm" aria-hidden="true">
+  <div class="gcm__box" role="dialog" aria-modal="true" aria-label="Бронирование места">
+    <button class="gcm__close" id="gcm-close" type="button" aria-label="Закрыть">&times;</button>
+    <div class="gcm__form">
+      <script id="f72ab7a6e8a40b432aeb825b94781642b12d5c39" src="https://liberty-university.getcourse.ru/pl/lite/widget/script?id=1317283"></script>
+    </div>
+  </div>
+</div>
 
 <div class="lb" id="lb" hidden>
   <button class="lb__close" id="lb-close" aria-label="Закрыть">×</button>
@@ -1341,6 +1355,39 @@
     document.body.appendChild(pre);
   }
   addEventListener('load', function(){ setTimeout(dump, 500); });
+})();
+</script>
+
+<script>
+/* Окно бронирования: все кнопки «Забронировать место» открывают одну и ту же
+   форму GetCourse. Виджет живёт в странице с самого начала (иначе он не
+   успевает измерить свою высоту), окно только показываем и прячем. */
+(function () {
+  var box = document.getElementById('gcm');
+  if (!box) return;
+  var closeBtn = document.getElementById('gcm-close');
+  var opened = false;
+
+  function open() {
+    box.classList.add('is-open');
+    box.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    opened = true;
+  }
+  function close() {
+    box.classList.remove('is-open');
+    box.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    opened = false;
+  }
+
+  document.querySelectorAll('.tar__btn--book').forEach(function (b) {
+    b.addEventListener('click', function (e) { e.preventDefault(); open(); });
+  });
+  if (/gcm=1/.test(location.search)) addEventListener('load', function () { setTimeout(open, 600); });
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', function (e) { if (e.target === box) close(); });
+  addEventListener('keydown', function (e) { if (opened && e.key === 'Escape') close(); });
 })();
 </script>
 </body>

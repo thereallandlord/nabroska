@@ -950,8 +950,8 @@
         <li>нет курса по монетизации</li>
       </ul>
       <div class="tar__foot">
-        <a class="tar__btn tar__btn--main" href="#">Оплатить</a>
-        <button class="tar__btn tar__btn--book" type="button">Забронировать место</button>
+        <button class="tar__btn tar__btn--main" type="button" data-gcm="pay-1">Оплатить</button>
+        <button class="tar__btn tar__btn--book" type="button" data-gcm="book">Забронировать место</button>
         <a class="tar__btn" href="#">Купить в рассрочку без банков %</a>
       </div>
     </article>
@@ -983,7 +983,7 @@
           <p>12 из 40 мест занято</p>
         </div>
         <a class="tar__btn tar__btn--main" href="#">Оплатить</a>
-        <button class="tar__btn tar__btn--book" type="button">Забронировать место</button>
+        <button class="tar__btn tar__btn--book" type="button" data-gcm="book">Забронировать место</button>
         <a class="tar__btn" href="#">Купить в рассрочку без банков %</a>
       </div>
     </article>
@@ -1013,7 +1013,7 @@
           <p>5 из 10 мест занято</p>
         </div>
         <a class="tar__btn tar__btn--main" href="#">Оплатить</a>
-        <button class="tar__btn tar__btn--book" type="button">Забронировать место</button>
+        <button class="tar__btn tar__btn--book" type="button" data-gcm="book">Забронировать место</button>
         <a class="tar__btn" href="#">Купить в рассрочку без банков %</a>
         <a class="tar__btn tar__btn--ask" href="https://t.me/aszavra" target="_blank" rel="noopener">Уже брала 1-й курс, хочу 2-й. Написать Асие</a>
       </div>
@@ -1091,8 +1091,11 @@
 <div class="gcm" id="gcm" aria-hidden="true">
   <div class="gcm__box" role="dialog" aria-modal="true" aria-label="Бронирование места">
     <button class="gcm__close" id="gcm-close" type="button" aria-label="Закрыть">&times;</button>
-    <div class="gcm__form">
+    <div class="gcm__form" data-form="book">
       <script id="f72ab7a6e8a40b432aeb825b94781642b12d5c39" src="https://liberty-university.getcourse.ru/pl/lite/widget/script?id=1317283"></script>
+    </div>
+    <div class="gcm__form" data-form="pay-1">
+      <script id="a354bc82b170cece6ee54f7ab13a8b1a223501a6" src="https://liberty-university.getcourse.ru/pl/lite/widget/script?id=1317274"></script>
     </div>
   </div>
 </div>
@@ -1381,10 +1384,23 @@
     opened = false;
   }
 
-  document.querySelectorAll('.tar__btn--book').forEach(function (b) {
-    b.addEventListener('click', function (e) { e.preventDefault(); open(); });
+  var forms = box.querySelectorAll('.gcm__form');
+  document.querySelectorAll('[data-gcm]').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.preventDefault();
+      var key = b.dataset.gcm;
+      forms.forEach(function (f) { f.classList.toggle('is-active', f.dataset.form === key); });
+      box.querySelector('.gcm__box').scrollTop = 0;
+      open();
+    });
   });
-  if (/gcm=1/.test(location.search)) addEventListener('load', function () { setTimeout(open, 600); });
+  var q = (location.search.match(/gcm=([\w-]+)/) || [])[1];
+  if (q) addEventListener('load', function () {
+    setTimeout(function () {
+      forms.forEach(function (f) { f.classList.toggle('is-active', f.dataset.form === q); });
+      open();
+    }, 800);
+  });
   closeBtn.addEventListener('click', close);
   box.addEventListener('click', function (e) { if (e.target === box) close(); });
   addEventListener('keydown', function (e) { if (opened && e.key === 'Escape') close(); });

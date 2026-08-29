@@ -550,6 +550,10 @@ html { scroll-behavior: smooth; }
   padding: clamp(34px, 3.4vw, 46px) 0 clamp(6px, 1vw, 12px);
 }
 .gcm__form { width: 100%; }
+/* 🔴 Формы лежат в странице все сразу — иначе виджет не измерит высоту.
+   Неактивную схлопываем в ноль (высоту её обёртке скрипт ставит инлайном,
+   поэтому !important), но ширину оставляем: по ней iframe и меряется. */
+.gcm__form:not(.is-active) { height: 0 !important; overflow: hidden; visibility: hidden; }
 .gcm__form iframe { display: block; width: 100%; border: 0; }
 .gcm__close {
   position: absolute; top: 10px; right: 12px;

@@ -40,5 +40,13 @@ s2 = re.sub(r'<div class="switch">.*?</div>\n', '', s, count=1, flags=re.S)
 assert s2 != s, "переключатель не найден"
 s = s2
 
+# служебные куски: замеры и открывалки по адресу (?probe, ?nohero, ?v, ?gcm,
+# ?lbopen, ?phopen). В рабочей странице нужны, на боевой им делать нечего.
+before = len(s)
+s = re.sub(r'  /\*dev\*/\n.*?  /\*/dev\*/\n', '', s, flags=re.S)
+s = re.sub(r'<!--dev-->\n.*?<!--/dev-->\n', '', s, flags=re.S)
+assert '/*dev*/' not in s and '<!--dev-->' not in s, "служебные куски вырезались не все"
+print(f"служебного кода убрано: {(before - len(s)) // 1024} КБ")
+
 open("index.html", "w", encoding="utf-8").write(s)
 print(f"index.html собран из blocks.html ({len(s)//1024} КБ), домен в мета-тегах: {BASE}")

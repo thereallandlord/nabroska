@@ -249,7 +249,7 @@
   background: transparent;
   font-family: "Champagne & Limousines", sans-serif;
   font-weight: 700;
-  font-size: clamp(12px, 1vw, 18px);
+  font-size: clamp(14px, 1.1vw, 19px);
   line-height: 1.2;
   text-align: center;
   text-decoration: none;
@@ -467,7 +467,7 @@ html { scroll-behavior: smooth; }
    Стоит в общей стопке под рассрочкой и читается наравне с остальными.
    Из-за неё «Оплатить» третьего тарифа стоит на строку выше соседних —
    так и задумано: низ у всех карточек общий. */
-.tar__btn--ask { border-style: dashed; }
+.tar__btn--ask { border-style: dashed; line-height: 1.3; }
 
 /* ============================================================
    ЕСТЬ ВОПРОСЫ? — короткий мост к личке Асии
@@ -568,11 +568,13 @@ html { scroll-behavior: smooth; }
 }
 .gcm__close:hover { background: rgba(125, 18, 32, .2); }
 
-/* кнопка брони — тот же вид, что у соседних ссылок-кнопок */
-button.tar__btn { width: 100%; font: inherit; cursor: pointer; }
-button.tar__btn--book {
+/* 🔴 <button> шрифт от класса не наследует — задаём явно теми же значениями,
+   что у ссылок-кнопок. Иначе «Оплатить» шли 16 px, а «Забронировать» 14,7. */
+button.tar__btn {
+  width: 100%;
+  cursor: pointer;
   font-family: "Champagne & Limousines", sans-serif;
   font-weight: 700;
-  font-size: clamp(12px, 1vw, 18px);
+  font-size: clamp(14px, 1.1vw, 19px);
 }
 @media (prefers-reduced-motion: reduce) { .gcm { transition: none; } }

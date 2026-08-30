@@ -1,0 +1,8 @@
+# Боевая страница — одна: главная. Всё остальное служебное.
+User-agent: *
+Allow: /
+Disallow: /blocks.html
+Disallow: /cursor-demo.html
+Disallow: /_pdf/
+
+Sitemap: https://aszavra.art/sitemap.xml

@@ -408,7 +408,7 @@
     </div>
   </div>
 
-  <p class="prog__label">Программа курса</p>
+  <p class="prog__label">Программа <b class="key">1</b>-го курса</p>
   <p class="prog__name">Письма художника</p>
 </section>
 
@@ -780,7 +780,7 @@
 
 <!-- ======================= ПРОГРАММА ВТОРОГО КУРСА ======================= -->
 <section class="section s12b light">
-  <p class="prog__label">Программа курса</p>
+  <p class="prog__label">Программа <b class="key">2</b>-го курса</p>
   <p class="prog__name">Из наброска в профессию</p>
 </section>
 
@@ -1015,7 +1015,7 @@
         <button class="tar__btn tar__btn--main" type="button" data-gcm="pay-3">Оплатить</button>
         <button class="tar__btn tar__btn--book" type="button" data-gcm="book">Забронировать место</button>
         <a class="tar__btn" href="https://t.me/aszavra" target="_blank" rel="noopener">Купить в рассрочку без банков %</a>
-        <a class="tar__btn tar__btn--ask" href="https://t.me/aszavra" target="_blank" rel="noopener">Уже брала 1-й курс, хочу 2-й. Написать Асие</a>
+        <a class="tar__btn tar__btn--ask" href="https://t.me/aszavra" target="_blank" rel="noopener">Уже брала 1-й курс, хочу 2-й.<br>Написать Асие</a>
       </div>
     </article>
 
@@ -1121,16 +1121,20 @@
   if (document.fonts && document.fonts.ready) { document.fonts.ready.then(go); setTimeout(go, 1200); }
   else { go(); }
 
+  /*dev*/
   // ?nohero=1 — спрятать первый экран, чтобы снять блоки одним кадром
   if (/nohero=1/.test(location.search)) {
     hero.style.display = 'none';
     var l = document.querySelector('.lace');
     if (l) l.style.marginTop = '0';
   }
+  /*/dev*/
 
+  /*dev*/
   // вариант можно открыть сразу: blocks.html?v=v2
   var q = (location.search.match(/v=(v[1234])/) || [])[1];
   if (q) document.body.className = q + ' light-theme';
+  /*/dev*/
 
   // ---------- просмотр иллюстраций: открывается ЛЮБАЯ картинка ----------
   (function () {
@@ -1169,10 +1173,12 @@
     }
     function close() { lb.hidden = true; document.body.style.overflow = ''; }
 
+  /*dev*/
     // dev: ?lbopen=N — открыть просмотр на N-й картинке, чтобы снять кадром
     var lbq = (location.search.match(/lbopen=(\d+)/) || [])[1];
     if (lbq) addEventListener('load', function () { setTimeout(function () { open(nodes[+lbq] || nodes[0]); }, 300); });
 
+  /*/dev*/
     nodes.forEach(function (n) {
       var target = n.closest('.stu__card') || n;
       target.style.cursor = 'zoom-in';
@@ -1199,7 +1205,9 @@
     });
   })();
 
+  /*dev*/
   if (/phopen/.test(location.search)) document.querySelectorAll('.modbox, .faq__i').forEach(function (d) { d.open = true; });
+  /*/dev*/
 
   document.querySelectorAll('.g-hero').forEach(function (hero) {
     var big = hero.querySelector('.g-hero__big img');
@@ -1212,6 +1220,7 @@
     });
   });
 
+  /*dev*/
   var btns = document.querySelectorAll('.switch button[data-v]');
   btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.v === (q || 'v1'))); });
   btns.forEach(function (b) {
@@ -1221,6 +1230,7 @@
       scrollTo({ top: innerHeight * 0.92, behavior: 'smooth' });
     };
   });
+  /*/dev*/
 })();
 </script>
 <script src="js/stylus-cursor.js" defer></script>
@@ -1272,6 +1282,7 @@
 })();
 </script>
 
+<!--dev-->
 <!-- dev-инструмент: ?probe=<селектор>;<селектор> — кладёт замеры в служебный блок внизу страницы,
      чтобы снимать их headless-хромом (--dump-dom). На боевой показ не влияет. -->
 <script>
@@ -1366,6 +1377,7 @@
   addEventListener('load', function(){ setTimeout(dump, 500); });
 })();
 </script>
+<!--/dev-->
 
 <script>
 /* Окно бронирования: все кнопки «Забронировать место» открывают одну и ту же
@@ -1400,6 +1412,7 @@
       open();
     });
   });
+  /*dev*/
   var q = (location.search.match(/gcm=([\w-]+)/) || [])[1];
   if (q) addEventListener('load', function () {
     setTimeout(function () {
@@ -1407,6 +1420,7 @@
       open();
     }, 800);
   });
+  /*/dev*/
   closeBtn.addEventListener('click', close);
   box.addEventListener('click', function (e) { if (e.target === box) close(); });
   addEventListener('keydown', function (e) { if (opened && e.key === 'Escape') close(); });

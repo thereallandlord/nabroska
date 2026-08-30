@@ -413,7 +413,7 @@
     </div>
   </div>
 
-  <p class="prog__label">Программа курса</p>
+  <p class="prog__label">Программа <b class="key">1</b>-го курса</p>
   <p class="prog__name">Письма художника</p>
 </section>
 
@@ -785,7 +785,7 @@
 
 <!-- ======================= ПРОГРАММА ВТОРОГО КУРСА ======================= -->
 <section class="section s12b light">
-  <p class="prog__label">Программа курса</p>
+  <p class="prog__label">Программа <b class="key">2</b>-го курса</p>
   <p class="prog__name">Из наброска в профессию</p>
 </section>
 
@@ -1020,7 +1020,7 @@
         <button class="tar__btn tar__btn--main" type="button" data-gcm="pay-3">Оплатить</button>
         <button class="tar__btn tar__btn--book" type="button" data-gcm="book">Забронировать место</button>
         <a class="tar__btn" href="https://t.me/aszavra" target="_blank" rel="noopener">Купить в рассрочку без банков %</a>
-        <a class="tar__btn tar__btn--ask" href="https://t.me/aszavra" target="_blank" rel="noopener">Уже брала 1-й курс, хочу 2-й. Написать Асие</a>
+        <a class="tar__btn tar__btn--ask" href="https://t.me/aszavra" target="_blank" rel="noopener">Уже брала 1-й курс, хочу 2-й.<br>Написать Асие</a>
       </div>
     </article>
 
@@ -1126,16 +1126,7 @@
   if (document.fonts && document.fonts.ready) { document.fonts.ready.then(go); setTimeout(go, 1200); }
   else { go(); }
 
-  // ?nohero=1 — спрятать первый экран, чтобы снять блоки одним кадром
-  if (/nohero=1/.test(location.search)) {
-    hero.style.display = 'none';
-    var l = document.querySelector('.lace');
-    if (l) l.style.marginTop = '0';
-  }
 
-  // вариант можно открыть сразу: blocks.html?v=v2
-  var q = (location.search.match(/v=(v[1234])/) || [])[1];
-  if (q) document.body.className = q + ' light-theme';
 
   // ---------- просмотр иллюстраций: открывается ЛЮБАЯ картинка ----------
   (function () {
@@ -1174,10 +1165,6 @@
     }
     function close() { lb.hidden = true; document.body.style.overflow = ''; }
 
-    // dev: ?lbopen=N — открыть просмотр на N-й картинке, чтобы снять кадром
-    var lbq = (location.search.match(/lbopen=(\d+)/) || [])[1];
-    if (lbq) addEventListener('load', function () { setTimeout(function () { open(nodes[+lbq] || nodes[0]); }, 300); });
-
     nodes.forEach(function (n) {
       var target = n.closest('.stu__card') || n;
       target.style.cursor = 'zoom-in';
@@ -1204,7 +1191,6 @@
     });
   })();
 
-  if (/phopen/.test(location.search)) document.querySelectorAll('.modbox, .faq__i').forEach(function (d) { d.open = true; });
 
   document.querySelectorAll('.g-hero').forEach(function (hero) {
     var big = hero.querySelector('.g-hero__big img');
@@ -1217,15 +1203,6 @@
     });
   });
 
-  var btns = document.querySelectorAll('.switch button[data-v]');
-  btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.v === (q || 'v1'))); });
-  btns.forEach(function (b) {
-    b.onclick = function () {
-      document.body.className = b.dataset.v + ' light-theme';
-      btns.forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
-      scrollTo({ top: innerHeight * 0.92, behavior: 'smooth' });
-    };
-  });
 })();
 </script>
 <script src="js/stylus-cursor.js" defer></script>
@@ -1277,100 +1254,6 @@
 })();
 </script>
 
-<!-- dev-инструмент: ?probe=<селектор>;<селектор> — кладёт замеры в служебный блок внизу страницы,
-     чтобы снимать их headless-хромом (--dump-dom). На боевой показ не влияет. -->
-<script>
-(function(){
-  var spec = new URLSearchParams(location.search).get('probe');
-  if (!spec) return;
-  function dump(){
-    var out = {};
-    var hide = new URLSearchParams(location.search).get('hide');   // ?hide=<селектор> — что временно убрать
-    if (hide) document.querySelectorAll(hide).forEach(function(e){ e.style.display = 'none'; });
-    spec.split(';').forEach(function(sel){
-      if (!sel) return;
-      if (sel === '__cards') {     // не накрывает ли иллюстрация текст в карточках
-        out[sel] = [].slice.call(document.querySelectorAll('.card')).map(function(card, ci){
-          var art = card.querySelector('.card__art');
-          var a = art.getBoundingClientRect();
-          var bad = [];
-          [].slice.call(card.querySelectorAll('.list li')).forEach(function(li, i, all){
-            // считаем по ТЕКСТУ, а не по коробке: отступ справа коробку не сужает
-            var rng = document.createRange(); rng.selectNodeContents(li);
-            var r = rng.getBoundingClientRect(); rng.detach && rng.detach();
-            var over = Math.min(r.right, a.right) - Math.max(r.left, a.left) > 4 &&
-                       Math.min(r.bottom, a.bottom) - Math.max(r.top, a.top) > 4;
-            if (over) bad.push({ пункт: i + 1, последний: i === all.length - 1,
-                                 заход: Math.round(Math.min(r.right, a.right) - Math.max(r.left, a.left)) });
-          });
-          return { карточка: ci + 1, пунктов: card.querySelectorAll('.list li').length,
-                   накрыты: bad };
-        });
-        return;
-      }
-      if (sel === '__wide2') {      // кто торчит вправо вне лент-прокруток
-        out[sel] = [].slice.call(document.querySelectorAll('*')).filter(function(e){
-          var r = e.getBoundingClientRect();
-          if (r.right <= innerWidth + 1) return false;
-          return !e.closest('.stu, .g-rail, .g-hero__thumbs');
-        }).map(function(e){
-          var r = e.getBoundingClientRect();
-          return { tag: e.tagName.toLowerCase(), cls: (e.className||'').toString().slice(0, 50),
-                   left: Math.round(r.left), right: Math.round(r.right) };
-        }).slice(0, 25);
-        return;
-      }
-      if (sel === '__widths') {
-        out[sel] = [{ htmlClient: document.documentElement.clientWidth,
-                      htmlScroll: document.documentElement.scrollWidth,
-                      bodyScroll: document.body.scrollWidth,
-                      bodyRect: Math.round(document.body.getBoundingClientRect().width),
-                      maxRight: (function(){
-                        var m = 0, who = '';
-                        [].slice.call(document.querySelectorAll('*')).forEach(function(e){
-                          var r = e.getBoundingClientRect();
-                          if (r.right > m) { m = r.right; who = e.tagName + '.' + (e.className||'').toString().slice(0,40); }
-                        });
-                        return Math.round(m) + ' ' + who;
-                      })() }];
-        return;
-      }
-      if (sel === '__wide') {          // кто именно растягивает страницу вширь
-        out[sel] = [].slice.call(document.querySelectorAll('*')).filter(function(e){
-          var r = e.getBoundingClientRect();
-          if (r.right <= innerWidth + 1 && r.left >= -1) return false;
-          for (var p = e.parentElement; p; p = p.parentElement) {   // внутри прокрутки — не в счёт
-            var ox = getComputedStyle(p).overflowX;
-            if (ox === 'auto' || ox === 'hidden' || ox === 'scroll') return false;
-          }
-          return true;
-        }).map(function(e){
-          var r = e.getBoundingClientRect();
-          return { tag: e.tagName.toLowerCase(), cls: e.className && e.className.toString().slice(0, 60),
-                   left: Math.round(r.left), right: Math.round(r.right) };
-        }).slice(0, 20);
-        return;
-      }
-      out[sel] = [].slice.call(document.querySelectorAll(sel)).map(function(e){
-        var r = e.getBoundingClientRect(), cs = getComputedStyle(e);
-        var o = { x: Math.round(r.left), y: Math.round(r.top + scrollY),
-                  w: Math.round(r.width), h: Math.round(r.height),
-                  bottom: Math.round(r.bottom + scrollY),
-                  display: cs.display, fs: cs.fontSize, color: cs.color };
-        if (e.tagName === 'IMG') { o.src = e.currentSrc || e.src; o.nw = e.naturalWidth; o.nh = e.naturalHeight; }
-        return o;
-      });
-    });
-    var pre = document.createElement('pre');
-    pre.id = 'probe';
-    // сам блок замеров не должен влиять на раскладку страницы
-    pre.style.cssText = 'position:fixed;left:0;top:0;width:0;height:0;overflow:hidden;visibility:hidden';
-    pre.textContent = JSON.stringify({ vw: innerWidth, scrollW: document.documentElement.scrollWidth, data: out });
-    document.body.appendChild(pre);
-  }
-  addEventListener('load', function(){ setTimeout(dump, 500); });
-})();
-</script>
 
 <script>
 /* Окно бронирования: все кнопки «Забронировать место» открывают одну и ту же
@@ -1404,13 +1287,6 @@
       box.querySelector('.gcm__box').scrollTop = 0;
       open();
     });
-  });
-  var q = (location.search.match(/gcm=([\w-]+)/) || [])[1];
-  if (q) addEventListener('load', function () {
-    setTimeout(function () {
-      forms.forEach(function (f) { f.classList.toggle('is-active', f.dataset.form === q); });
-      open();
-    }, 800);
   });
   closeBtn.addEventListener('click', close);
   box.addEventListener('click', function (e) { if (e.target === box) close(); });

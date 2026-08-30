@@ -5,11 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Из наброска в профессию — курс по диджитал-иллюстрации</title>
 <meta name="description" content="Освой базу диджитал-иллюстрации и построй на ней профессию: от первого взмаха стилусом до дохода на иллюстрации без академических знаний.">
+<link rel="canonical" href="https://thereallandlord.github.io/nabroska/">
 
-<!-- Иконка вкладки. .ico — ради Safari, он SVG-иконки не берёт. -->
-<link rel="icon" href="favicon.ico" sizes="any">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Из наброска в профессию — курс по диджитал-иллюстрации">
+<meta property="og:description" content="Освой базу диджитал-иллюстрации и построй на ней профессию: от первого взмаха стилусом до дохода на иллюстрации без академических знаний.">
+<meta property="og:image" content="https://thereallandlord.github.io/nabroska/img/hero-1600.jpg">
+<meta property="og:url" content="https://thereallandlord.github.io/nabroska/">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+
+<link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0b1222">
 
@@ -17,32 +25,27 @@
 <link rel="preload" href="fonts/ChampagneLimousines-Regular.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="fonts/ChampagneLimousines-Bold.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/blocks.css">
+<link rel="stylesheet" href="css/scenes.css">
+<link rel="stylesheet" href="css/result.css">
+<link rel="stylesheet" href="css/quest.css">
+<link rel="stylesheet" href="css/offer.css">
+<link rel="stylesheet" href="css/mobile.css">
 </head>
-<body>
+<body class="v4 light-theme">
 
-<!-- ======================= ПЕРВЫЙ БЛОК (обложка) =======================
-     Весь текст ниже — обычный редактируемый текст, не картинка.
-     Менять можно прямо здесь. Размеры и координаты — в css/style.css:
-       «ПЕРВЫЙ ЭКРАН»   — координаты (числа = пиксели макета 2560×1440)
-       «АНИМАЦИЯ»       — задержки и характер появления
-       «ТЕЛЕФОН»        — вертикальная раскладка
-================================================================= -->
+<!-- переключатель вариантов: только для показа, в сайт не пойдёт -->
+
+<!-- ПЕРВЫЙ ЭКРАН — копия боевого, чтобы видеть блоки в контексте. Не менялся. -->
 <section class="hero">
-
   <picture class="hero__bg">
-    <source srcset="img/hero-1600.webp 1600w, img/hero.webp 2560w"
-            sizes="100vw" type="image/webp">
-    <img src="img/hero.jpg"
-         srcset="img/hero-1600.jpg 1600w, img/hero.jpg 2560w"
-         sizes="100vw" alt="" fetchpriority="high" decoding="async">
+    <source srcset="img/hero-1600.webp 1600w, img/hero.webp 2560w" sizes="100vw" type="image/webp">
+    <img src="img/hero.jpg" srcset="img/hero-1600.jpg 1600w, img/hero.jpg 2560w" sizes="100vw" alt="" fetchpriority="high">
   </picture>
-
   <div class="hero__layer">
-
     <h1 class="hero__title">
       <span class="t-line"><span class="t-script t-script--iz">Из</span><span class="t-word t-word--nabroska">наброска</span></span><span class="t-line"><span class="t-script t-script--v">В</span><span class="t-word t-word--prof">профессию</span></span>
     </h1>
-
     <p class="hero__lead">
       <span class="ln">освой базу диджитал иллюстрации</span>
       <span class="ln">и построй на ней профессию</span>
@@ -50,37 +53,1181 @@
       <span class="ln">от первого взмаха стилусом до дохода на</span>
       <span class="ln">иллюстрации без академических знаний</span>
     </p>
-
-    <!-- Текст кнопки и ссылку менять здесь -->
-    <a class="hero__cta" href="#">Узнать подробнее</a>
-
+    <a class="hero__cta" href="#programs">Программы курсов</a>
     <p class="hero__facts">
       <span class="ln">2 курса</span>
       <span class="ln">60+ уроков</span>
       <span class="ln">старт 1.09.2026</span>
     </p>
-
   </div>
 </section>
 
-<noscript><style>
-  .hero__title span, .hero__lead .ln, .hero__facts .ln, .hero__cta, .hero__bg
-  { opacity: 1 !important; transform: none !important; filter: none !important;
-    -webkit-clip-path: none !important; clip-path: none !important; }
-</style></noscript>
+<!-- кружевной разделитель -->
+<div class="lace" aria-hidden="true"></div>
+
+<!-- ======================= БЛОК 2 ======================= -->
+<!-- Одна канва на все три сцены: система координат = система макета
+     (x — доля ширины страницы, y — доля высоты канвы). -->
+<section class="section s2 light">
+  <div class="wrap">
+    <h2 class="h2"><span class="script">Д</span>ля кого это обучение</h2>
+    <p class="stage stage--edge">Этап 1 — рисование</p>
+  </div>
+
+  <div class="scenes">
+    <img class="ln ln-1" src="img/blocks/line-1.webp" alt="" aria-hidden="true">
+    <img class="ln ln-2" src="img/blocks/line-2.webp" alt="" aria-hidden="true">
+    <img class="ln ln-3" src="img/blocks/line-3.webp" alt="" aria-hidden="true">
+
+    <h3 class="tt tt-1">Новичок</h3>
+    <span class="tt tt-2a">Иллюстратор</span>
+    <span class="tt tt-2b">без системы</span>
+    <span class="tt tt-3a">Традиционный</span>
+    <span class="tt tt-3b">художник</span>
+
+    <img class="fg fg-1" src="img/blocks/tradition.webp" alt="Новичок" loading="lazy">
+    <img class="fg fg-2" src="img/blocks/illustrator.webp" alt="Иллюстратор без системы" loading="lazy">
+    <img class="fg fg-3" src="img/blocks/novichok.webp" alt="Традиционный художник" loading="lazy">
+
+      <!-- текст и красные выделения — ровно как в макете -->
+      <div class="nt nt-1a">
+        <span class="nm">1</span>
+        <p><b class="key">Не рисовала</b> прежде и хочешь обрести <b class="key">хобби</b> или <b class="key">профессию</b></p>
+      </div>
+      <div class="nt nt-1b">
+        <span class="nm">2</span>
+        <p>Неуверенно владеешь <b class="key">программой</b>, хочешь узнать больше фишек и <b class="key">ускорить</b> процесс рисования</p>
+      </div>
+      <div class="nt nt-1c">
+        <span class="nm">3</span>
+        <p>Ищешь <b class="key">обучение</b>, где в фокусе не рисование лиц, а <b class="key">окружение, смыслы и сюжет</b></p>
+      </div>
+      <div class="nt nt-1d">
+        <span class="nm">4</span>
+        <p>Хочешь раскрыть <b class="key">потенциал</b>, воплотить <b class="key">идеи</b> на холсте, но пока даже <b class="key">не знаешь, с какой кисти подступиться</b></p>
+      </div>
+      <div class="nt nt-2a">
+        <span class="nm">1</span>
+        <p>Рисуешь, но хаотично — <b class="key">нет ощущения прогресса</b>, нет понимания, куда расти дальше</p>
+      </div>
+      <div class="nt nt-2b">
+        <span class="nm">2</span>
+        <p>Жаждешь <b class="key">экспериментов</b>, но не знаешь как выйти за рамки <b class="key">привычного</b></p>
+      </div>
+      <div class="nt nt-2c">
+        <span class="nm">3</span>
+        <p>Хочешь освежить свои <b class="key">техники</b>, отточить <b class="key">навыки</b></p>
+      </div>
+      <div class="nt nt-2d">
+        <span class="nm">4</span>
+        <p>Сложно переносить идею <b class="key">из головы</b> на холст</p>
+      </div>
+      <div class="nt nt-2e">
+        <span class="nm">5</span>
+        <p>Развить свой уникальный <b class="key">стиль</b> и научиться <b class="key">влиять</b> на него</p>
+      </div>
+      <div class="nt nt-2f">
+        <span class="nm">6</span>
+        <p>Восхищаешься работами других и хочешь <b class="key">перенять</b> то, что нравится, <b class="key">не копируя</b> чужие работы</p>
+      </div>
+      <div class="nt nt-3a">
+        <span class="nm">1</span>
+        <p>Рисуешь красками или карандашами и хочешь <b class="key">перейти в диджитал</b></p>
+      </div>
+      <div class="nt nt-3b">
+        <span class="nm">2</span>
+        <p>Разобраться с Procreate от <b class="key">азов</b> до <b class="key">уверенного владения программой</b></p>
+      </div>
+  </div>
+</section>
+
+<!-- ======================= ЭТАП 2: КОМУ ПОДХОДИТ ======================= -->
+<!-- порядок как в первом блоке: заголовок, потом красный флажок этапа -->
+<section class="section s5 light">
+  <div class="wrap">
+    <h2 class="h2"><span class="script">Т</span>ебе с нами, если ты</h2>
+    <p class="stage stage--edge">Этап 2 — профессия</p>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3 class="card__title">Иллюстратор<br>без дохода</h3>
+        <div class="panel">
+          <ul class="list">
+            <li>рисуешь уверенно, но работы копятся, а <b class="key">дохода нет</b> или он не устраивает;</li>
+            <li><b class="key">боишься назвать цену</b> — внутри всё сжимается при одной мысли об этом, часто проще занизить или вообще промолчать;</li>
+            <li>не знаешь, <b class="key">где искать клиентов</b> и как вообще предложить себя рынку.</li>
+          </ul>
+        </div>
+        <img class="card__art card__art--girl" src="img/blocks/cat-2.webp" alt="" loading="lazy" decoding="async">
+      </article>
+
+      <article class="card">
+        <h3 class="card__title">С хаотичным<br>блогом</h3>
+        <div class="panel">
+          <ul class="list">
+            <li>рисуешь регулярно, но соцсети ведёшь <b class="key">бессистемно</b>;</li>
+            <li>непонятно, <b class="key">что и когда публиковать</b>, как привлекать аудиторию;</li>
+            <li>не получается выкладывать контент <b class="key">стабильно</b>, нет системы;</li>
+            <li><b class="key">заявки не приходят</b> или их совсем мало: не знаешь, как на это влиять.</li>
+          </ul>
+        </div>
+        <img class="card__art card__art--pom" src="img/blocks/pomegranate.webp" alt="" loading="lazy" decoding="async">
+      </article>
+
+      <article class="card">
+        <h3 class="card__title">С портфолио,<br>которое не работает</h3>
+        <div class="panel">
+          <ul class="list">
+            <li>портфолио собрано, но <b class="key">разношёрстное</b>, без чёткой специализации;</li>
+            <li><b class="key">отклика нет</b> — непонятно, что не так и как это исправить;</li>
+            <li>хочешь узнать, как продвигаться <b class="key">на исламском рынке</b>.</li>
+          </ul>
+        </div>
+        <img class="card__art card__art--quarter" src="img/blocks/pomegranate-half.webp" alt="" loading="lazy" decoding="async">
+      </article>
+
+      <article class="card">
+        <h3 class="card__title">С мечтами о брендах<br>и издательствах</h3>
+        <div class="panel">
+          <ul class="list">
+            <li>хочешь выйти на <b class="key">серьёзные проекты</b>, но не знаешь, как устроен рынок и с чего начать разговор с заказчиком;</li>
+            <li><b class="key">страшно откликнуться первой</b> на бренд или издательство;</li>
+            <li>боишься правок, конфликтов, не знаешь, как обсуждать <b class="key">сроки, оплату</b> и прочие нюансы.</li>
+          </ul>
+        </div>
+        <img class="card__art card__art--boy" src="img/blocks/cat-1.webp" alt="" loading="lazy" decoding="async">
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= СВОБОДА ======================= -->
+<section class="section s6 light">
+  <div class="wrap with-art">
+    <div>
+      <h2 class="h2" style="text-align:left"><span class="script">С</span>тудентка, мама<br>или фрилансер</h2>
+      <p class="lead-line" style="text-align:left;margin-left:0">Диджитал рисование с тобой всегда и везде.</p>
+      <div class="tiles">
+        <div class="tile"><img class="tile__ico" src="img/blocks/drink.webp" alt="" loading="lazy"><b>Свободный график</b>рисуешь тогда, когда хочешь, без расписания от начальства</div>
+        <div class="tile"><img class="tile__ico" src="img/blocks/airpods-case.webp" alt="" loading="lazy"><b>Мобильность</b>всего лишь небольшой планшет в рюкзаке</div>
+        <div class="tile"><img class="tile__ico" src="img/blocks/door.webp" alt="" loading="lazy"><b>Без привязки к месту</b>дом, поездка, чужой город — рабочее место всегда с тобой</div>
+        <div class="tile"><img class="tile__ico" src="img/blocks/tulips.webp" alt="" loading="lazy"><b>Отдых от рутины</b>возможность переключиться и отвлечься</div>
+      </div>
+    </div>
+    <div class="with-art__art">
+      <img src="img/blocks/scooter.webp" alt="" loading="lazy" decoding="async">
+    </div>
+  </div>
+</section>
+
+<!-- ======================= РЕЗУЛЬТАТ ======================= -->
+<section class="section s7 light">
+  <!-- Раздел собран по референсу IMG_4289: заголовок, название курса,
+       затем канва с иллюстрацией (в ней же стрелки) и текстовыми блоками.
+       Часть блоков на плашке, часть — прямо на фоне, как в макете. -->
+  <div class="wrap">
+    <p class="res-h">Твой потенциальный <b>результат</b> после <b>этапа 1</b></p>
+    <p class="res-name">Письма художника</p>
+  </div>
+
+  <div class="res res--1">
+    <picture class="res__pic"><source media="(max-width: 699px)" srcset="img/blocks/result-1-mob.webp"><img class="res__art" src="img/blocks/result-1.webp" alt="" loading="lazy" decoding="async"></picture>
+
+    <div class="rt rt-1a rt--card"><p>Освоишь <b class="key">базу</b> диджитал рисования — <b class="key">практики</b> будет очень много;</p></div>
+    <div class="rt rt-1b"><p>Будешь чувствовать себя в <b class="key">Procreate</b>, на котором рисуют профессиональные художники по всему миру, <b class="key">как рыба в воде</b>;</p></div>
+    <div class="rt rt-1c rt--card"><p>Научишься работать со <b class="key">смыслом</b> и с <b class="key">ТЗ</b> — что критично важно в работе с <b class="key">клиентами</b>;</p></div>
+
+    <div class="rt rt-1d"><p>Нащупаешь собственный <b class="key">стиль</b>, найдя новые <b class="key">фишки</b> и комбинируя <b class="key">техники</b>;</p></div>
+    <div class="rt rt-1e rt--card"><p><b class="key">Ускоришься</b> в рисовании, используя <b class="key">лайфхаки</b> автора;</p></div>
+    <div class="rt rt-1f"><p>Найдёшь поддержку в кругу <b class="key">единомышленниц</b>, где можно обсудить всё о творчестве;</p></div>
+    <div class="rt rt-1g rt--card"><p>Научишься создавать <b class="key">стикеры</b>, от идеи до печати.</p></div>
+  </div>
+
+  <div class="wrap">
+    <p class="res-h">Твой потенциальный <b>результат</b> после <b>этапа 2</b></p>
+    <p class="res-name">Из наброска в профессию</p>
+  </div>
+
+  <div class="res res--2">
+    <picture class="res__pic"><source media="(max-width: 699px)" srcset="img/blocks/result-2-mob.webp"><img class="res__art" src="img/blocks/result-2.webp" alt="" loading="lazy" decoding="async"></picture>
+
+    <div class="rt rt-2a rt--card"><p>Выберешь свою <b class="key">нишу</b> и определишься с <b class="key">направлением монетизации</b>;</p></div>
+    <div class="rt rt-2b"><p>Оформишь <b class="key">портфолио, Instagram</b> и <b class="key">Behance</b> так, чтобы заказчики находили тебя сами;</p></div>
+    <div class="rt rt-2c rt--card"><p>Поймёшь, как ставить <b class="key">цену</b> на свои услуги без внутреннего страха, и сможешь её <b class="key">обосновать</b>;</p></div>
+    <div class="rt rt-2d"><p>Снимешь, смонтируешь и выложишь <b class="key">7 рилсов</b>: научишься писать сценарий, снимать и даже монтировать;</p></div>
+
+    <div class="rt rt-2e"><p>Выстроишь <b class="key">систему контента</b> и <b class="key">Stories</b> для регулярного ведения и поймёшь, какой контент <b class="key">привлекает клиентов</b>;</p></div>
+    <div class="rt rt-2f rt--card"><p>Научишься вести <b class="key">переписку</b> с заказчиками, работать с <b class="key">правками, сроками и оплатой</b> без стресса;</p></div>
+    <div class="rt rt-2g"><p>Поймёшь, как устроена работа с <b class="key">издательствами</b> и <b class="key">брендами</b>, и как к ним подступиться;</p></div>
+    <div class="rt rt-2h rt--card"><p>Выстроишь личную <b class="key">стратегию роста дохода и соцсетей</b>, чтобы двигаться вперёд и после курса.</p></div>
+  </div>
+</section>
+
+<!-- ======================= ВМЕСТЕ ОБА ЭТАПА ======================= -->
+<section class="finale light">
+  <img class="finale__bg" src="img/blocks/scene-flowers.webp" alt="" loading="lazy" decoding="async">
+  <div class="finale__text">
+    <p><span class="finale__script">Вместе</span> оба этапа дают полный путь: <b class="key">от «никогда не рисовала»</b> — до практикующего иллюстратора с <b class="key">портфолио</b>, оформленными <b class="key">соцсетями</b>, понятным <b class="key">позиционированием</b> и <b class="key">стратегией</b> роста.</p>
+    <a class="btn" href="#programs">Программы курсов</a>
+  </div>
+</section>
+
+<!-- кружево сразу после блока; под ним мягкое затемнение -->
+<div class="lace" aria-hidden="true"></div>
+
+<!-- ======================= КВЕСТ / КОМИКС ======================= -->
+<!-- ======================= КВЕСТ ======================= -->
+<!-- Канва по референсу IMG_4293 (артборд 2942): x — доля ширины страницы,
+     y — доля высоты канвы. -->
+<section class="section s9 light">
+  <div class="qz">
+    <img class="qz__art" src="img/blocks/house.webp" alt="Иллюстрация квеста" loading="lazy" decoding="async">
+    <span class="qz-head">
+      <span class="qz-h qz-h1">Квест</span>
+      <span class="qz-h qz-h2">внутри курса</span>
+    </span>
+    <div class="qt qt-1"><p>В основе курса — история о пропавшем художнике.</p></div>
+    <div class="qt qt-2"><p>Персонажи комикса нашли его дневник с письмами и заданиями. Выполнив их, ты найдёшь ответ на вопрос <b class="key">«Что на пути художника важнее всего?»</b></p></div>
+    <div class="qt qt-3"><p>Помогут тебе на этом пути персонажи квеста — <b class="key">Асия</b> и <b class="key">Алана</b>.</p></div>
+  </div>
+</section>
+
+<!-- ======================= АВТОР КУРСА ======================= -->
+<section class="section s10 light">
+  <div class="au">
+    <div class="au__figure"><img class="au__art" src="img/blocks/author.webp" alt="Асия, автор курса" loading="lazy" decoding="async"></div>
+    <div class="au__right">
+      <div class="au__head">
+      <p class="au__name">Асия — автор курса</p>
+      <p class="au__nick">aszavra</p>
+    </div>
+      <div class="au__panel">
+      <p>Художник-иллюстратор с опытом <b class="key">9+ лет</b>,<br>6 лет рисую в диджитал;</p>
+      <p>Проиллюстрировала <b class="key">7 книг</b>, две из них с издательством <b class="key">Umma Land</b>, сейчас в процессе ещё одна;</p>
+      <p>Создала больше <b class="key">30 упаковок для брендов</b> за последний год;</p>
+      <p>Обучила рисованию <b class="key">200+ человек</b> онлайн и провела множество офлайн мастер-классов.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= МОИ РАБОТЫ ======================= -->
+<!-- Компьютер: карточки веером, качаются только влево-вправо.
+     Телефон: крупный кадр и миниатюры. -->
+<section class="section s11 light">
+  <div class="wrap">
+    <h2 class="h2"><span class="script">М</span>ои работы</h2>
+
+    <div class="g-rail g-rail--fan g-desktop" tabindex="0">
+        <figure class="g-card g-card--fan"><img src="img/works/w01-t.webp" data-full="img/works/w01.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w02-t.webp" data-full="img/works/w02.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w03-t.webp" data-full="img/works/w03.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w04-t.webp" data-full="img/works/w04.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w05-t.webp" data-full="img/works/w05.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w06-t.webp" data-full="img/works/w06.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w07-t.webp" data-full="img/works/w07.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w08-t.webp" data-full="img/works/w08.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w09-t.webp" data-full="img/works/w09.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w10-t.webp" data-full="img/works/w10.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w11-t.webp" data-full="img/works/w11.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/w12-t.webp" data-full="img/works/w12.webp" alt="Работа Асии" loading="lazy" decoding="async"></figure>
+    </div>
+
+    <div class="g-hero g-mobile">
+      <div class="g-hero__big"><img id="g-big" src="img/works/w01.webp" alt="Работа Асии"></div>
+      <div class="g-hero__thumbs">
+        <button class="g-thumb is-on" data-src="img/works/w01.webp"><img src="img/works/w01-t.webp" data-full="img/works/w01.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w02.webp"><img src="img/works/w02-t.webp" data-full="img/works/w02.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w03.webp"><img src="img/works/w03-t.webp" data-full="img/works/w03.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w04.webp"><img src="img/works/w04-t.webp" data-full="img/works/w04.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w05.webp"><img src="img/works/w05-t.webp" data-full="img/works/w05.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w06.webp"><img src="img/works/w06-t.webp" data-full="img/works/w06.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w07.webp"><img src="img/works/w07-t.webp" data-full="img/works/w07.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w08.webp"><img src="img/works/w08-t.webp" data-full="img/works/w08.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w09.webp"><img src="img/works/w09-t.webp" data-full="img/works/w09.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w10.webp"><img src="img/works/w10-t.webp" data-full="img/works/w10.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w11.webp"><img src="img/works/w11-t.webp" data-full="img/works/w11.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/w12.webp"><img src="img/works/w12-t.webp" data-full="img/works/w12.webp" alt="" loading="lazy"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= СПИКЕР КУРСА ======================= -->
+<!-- та же канва, что у блока автора: доли совпали с референсом до сотых -->
+<section class="section s10b light">
+  <div class="au">
+    <div class="au__figure"><img class="au__art" src="img/blocks/speaker.webp" alt="Алана, спикер курса" loading="lazy" decoding="async"></div>
+    <div class="au__right">
+      <div class="au__head">
+      <p class="au__name">Алана — спикер курса</p>
+      <p class="au__nick">Mudaliif</p>
+    </div>
+      <div class="au__panel">
+      <p>Иллюстратор, живописец, аниматор<br>с опытом работы <b class="key">9+ лет</b>.</p>
+      <p>Работает в стилистике <b class="key">чувственного символизма</b>.</p>
+      <p>Создавала иллюстрации для <b class="key">зарубежных</b> клиентов, ее открытки есть у людей по всему миру.</p>
+      <p>Будет вести <b class="key">спец модуль «Индивидуальность в творчестве»</b>.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= РАБОТЫ СПИКЕРА ======================= -->
+<section class="section s11b light">
+  <div class="wrap">
+    <h2 class="h2"><span class="script">Р</span>аботы Аланы</h2>
+
+    <div class="g-rail g-rail--fan g-desktop" tabindex="0">
+        <figure class="g-card g-card--fan"><img src="img/works/a01-t.webp" data-full="img/works/a01.webp" alt="Работа Аланы" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/a02-t.webp" data-full="img/works/a02.webp" alt="Работа Аланы" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/a03-t.webp" data-full="img/works/a03.webp" alt="Работа Аланы" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/a04-t.webp" data-full="img/works/a04.webp" alt="Работа Аланы" loading="lazy" decoding="async"></figure>
+        <figure class="g-card g-card--fan"><img src="img/works/a05-t.webp" data-full="img/works/a05.webp" alt="Работа Аланы" loading="lazy" decoding="async"></figure>
+    </div>
+
+    <div class="g-hero g-mobile">
+      <div class="g-hero__big"><img id="g-big-2" src="img/works/a03.webp" alt="Работа Аланы"></div>
+      <div class="g-hero__thumbs">
+        <button class="g-thumb" data-src="img/works/a01.webp"><img src="img/works/a01-t.webp" data-full="img/works/a01.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/a02.webp"><img src="img/works/a02-t.webp" data-full="img/works/a02.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb is-on" data-src="img/works/a03.webp"><img src="img/works/a03-t.webp" data-full="img/works/a03.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/a04.webp"><img src="img/works/a04-t.webp" data-full="img/works/a04.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/works/a05.webp"><img src="img/works/a05-t.webp" data-full="img/works/a05.webp" alt="" loading="lazy"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ДВА ЭТАПА + ПРОГРАММА ======================= -->
+<section class="section s12 light" id="programs">
+  <div class="split">
+    <img class="split__fl split__fl--l" src="img/blocks/sprig-small.webp" alt="" loading="lazy" decoding="async">
+    <img class="split__fl split__fl--r" src="img/blocks/sprig-tall.webp" alt="" loading="lazy" decoding="async">
+    <div class="split__body">
+      <p class="split__text"><span class="scr">Я</span> поделила процесс обучения <span class="scr">на 2 этапа</span> не просто так.<br>
+        Один посвящен <b class="key">навыку рисования</b>, второй — <b class="key">монетизации</b> этого<br>
+        навыка, <b class="key">продвижению</b> себя как иллюстратора, обретению <b class="key">дохода</b>.</p>
+      <p class="split__text">Первый этап мы проходим на курсе <span class="scr">Письма художника</span>,<br>
+        второй — на курсе <span class="scr">Из наброска в профессию</span>.</p>
+    </div>
+  </div>
+
+  <p class="prog__label">Программа курса</p>
+  <p class="prog__name">Письма художника</p>
+</section>
+
+<!-- ======================= ПРОГРАММА КУРСА: МОДУЛИ ======================= -->
+<!-- Компактный блок по референсу: слева три кадра одной иллюстрации,
+     справа карточка с уроками, ниже цифра модуля и результат. -->
+<section class="section s-mod light">
+  <details class="modbox mod--wine">
+    <summary class="modbar"><span class="modbar__label">Модуль 0</span><span class="modbar__name">Введение</span><span class="modbar__sign" aria-hidden="true"></span></summary>
+    <div class="mod-wrap">
+    <div class="mod mod--wine">
+      <div class="mod__pics">
+        <img class="mod__pic mod__pic--big" src="img/modules/m0-1.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/m0-2.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/m0-3.webp" alt="" loading="lazy" decoding="async">
+      </div>
+
+      <div class="mod__card">
+        <p class="mod__title"><span class="mod__label">Модуль 0</span><span class="mod__name">Введение</span></p>
+        <ol class="mod__lessons">
+          <li>Старый Адам — комикс, начало квеста</li>
+          <li>Знакомство со мной</li>
+          <li>Иллюстратор: что за фрукт</li>
+          <li>Procreate: библиотека функций</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="mod__res">
+      <span class="mod__num">0</span>
+      <p>Ознакомишься с темой <b class="key">квеста</b>, наметишь <b class="key">цели</b> на предстоящее обучение и пробежишься по всем <b class="key">функциям Procreate</b>.</p>
+    </div>
+  </div>
+  </details>
+</section>
+
+<section class="section s-mod light">
+  <details class="modbox mod--light">
+    <summary class="modbar"><span class="modbar__label">Модуль 1</span><span class="modbar__name">Раскачка</span><span class="modbar__sign" aria-hidden="true"></span></summary>
+    <div class="mod-wrap">
+    <div class="mod mod--light">
+      <div class="mod__pics">
+        <img class="mod__pic mod__pic--big" src="img/modules/m1-1.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/m1-2.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/m1-3.webp" alt="" loading="lazy" decoding="async">
+      </div>
+
+      <div class="mod__card">
+        <p class="mod__title"><span class="mod__label">Модуль 1</span><span class="mod__name">Раскачка</span></p>
+        <ol class="mod__lessons">
+          <li>Референсы — пользование, поиск и другие нюансы</li>
+          <li>Первые шаги в рисовании</li>
+          <li>Раскраска — осваиваем кисти</li>
+          <li>Пятно, линия, точка: задание на развитие креативности, насмотренности, мышления художника</li>
+          <li>Текстуры и фактуры — передаём материал объекта через рисунок</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="mod__res">
+      <span class="mod__num">1</span>
+      <p>Разгон постепенный: качаешь <b class="key">фантазию</b>, стилизуешь реальные объекты в иллюстрацию, учишься пользоваться <b class="key">кистями</b> и миксовать их между собой, передавать <b class="key">текстуру</b> предметов.<br><span class="mod__out">По итогу модуля — <b>6 работ</b>.</span></p>
+    </div>
+  </div>
+  </details>
+</section>
+
+<section class="section s-mod light">
+  <details class="modbox mod--wine">
+    <summary class="modbar"><span class="modbar__label">Модуль 2</span><span class="modbar__name">Скетчинг</span><span class="modbar__sign" aria-hidden="true"></span></summary>
+    <div class="mod-wrap">
+    <div class="mod mod--wine">
+      <div class="mod__pics">
+        <img class="mod__pic mod__pic--big" src="img/modules/m2-1.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/m2-2.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/m2-3.webp" alt="" loading="lazy" decoding="async">
+      </div>
+
+      <div class="mod__card">
+        <p class="mod__title"><span class="mod__label">Модуль 2</span><span class="mod__name">Скетчинг</span></p>
+        <ol class="mod__lessons">
+          <li>Скетч карандашом — делаем наброски и красиво оформляем скетч, учимся передавать форму</li>
+          <li>Скетч в цвете — без эскизов быстрые наброски цветом</li>
+          <li>Двери — один и тот же объект с разной историей и атмосферой</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="mod__res">
+      <span class="mod__num">2</span>
+      <p>Изучишь <b class="key">последовательность рисования</b>: начиная с несложных объектов разберёшь, из каких фигур что состоит, освоишь <b class="key">скетчинг</b> и вольёшься в процесс иллюстрации.<br><span class="mod__out">По итогу модуля — <b>5 работ</b>.</span></p>
+    </div>
+  </div>
+  </details>
+</section>
+
+<section class="section s-mod light">
+  <details class="modbox mod--brown">
+    <summary class="modbar"><span class="modbar__label">Модуль 3</span><span class="modbar__name">Стилизация</span><span class="modbar__sign" aria-hidden="true"></span></summary>
+    <div class="mod-wrap">
+    <div class="mod mod--brown">
+      <div class="mod__pics">
+        <img class="mod__pic mod__pic--big" src="img/modules/m3-1.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/m3-2.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/m3-3.webp" alt="" loading="lazy" decoding="async">
+      </div>
+
+      <div class="mod__card">
+        <p class="mod__title"><span class="mod__label">Модуль 3</span><span class="mod__name">Стилизация</span></p>
+        <ol class="mod__lessons">
+          <li>Начало: основы стиля. Вписываем 1 предмет в 6 разных стилей</li>
+          <li>Кради как художник: анализ стилей других художников, порядок повтора техники</li>
+          <li>Растительность</li>
+          <li>Упрощение: рисуем дом</li>
+          <li>Пейзаж: стилизуем рисование природы</li>
+          <li>Паттерн: создаём бесшовный паттерн из 2 композиций, стилизуя цветы</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="mod__res">
+      <span class="mod__num">3</span>
+      <p>Разберёшь пошагово, из чего состоит <b class="key">стиль</b> и как на него влиять. Попрактикуешься с анализом стиля других художников и воплощением его в иллюстрации. Научишься делать <b class="key">бесшовный паттерн</b> (для текстиля, упаковок, дизайна в соцсетях и т.д.). Придумаешь свой способ рисовать деревья, листья, траву. Научишься выкручивать из референса <b class="key">уникальные идеи</b> и рисовать стилизованный пейзаж.<br><span class="mod__out">По итогу модуля — <b>6 работ</b>.</span></p>
+    </div>
+  </div>
+  </details>
+</section>
+
+<section class="section s-mod light">
+  <details class="modbox mod--light">
+    <summary class="modbar"><span class="modbar__label">Модуль 4</span><span class="modbar__name">Композиция</span><span class="modbar__sign" aria-hidden="true"></span></summary>
+    <div class="mod-wrap">
+    <div class="mod mod--light">
+      <div class="mod__pics">
+        <img class="mod__pic mod__pic--big" src="img/modules/m4-1.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/m4-2.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/m4-3.webp" alt="" loading="lazy" decoding="async">
+      </div>
+
+      <div class="mod__card">
+        <p class="mod__title"><span class="mod__label">Модуль 4</span><span class="mod__name">Композиция</span></p>
+        <ol class="mod__lessons">
+          <li>Теория: цели, приёмы, правила, баланс, статика и динамика в композиции</li>
+          <li>Практика: используем изученные композиционные приёмы</li>
+          <li>Коллаж-постер: композиция из текста и фотографий, как аппликации из детства</li>
+          <li>Стикерпак: создаём пак наклеек от А до Я, готовим к печати</li>
+          <li>Пригласительная: собираем дизайн пригласительного из рисунка и текстовых элементов</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="mod__res">
+      <span class="mod__num">4</span>
+      <p>Изучишь одну из важнейших тем в рисовании — <b class="key">композицию</b> и её виды, разберёшься в терминах и сразу опробуешь все приёмы в деле. Соберёшь свой <b class="key">коллаж</b> из фотографий и текста, создашь свои <b class="key">наклейки</b> вплоть до макета и нарисуешь <b class="key">пригласительную</b> (свадьба, девичник, ифтар или другое мероприятие). Разберём креативные идеи для оформления, поиск расположения текста.<br><span class="mod__out">По итогу модуля — <b>3 работы и 3 эскиза (можно доработать до полноценных иллюстраций)</b>.</span></p>
+    </div>
+  </div>
+  </details>
+</section>
+
+<section class="section s-mod light">
+  <details class="modbox mod--wine">
+    <summary class="modbar"><span class="modbar__label">Модуль 5</span><span class="modbar__name">Смысл</span><span class="modbar__sign" aria-hidden="true"></span></summary>
+    <div class="mod-wrap">
+    <div class="mod mod--wine">
+      <div class="mod__pics">
+        <img class="mod__pic mod__pic--big" src="img/modules/m5-1.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/m5-2.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/m5-3.webp" alt="" loading="lazy" decoding="async">
+      </div>
+
+      <div class="mod__card">
+        <p class="mod__title"><span class="mod__label">Модуль 5</span><span class="mod__name">Смысл</span></p>
+        <ol class="mod__lessons">
+          <li>Начинаем мыслить проектами</li>
+          <li>Персонажи: не бывает историй без действующих лиц</li>
+          <li>Ассоциации: поиск смыслов, связь текста с иллюстрацией</li>
+          <li>Дом, атмосфера</li>
+          <li>Комната</li>
+          <li>Спец задание</li>
+          <li>Комикс</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="mod__res">
+      <span class="mod__num">5</span>
+      <p>Подытоживаем изученное: переходим к целым <b class="key">проектам</b>. Здесь ты выберешь сказку или другое произведение, историю и нарисуешь уникальных <b class="key">персонажей</b>, а затем проиллюстрируешь несколько эпизодов этой истории, в том числе один с домом, а один внутри помещения. Модуль нацелен на работу с текстом и его <b class="key">связь с иллюстрацией</b>.<br><br>Мы разберёмся в <b class="key">освещении</b>, разном времени суток, в эффектах свечения, будем создавать разную <b class="key">атмосферу</b> в зависимости от контекста, передавать детали персонажей, их характер, усиливать смысл иллюстрации через цвет, рисовать одежду.<br><br>И в конце нас ждёт 2 большие работы — иллюстрация по ТЗ от <b class="key">реального издательства</b> и создание общего комикса.<br><span class="mod__out">По итогу модуля — <b>6 работ</b>.</span></p>
+    </div>
+  </div>
+  </details>
+</section>
+
+<section class="section s-mod light">
+  <details class="modbox mod--light">
+    <summary class="modbar"><span class="modbar__label">Спец модуль</span><span class="modbar__name">Индивидуальность</span><span class="modbar__sign" aria-hidden="true"></span></summary>
+    <div class="mod-wrap">
+    <div class="mod mod--light">
+      <div class="mod__pics">
+        <img class="mod__pic mod__pic--big" src="img/modules/ms-1.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/ms-2.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/ms-3.webp" alt="" loading="lazy" decoding="async">
+      </div>
+
+      <div class="mod__card">
+        <p class="mod__title"><span class="mod__label">Спец модуль</span><span class="mod__name">Индивидуальность</span></p>
+        <ol class="mod__lessons">
+          <li>Как прийти к индивидуальности и своему собственному творчеству?</li>
+          <li>Что есть «работа = поклонение»?</li>
+          <li>Как строить сюжет для коммерческой иллюстрации?</li>
+          <li>Эфир с защитой работ и их разбором от Аланы</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="mod__res">
+      <span class="mod__num mod__num--emoji">✨</span>
+      <p>Пора погружаться в глубину и творить <b class="key">от сердца к сердцу</b>. Здесь вы будете нащупывать <b class="key">собственные смыслы</b>, соединять творчество со своим внутренним миром, передавать чувства через иллюстрацию, усиливать суть через детали.<br><span class="mod__out">По итогу модуля — <b>1 работа</b>.</span></p>
+    </div>
+  </div>
+  </details>
+</section>
+
+<section class="section s-mod light">
+  <details class="modbox mod--wine">
+    <summary class="modbar"><span class="modbar__name">Бонусы</span><span class="modbar__sign" aria-hidden="true"></span></summary>
+    <div class="mod-wrap">
+    <div class="mod mod--wine">
+      <div class="mod__pics">
+        <img class="mod__pic mod__pic--big" src="img/modules/mb-1.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/mb-2.webp" alt="" loading="lazy" decoding="async">
+        <img class="mod__pic" src="img/modules/mb-3.webp" alt="" loading="lazy" decoding="async">
+      </div>
+
+      <div class="mod__card">
+        <p class="mod__title"><span class="mod__name mod__name--solo">Бонусы</span></p>
+        <div class="mod__plain">
+          <p>В <b>каждом</b> из этих модулей есть <b>секретные бонусные уроки</b> — они открываются тем, кто <b>выполнил все дз</b>.</p>
+          <p>Продолжение квеста ты найдёшь как раз там. В одном из таких уроков мы рисуем <b>набор стикеров для телеграм-канала</b> — от идеи до технической реализации.</p>
+          <p>Остальное палить не буду.))</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </details>
+</section>
+
+<!-- ======================= РАБОТЫ УЧЕНИЦ ======================= -->
+<section class="section s-stu light">
+  <div class="wrap">
+    <h2 class="h2"><span class="script">Р</span>аботы учениц</h2>
+  </div>
+
+  <div class="stu" tabindex="0">
+        <button class="stu__card" data-i="0" aria-label="Работа ученицы 1"><img src="img/students/s01-t.webp" data-full="img/students/s01.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="1" aria-label="Работа ученицы 2"><img src="img/students/s02-t.webp" data-full="img/students/s02.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="2" aria-label="Работа ученицы 3"><img src="img/students/s03-t.webp" data-full="img/students/s03.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="3" aria-label="Работа ученицы 4"><img src="img/students/s04-t.webp" data-full="img/students/s04.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="4" aria-label="Работа ученицы 5"><img src="img/students/s05-t.webp" data-full="img/students/s05.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="5" aria-label="Работа ученицы 6"><img src="img/students/s06-t.webp" data-full="img/students/s06.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="6" aria-label="Работа ученицы 7"><img src="img/students/s07-t.webp" data-full="img/students/s07.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="7" aria-label="Работа ученицы 8"><img src="img/students/s08-t.webp" data-full="img/students/s08.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="8" aria-label="Работа ученицы 9"><img src="img/students/s09-t.webp" data-full="img/students/s09.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="9" aria-label="Работа ученицы 10"><img src="img/students/s10-t.webp" data-full="img/students/s10.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="10" aria-label="Работа ученицы 11"><img src="img/students/s11-t.webp" data-full="img/students/s11.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="11" aria-label="Работа ученицы 12"><img src="img/students/s12-t.webp" data-full="img/students/s12.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="12" aria-label="Работа ученицы 13"><img src="img/students/s13-t.webp" data-full="img/students/s13.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="13" aria-label="Работа ученицы 14"><img src="img/students/s14-t.webp" data-full="img/students/s14.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="14" aria-label="Работа ученицы 15"><img src="img/students/s15-t.webp" data-full="img/students/s15.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="15" aria-label="Работа ученицы 16"><img src="img/students/s16-t.webp" data-full="img/students/s16.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="16" aria-label="Работа ученицы 17"><img src="img/students/s17-t.webp" data-full="img/students/s17.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="17" aria-label="Работа ученицы 18"><img src="img/students/s18-t.webp" data-full="img/students/s18.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="18" aria-label="Работа ученицы 19"><img src="img/students/s19-t.webp" data-full="img/students/s19.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="19" aria-label="Работа ученицы 20"><img src="img/students/s20-t.webp" data-full="img/students/s20.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="20" aria-label="Работа ученицы 21"><img src="img/students/s21-t.webp" data-full="img/students/s21.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="21" aria-label="Работа ученицы 22"><img src="img/students/s22-t.webp" data-full="img/students/s22.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="22" aria-label="Работа ученицы 23"><img src="img/students/s23-t.webp" data-full="img/students/s23.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="23" aria-label="Работа ученицы 24"><img src="img/students/s24-t.webp" data-full="img/students/s24.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="24" aria-label="Работа ученицы 25"><img src="img/students/s25-t.webp" data-full="img/students/s25.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="25" aria-label="Работа ученицы 26"><img src="img/students/s26-t.webp" data-full="img/students/s26.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="26" aria-label="Работа ученицы 27"><img src="img/students/s27-t.webp" data-full="img/students/s27.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="27" aria-label="Работа ученицы 28"><img src="img/students/s28-t.webp" data-full="img/students/s28.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="28" aria-label="Работа ученицы 29"><img src="img/students/s29-t.webp" data-full="img/students/s29.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="29" aria-label="Работа ученицы 30"><img src="img/students/s30-t.webp" data-full="img/students/s30.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="30" aria-label="Работа ученицы 31"><img src="img/students/s31-t.webp" data-full="img/students/s31.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="31" aria-label="Работа ученицы 32"><img src="img/students/s32-t.webp" data-full="img/students/s32.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="32" aria-label="Работа ученицы 33"><img src="img/students/s33-t.webp" data-full="img/students/s33.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="33" aria-label="Работа ученицы 34"><img src="img/students/s34-t.webp" data-full="img/students/s34.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="34" aria-label="Работа ученицы 35"><img src="img/students/s35-t.webp" data-full="img/students/s35.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="35" aria-label="Работа ученицы 36"><img src="img/students/s36-t.webp" data-full="img/students/s36.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="36" aria-label="Работа ученицы 37"><img src="img/students/s37-t.webp" data-full="img/students/s37.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="37" aria-label="Работа ученицы 38"><img src="img/students/s38-t.webp" data-full="img/students/s38.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="38" aria-label="Работа ученицы 39"><img src="img/students/s39-t.webp" data-full="img/students/s39.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="39" aria-label="Работа ученицы 40"><img src="img/students/s40-t.webp" data-full="img/students/s40.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="40" aria-label="Работа ученицы 41"><img src="img/students/s41-t.webp" data-full="img/students/s41.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="41" aria-label="Работа ученицы 42"><img src="img/students/s42-t.webp" data-full="img/students/s42.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="42" aria-label="Работа ученицы 43"><img src="img/students/s43-t.webp" data-full="img/students/s43.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="43" aria-label="Работа ученицы 44"><img src="img/students/s44-t.webp" data-full="img/students/s44.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="44" aria-label="Работа ученицы 45"><img src="img/students/s45-t.webp" data-full="img/students/s45.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="45" aria-label="Работа ученицы 46"><img src="img/students/s46-t.webp" data-full="img/students/s46.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="46" aria-label="Работа ученицы 47"><img src="img/students/s47-t.webp" data-full="img/students/s47.webp" alt="Работа ученицы" loading="lazy" decoding="async"></button>
+  </div>
+</section>
+
+<!-- просмотр работы во весь экран -->
+<!-- ======================= ОБЩИЙ ПРОЕКТ С ИЗДАТЕЛЬСТВОМ ======================= -->
+<section class="section s-book light">
+  <div class="wrap">
+    <h2 class="h2"><span class="script">О</span>бщий проект с издательством</h2>
+    <p class="book__text">Мы с ученицами проиллюстрировали <b class="key">Большую Книгу Рамадана</b> для издательства
+      <b class="key">Umma Land</b>. Сейчас она есть в книжных Англии, на Мальдивах, в Эмиратах, Австралии, США,
+      Пакистане. Некоторые из девочек вообще не рисовали до курса и смогли сразу монетизировать свои навыки.</p>
+  </div>
+
+  <!-- на компьютере — две строки, как у работ учениц -->
+  <div class="stu g-desktop" tabindex="0">
+        <button class="stu__card" data-i="0" aria-label="Разворот книги 1"><img src="img/ramadan/b01-t.webp" data-full="img/ramadan/b01.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="1" aria-label="Разворот книги 2"><img src="img/ramadan/b02-t.webp" data-full="img/ramadan/b02.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="2" aria-label="Разворот книги 3"><img src="img/ramadan/b03-t.webp" data-full="img/ramadan/b03.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="3" aria-label="Разворот книги 4"><img src="img/ramadan/b04-t.webp" data-full="img/ramadan/b04.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="4" aria-label="Разворот книги 5"><img src="img/ramadan/b05-t.webp" data-full="img/ramadan/b05.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="5" aria-label="Разворот книги 6"><img src="img/ramadan/b06-t.webp" data-full="img/ramadan/b06.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="6" aria-label="Разворот книги 7"><img src="img/ramadan/b07-t.webp" data-full="img/ramadan/b07.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="7" aria-label="Разворот книги 8"><img src="img/ramadan/b08-t.webp" data-full="img/ramadan/b08.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="8" aria-label="Разворот книги 9"><img src="img/ramadan/b09-t.webp" data-full="img/ramadan/b09.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="9" aria-label="Разворот книги 10"><img src="img/ramadan/b10-t.webp" data-full="img/ramadan/b10.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="10" aria-label="Разворот книги 11"><img src="img/ramadan/b11-t.webp" data-full="img/ramadan/b11.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="11" aria-label="Разворот книги 12"><img src="img/ramadan/b12-t.webp" data-full="img/ramadan/b12.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="12" aria-label="Разворот книги 13"><img src="img/ramadan/b13-t.webp" data-full="img/ramadan/b13.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="13" aria-label="Разворот книги 14"><img src="img/ramadan/b14-t.webp" data-full="img/ramadan/b14.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="14" aria-label="Разворот книги 15"><img src="img/ramadan/b15-t.webp" data-full="img/ramadan/b15.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="15" aria-label="Разворот книги 16"><img src="img/ramadan/b16-t.webp" data-full="img/ramadan/b16.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="16" aria-label="Разворот книги 17"><img src="img/ramadan/b17-t.webp" data-full="img/ramadan/b17.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="17" aria-label="Разворот книги 18"><img src="img/ramadan/b18-t.webp" data-full="img/ramadan/b18.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="18" aria-label="Разворот книги 19"><img src="img/ramadan/b19-t.webp" data-full="img/ramadan/b19.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="19" aria-label="Разворот книги 20"><img src="img/ramadan/b20-t.webp" data-full="img/ramadan/b20.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+        <button class="stu__card" data-i="20" aria-label="Разворот книги 21"><img src="img/ramadan/b21-t.webp" data-full="img/ramadan/b21.webp" alt="Большая Книга Рамадана" loading="lazy" decoding="async"></button>
+  </div>
+
+  <!-- на телефоне — крупный кадр и миниатюры, чтобы разворот было видно -->
+  <div class="wrap">
+    <div class="g-hero g-mobile">
+      <div class="g-hero__big"><img src="img/ramadan/b01.webp" alt="Большая Книга Рамадана"></div>
+      <div class="g-hero__thumbs">
+        <button class="g-thumb is-on" data-src="img/ramadan/b01.webp"><img src="img/ramadan/b01-t.webp" data-full="img/ramadan/b01.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b02.webp"><img src="img/ramadan/b02-t.webp" data-full="img/ramadan/b02.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b03.webp"><img src="img/ramadan/b03-t.webp" data-full="img/ramadan/b03.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b04.webp"><img src="img/ramadan/b04-t.webp" data-full="img/ramadan/b04.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b05.webp"><img src="img/ramadan/b05-t.webp" data-full="img/ramadan/b05.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b06.webp"><img src="img/ramadan/b06-t.webp" data-full="img/ramadan/b06.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b07.webp"><img src="img/ramadan/b07-t.webp" data-full="img/ramadan/b07.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b08.webp"><img src="img/ramadan/b08-t.webp" data-full="img/ramadan/b08.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b09.webp"><img src="img/ramadan/b09-t.webp" data-full="img/ramadan/b09.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b10.webp"><img src="img/ramadan/b10-t.webp" data-full="img/ramadan/b10.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b11.webp"><img src="img/ramadan/b11-t.webp" data-full="img/ramadan/b11.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b12.webp"><img src="img/ramadan/b12-t.webp" data-full="img/ramadan/b12.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b13.webp"><img src="img/ramadan/b13-t.webp" data-full="img/ramadan/b13.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b14.webp"><img src="img/ramadan/b14-t.webp" data-full="img/ramadan/b14.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b15.webp"><img src="img/ramadan/b15-t.webp" data-full="img/ramadan/b15.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b16.webp"><img src="img/ramadan/b16-t.webp" data-full="img/ramadan/b16.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b17.webp"><img src="img/ramadan/b17-t.webp" data-full="img/ramadan/b17.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b18.webp"><img src="img/ramadan/b18-t.webp" data-full="img/ramadan/b18.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b19.webp"><img src="img/ramadan/b19-t.webp" data-full="img/ramadan/b19.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b20.webp"><img src="img/ramadan/b20-t.webp" data-full="img/ramadan/b20.webp" alt="" loading="lazy"></button>
+        <button class="g-thumb" data-src="img/ramadan/b21.webp"><img src="img/ramadan/b21-t.webp" data-full="img/ramadan/b21.webp" alt="" loading="lazy"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ПРОГРАММА ВТОРОГО КУРСА ======================= -->
+<section class="section s12b light">
+  <p class="prog__label">Программа курса</p>
+  <p class="prog__name">Из наброска в профессию</p>
+</section>
+
+<section class="section s-mod light">
+  <details class="modbox mod--wine">
+    <summary class="modbar"><span class="modbar__label">Фаза 1</span><span class="modbar__name">Фундамент</span><span class="modbar__sign" aria-hidden="true"></span></summary>
+    <div class="mod-wrap">
+      <div class="ph mod--wine">
+        <img class="ph__art" src="img/phases/p1.webp" alt="" loading="lazy" decoding="async">
+        <div class="ph__card">
+          <p class="mod__title"><span class="mod__label">Фаза 1</span><span class="mod__name">Фундамент</span></p>
+          <ol class="mod__lessons">
+            <li>Внутреннее состояние, <b class="key">страхи</b>, настрой, энергия, мотивация, ожидания, потребности, прокрастинация</li>
+            <li>Актуализация проблем, путь иллюстратора, как работает рынок, правила курса, <b class="key">карта пути от нуля до первых заказов</b>; зачем нам продвигаться и продавать</li>
+            <li>Способы <b class="key">монетизации</b> и направления в иллюстрации</li>
+            <li>Выбор <b class="key">направления и стилистики</b>. Особенности <b class="key">исламского рынка</b>. Вектор каждой участницы</li>
+            <li><b class="key">Личный бренд</b></li>
+            <li><b class="key">Ценообразование</b></li>
+            <li>Мой способ планирования, постановки целей. Составляем план с целями по всем направлениям</li>
+            <li>Нейросети</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="mod__res">
+        <span class="mod__num">1</span>
+        <p>Разберёшься с <b class="key">внутренними барьерами</b> и страхами перед стартом, получишь <b class="key">карту всего пути</b> от нуля до первых заказов, выберешь своё направление с учётом особенностей исламского рынка, научишься <b class="key">считать цену</b> своих работ и начнёшь строить <b class="key">личный бренд</b>. Поймёшь, какой путь тебя ждёт, и поставишь цели на полгода-год.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<section class="section s-mod light">
+  <details class="modbox mod--light">
+    <summary class="modbar"><span class="modbar__label">Фаза 2</span><span class="modbar__name">Портфолио</span><span class="modbar__sign" aria-hidden="true"></span></summary>
+    <div class="mod-wrap">
+      <div class="ph mod--light">
+        <img class="ph__art" src="img/phases/p2.webp" alt="" loading="lazy" decoding="async">
+        <div class="ph__card">
+          <p class="mod__title"><span class="mod__label">Фаза 2</span><span class="mod__name">Портфолио</span></p>
+          <ol class="mod__lessons">
+            <li>Что такое <b class="key">идеальное портфолио</b>, его функции, ошибки в формировании портфолио</li>
+            <li>Навыки рисования, поиск пробелов, личный стиль</li>
+            <li>Практика: создаём и упаковываем <b class="key">3 проекта</b> в выбранном направлении</li>
+            <li><b class="key">Instagram</b>: упаковка профиля</li>
+            <li><b class="key">Behance</b></li>
+            <li><b class="key">PDF-портфолио</b></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="mod__res">
+        <span class="mod__num">2</span>
+        <p>Узнаешь, как формировать <b class="key">продающее портфолио</b>, чтобы выглядеть как профессионал, а не просто любитель порисовать. Найдёшь пробелы в навыках и стиле. Создашь <b class="key">три практических проекта</b> в своём направлении, упакуешь профиль и проекты в Instagram, Behance и соберёшь PDF-портфолио.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<section class="section s-mod light">
+  <details class="modbox mod--brown">
+    <summary class="modbar"><span class="modbar__label">Фаза 3</span><span class="modbar__name">Продвижение и соцсети</span><span class="modbar__sign" aria-hidden="true"></span></summary>
+    <div class="mod-wrap">
+      <div class="ph mod--brown">
+        <img class="ph__art" src="img/phases/p3.webp" alt="" loading="lazy" decoding="async">
+        <div class="ph__card">
+          <p class="mod__title"><span class="mod__label">Фаза 3</span><span class="mod__name">Продвижение и соцсети</span></p>
+          <ol class="mod__lessons">
+            <li>Страхи, мотивация, влияние. Я — блогер</li>
+            <li><b class="key">Система ведения социальных сетей</b>: образ, регулярность, стиль и форматы</li>
+            <li><b class="key">Stories</b> — как говорить с аудиторией?</li>
+            <li><b class="key">Эстетичная съёмка</b></li>
+            <li><b class="key">Контент-план</b> и карусели</li>
+            <li>Сценарии, съёмка <b class="key">Reels</b> и урок по монтажу от моего монтажёра)</li>
+            <li>Челлендж <b class="key">7 Reels</b></li>
+            <li>Telegram, VK, Pinterest, YouTube</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="mod__res">
+        <span class="mod__num">3</span>
+        <p>Снимешь <b class="key">страх перед публичностью</b>, выстроишь систему ведения соцсетей и создашь себе <b class="key">контент-банк</b>, освоишь эстетичную съёмку, попрактикуешься в создании сторис, напишешь сценарии, снимешь и выложишь в рамках челленджа <b class="key">7 рилсов</b>, поймёшь, как искать для себя оптимальный формат контента.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<section class="section s-mod light">
+  <details class="modbox mod--light">
+    <summary class="modbar"><span class="modbar__label">Фаза 4</span><span class="modbar__name">Клиенты</span><span class="modbar__sign" aria-hidden="true"></span></summary>
+    <div class="mod-wrap">
+      <div class="ph mod--light">
+        <img class="ph__art" src="img/phases/p4.webp" alt="" loading="lazy" decoding="async">
+        <div class="ph__card">
+          <p class="mod__title"><span class="mod__label">Фаза 4</span><span class="mod__name">Клиенты</span></p>
+          <ol class="mod__lessons">
+            <li><b class="key">Кто мой клиент?</b> Бренды</li>
+            <li><b class="key">Общение с клиентами</b> и продажи</li>
+            <li>Трудности в работе с клиентами: к чему надо быть готовым. Договорённости, <b class="key">сроки, правки, конфликты, оплата</b></li>
+            <li><b class="key">Оффер</b> в упаковке и в общении. Как перестать продавать картинки и начать продавать решение?</li>
+            <li><b class="key">Издательства</b></li>
+            <li>Дополнительные источники дохода и клиентов</li>
+            <li><b class="key">Бонусный урок</b>: типографии и создание, продажа собственного мерча</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="mod__res">
+        <span class="mod__num">4</span>
+        <p>Разберёшься, <b class="key">кто твой клиент</b> и как выходить на бренды и издательства и предлагать свои услуги, научишься вести переписку и продажи, справляться с правками и конфликтами без стресса, формулировать <b class="key">оффер как решение проблемы клиента</b>, а не просто продажу картинки.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<section class="section s-mod light">
+  <details class="modbox mod--wine">
+    <summary class="modbar"><span class="modbar__label">Фаза 5</span><span class="modbar__name">Итоговая</span><span class="modbar__sign" aria-hidden="true"></span></summary>
+    <div class="mod-wrap">
+      <div class="ph ph--p5 mod--wine">
+        <img class="ph__art" src="img/phases/p5.webp" alt="" loading="lazy" decoding="async">
+        <div class="ph__card">
+          <p class="mod__title"><span class="mod__label">Фаза 5</span><span class="mod__name">Итоговая</span></p>
+          <ol class="mod__lessons">
+            <li>Подведение итогов</li>
+            <li>Планирование следующих месяцев и года</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="mod__res">
+        <span class="mod__num">5</span>
+        <p>Подведёшь итог всего пройденного пути и соберёшь <b class="key">личную стратегию роста дохода</b> и развития социальных сетей.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ======================= ТАРИФЫ ======================= -->
+<!-- Одна лестница пути: «Письма художника» -> оба курса -> сопровождение.
+     Курс «Из наброска в профессию» отдельно не продаётся: он живёт в тарифах 3 и 4. -->
+<section class="section s-tar light">
+  <div class="wrap">
+    <h2 class="h2"><span class="script">В</span>арианты участия</h2>
+
+    <div class="tar__grid">
+    <article class="tar__card">
+      <img class="tar__orb" src="img/blocks/orb-blue.webp" alt="" style="--tilt: -4deg" loading="lazy" decoding="async">
+      <p class="tar__step">Тариф 1</p>
+      <h3 class="tar__name">Проба пера</h3>
+      <p class="tar__price">13 500 ₽</p>
+      <p class="tar__was">15 000 ₽</p>
+      <p class="tar__course">Курс «Письма художника»</p>
+      <p class="tar__sub">Что внутри</p>
+      <ul class="tar__list">
+        <li>первые 3 модуля курса по рисованию</li>
+        <li>доступ к урокам на год</li>
+        <li>домашние задания и бонусные уроки по каждому модулю</li>
+      </ul>
+      <p class="tar__sub tar__sub--no">Чего нет в этом тарифе</p>
+      <ul class="tar__list tar__list--no">
+        <li>нет двух оставшихся модулей курса</li>
+        <li>нет спецмодуля от Аланы</li>
+        <li>нет личной обратной связи от Асии</li>
+        <li>нет чата с другими ученицами</li>
+        <li>нет курса по монетизации</li>
+      </ul>
+      <div class="tar__foot">
+        <button class="tar__btn tar__btn--main" type="button" data-gcm="pay-1">Оплатить</button>
+        <button class="tar__btn tar__btn--book" type="button" data-gcm="book">Забронировать место</button>
+        <a class="tar__btn" href="https://t.me/aszavra" target="_blank" rel="noopener">Купить в рассрочку без банков %</a>
+      </div>
+    </article>
+
+    <article class="tar__card tar__card--pick">
+      <img class="tar__orb" src="img/blocks/orb-gray.webp" alt="" style="--tilt: 3deg" loading="lazy" decoding="async">
+      <p class="tar__badge">Хит</p>
+      <p class="tar__step">Тариф 2</p>
+      <h3 class="tar__name">Засучив рукава</h3>
+      <p class="tar__price">19 500 ₽</p>
+      <p class="tar__was">22 000 ₽</p>
+      <p class="tar__course">Курс «Письма художника»</p>
+      <p class="tar__sub">Что внутри</p>
+      <ul class="tar__list">
+        <li>все 5 модулей курса по рисованию</li>
+        <li>спецмодуль «Индивидуальность» от Аланы</li>
+        <li>личная обратная связь от Асии по домашним заданиям</li>
+        <li>разбор 1 домашнего задания от Аланы по её модулю</li>
+        <li>закрытый чат с другими ученицами потока</li>
+        <li>доступ к урокам на год</li>
+      </ul>
+      <p class="tar__sub tar__sub--no">Чего нет в этом тарифе</p>
+      <ul class="tar__list tar__list--no">
+        <li>нет курса по монетизации</li>
+      </ul>
+      <div class="tar__foot">
+        <div class="tar__seats">
+          <div class="tar__bar"><span style="width: 30%"></span></div>
+          <p>12 из 40 мест занято</p>
+        </div>
+        <button class="tar__btn tar__btn--main" type="button" data-gcm="pay-2">Оплатить</button>
+        <button class="tar__btn tar__btn--book" type="button" data-gcm="book">Забронировать место</button>
+        <a class="tar__btn" href="https://t.me/aszavra" target="_blank" rel="noopener">Купить в рассрочку без банков %</a>
+      </div>
+    </article>
+
+    <article class="tar__card tar__card--pick">
+      <img class="tar__orb" src="img/blocks/orb-pink.webp" alt="" style="--tilt: -3deg" loading="lazy" decoding="async">
+      <p class="tar__badge">Выгодный</p>
+      <p class="tar__step">Тариф 3</p>
+      <h3 class="tar__name">До победного</h3>
+      <p class="tar__price">39 500 ₽</p>
+      <p class="tar__was">45 000 ₽</p>
+      <p class="tar__course">Курс «Письма художника»<br>Курс «Из наброска в профессию»</p>
+      <p class="tar__sub">Что внутри</p>
+      <ul class="tar__list">
+        <li>Курс «Письма художника»</li>
+        <li>Курс «Из наброска в профессию»: 5 фаз — фундамент, портфолио, продвижение и соцсети, клиенты, итоговая стратегия</li>
+        <li>выбранная ниша и направление монетизации</li>
+        <li>готовое портфолио, оформленные Instagram и Behance</li>
+        <li>система соцсетей и Stories, съёмка 7 Reels</li>
+        <li>навык переговоров с клиентами, брендами и издательствами</li>
+        <li>личная стратегия роста дохода на год вперёд</li>
+      </ul>
+      <p class="tar__note">Купить курс по монетизации отдельно позже будет дороже, чем взять его сейчас вместе с курсом по рисованию.</p>
+      <div class="tar__foot">
+        <div class="tar__seats">
+          <div class="tar__bar"><span style="width: 50%"></span></div>
+          <p>5 из 10 мест занято</p>
+        </div>
+        <button class="tar__btn tar__btn--main" type="button" data-gcm="pay-3">Оплатить</button>
+        <button class="tar__btn tar__btn--book" type="button" data-gcm="book">Забронировать место</button>
+        <a class="tar__btn" href="https://t.me/aszavra" target="_blank" rel="noopener">Купить в рассрочку без банков %</a>
+        <a class="tar__btn tar__btn--ask" href="https://t.me/aszavra" target="_blank" rel="noopener">Уже брала 1-й курс, хочу 2-й. Написать Асие</a>
+      </div>
+    </article>
+
+    <article class="tar__card">
+      <img class="tar__orb" src="img/blocks/donut.webp" alt="" style="--tilt: 4deg" loading="lazy" decoding="async">
+      <p class="tar__step">Тариф 4</p>
+      <h3 class="tar__name">Наставничество</h3>
+      <p class="tar__price">79 000 ₽</p>
+      <p class="tar__was">89 000 ₽</p>
+      <p class="tar__course">Оба курса и личное сопровождение</p>
+      <p class="tar__sub">Что внутри</p>
+      <ul class="tar__list">
+        <li>Курс «Письма художника»</li>
+        <li>Курс «Из наброска в профессию»</li>
+        <li>личное сопровождение с индивидуальным графиком созвонов и проверкой домашнего задания в обоих курсах</li>
+        <li>приоритетная обратная связь</li>
+      </ul>
+      <div class="tar__foot">
+        <p class="tar__soldout" aria-disabled="true">Мест нет</p>
+      </div>
+    </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= СВЯЗЬ С АСИЕЙ ======================= -->
+<section class="section s-ask light">
+  <div class="wrap">
+    <p class="ask__text"><span class="ask__script">Есть</span> вопросы? Напиши мне в личку, помогу.</p>
+    <a class="ask__btn" href="https://t.me/aszavra" target="_blank" rel="noopener">Написать Асие</a>
+  </div>
+</section>
+
+<!-- ======================= ЧАСТЫЕ ВОПРОСЫ ======================= -->
+<!-- Намеренно другой тип раскрывашки, чем у модулей: не плашки, а тонкий
+     список с волосяными линиями — чтобы блоки не спорили друг с другом. -->
+<section class="section s-faq light">
+  <div class="wrap">
+    <div class="faq">
+    <details class="faq__i">
+      <summary class="faq__q">Подходит ли курс, если я не умею рисовать?<span class="faq__ico" aria-hidden="true"></span></summary>
+      <div class="faq__a"><p>Да, курс рассчитан на разный уровень навыков, начиная с нуля и заканчивая практикующими иллюстраторами.</p></div>
+    </details>
+    <details class="faq__i">
+      <summary class="faq__q">Какой нужен планшет и какая программа?<span class="faq__ico" aria-hidden="true"></span></summary>
+      <div class="faq__a"><p>Можно использовать хоть телефон и палец или любую программу, на которой можно рисовать. Однако их функционал сильно ограничен. Я рекомендую сразу скачать Procreate на iPad, за него надо платить всего один раз. У меня iPad Pro 11 дюймовый 3-го поколения.</p></div>
+    </details>
+    <details class="faq__i">
+      <summary class="faq__q">Где будут проходить уроки? В каком формате?<span class="faq__ico" aria-hidden="true"></span></summary>
+      <div class="faq__a"><p>На платформе Getcourse. Все уроки в записи, единственный эфир в Zoom — в модуле с Аланой, разбор работ по её домашним заданиям. Чат и канал курса — в Telegram.</p></div>
+    </details>
+    <details class="faq__i">
+      <summary class="faq__q">Сколько времени будет на проверку домашних заданий?<span class="faq__ico" aria-hidden="true"></span></summary>
+      <div class="faq__a"><p>В течение 3,5 месяцев мы будем постепенно проходить все уроки, сдавать можно когда вам удобно в течение всего этого периода, других дедлайнов нет. Отставать можно. После окончания курса можно докупить обратную связь.</p></div>
+    </details>
+    <details class="faq__i">
+      <summary class="faq__q">Сколько длятся уроки?<span class="faq__ico" aria-hidden="true"></span></summary>
+      <div class="faq__a"><p>Видео-уроки поделены на короткие части по 5–10 минут, однако весь урок может достигать и 40 минут. В среднем — 20.</p></div>
+    </details>
+    <details class="faq__i">
+      <summary class="faq__q">Когда откроется доступ и сколько будут доступны уроки?<span class="faq__ico" aria-hidden="true"></span></summary>
+      <div class="faq__a"><p>Уроки будут открываться постепенно, модуль за модулем. Нулевой модуль — сразу после покупки. Расписание выхода остальных можно будет найти в Telegram-канале. Доступ к урокам — год с момента открытия последнего модуля.</p></div>
+    </details>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ОКНО БРОНИРОВАНИЯ ======================= -->
+<!-- 🔴 Виджет GetCourse вставляет iframe ВМЕСТО своего <script> и задаёт
+     высоту его РОДИТЕЛЮ, поэтому у него отдельная обёртка .gcm__form.
+     Скрипт отрабатывает на DOMContentLoaded, а не по клику, поэтому окно
+     прячем видимостью, а не display:none — иначе iframe не измерит высоту. -->
+<div class="gcm" id="gcm" aria-hidden="true">
+  <div class="gcm__box" role="dialog" aria-modal="true" aria-label="Бронирование места">
+    <button class="gcm__close" id="gcm-close" type="button" aria-label="Закрыть">&times;</button>
+    <div class="gcm__form" data-form="book">
+      <script id="f72ab7a6e8a40b432aeb825b94781642b12d5c39" src="https://liberty-university.getcourse.ru/pl/lite/widget/script?id=1317283"></script>
+    </div>
+    <div class="gcm__form" data-form="pay-1">
+      <script id="a354bc82b170cece6ee54f7ab13a8b1a223501a6" src="https://liberty-university.getcourse.ru/pl/lite/widget/script?id=1317274"></script>
+    </div>
+    <div class="gcm__form" data-form="pay-2">
+      <script id="34a0b247f6c1edc7a322df518a0d7c447f6baea5" src="https://liberty-university.getcourse.ru/pl/lite/widget/script?id=1317279"></script>
+    </div>
+    <div class="gcm__form" data-form="pay-3">
+      <script id="4b8a3f1aabf79c08802923e6c51e957052bfd6ea" src="https://liberty-university.getcourse.ru/pl/lite/widget/script?id=1649769"></script>
+    </div>
+  </div>
+</div>
+
+<div class="lb" id="lb" hidden>
+  <button class="lb__close" id="lb-close" aria-label="Закрыть">×</button>
+  <button class="lb__nav lb__nav--prev" id="lb-prev" aria-label="Предыдущая">‹</button>
+  <img class="lb__img" id="lb-img" src="" alt="Работа ученицы">
+  <button class="lb__nav lb__nav--next" id="lb-next" aria-label="Следующая">›</button>
+  <p class="lb__count" id="lb-count"></p>
+</div>
 
 <script>
-/* Появление запускаем, когда шрифты уже подгрузились — иначе текст моргает.
-   Страховка на 1.2 с: если шрифты не ответили, показываем всё равно. */
 (function () {
   var hero = document.querySelector('.hero');
   var go = function () { hero.classList.add('is-ready'); };
   if (document.fonts && document.fonts.ready) { document.fonts.ready.then(go); setTimeout(go, 1200); }
   else { go(); }
+
+  // ?nohero=1 — спрятать первый экран, чтобы снять блоки одним кадром
+  if (/nohero=1/.test(location.search)) {
+    hero.style.display = 'none';
+    var l = document.querySelector('.lace');
+    if (l) l.style.marginTop = '0';
+  }
+
+  // вариант можно открыть сразу: blocks.html?v=v2
+  var q = (location.search.match(/v=(v[1234])/) || [])[1];
+  if (q) document.body.className = q + ' light-theme';
+
+  // ---------- просмотр иллюстраций: открывается ЛЮБАЯ картинка ----------
+  (function () {
+    var lb = document.getElementById('lb');
+    if (!lb) return;
+    var img = document.getElementById('lb-img'),
+        count = document.getElementById('lb-count'),
+        list = [], cur = 0;
+
+    // всё, что имеет смысл рассматривать: иллюстрации в блоках, галереях и модулях.
+    // линии-росчерки и кружево не берём.
+    var nodes = [].slice.call(document.querySelectorAll('section img, .finale img'))
+      .filter(function (n) {
+        // миниатюры под крупным кадром только переключают его — просмотр не открывают
+        return !n.classList.contains('ln') && !n.closest('.hero')
+               && !n.closest('.g-thumb') && n.getAttribute('src');
+      });
+    nodes.forEach(function (n) { n.classList.add('zoomable'); });
+
+    function fullSrc(n) { return n.dataset.full || n.currentSrc || n.src; }
+
+    function show(i) {
+      cur = (i + list.length) % list.length;
+      img.src = fullSrc(list[cur]);
+      img.alt = list[cur].alt || 'Иллюстрация';
+      count.textContent = list.length > 1 ? (cur + 1) + ' / ' + list.length : '';
+    }
+    function open(node) {
+      // листаем внутри своего раздела; если он один — по всем картинкам страницы
+      var box = node.closest('section') || node.closest('.finale') || document;
+      var group = [].slice.call(box.querySelectorAll('img.zoomable'));
+      list = group.length > 1 ? group : nodes;
+      show(list.indexOf(node));
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+    function close() { lb.hidden = true; document.body.style.overflow = ''; }
+
+    // dev: ?lbopen=N — открыть просмотр на N-й картинке, чтобы снять кадром
+    var lbq = (location.search.match(/lbopen=(\d+)/) || [])[1];
+    if (lbq) addEventListener('load', function () { setTimeout(function () { open(nodes[+lbq] || nodes[0]); }, 300); });
+
+    nodes.forEach(function (n) {
+      var target = n.closest('.stu__card') || n;
+      target.style.cursor = 'zoom-in';
+      target.addEventListener('click', function (e) { e.preventDefault(); open(n); });
+    });
+
+    document.getElementById('lb-close').onclick = close;
+    document.getElementById('lb-prev').onclick = function (e) { e.stopPropagation(); show(cur - 1); };
+    document.getElementById('lb-next').onclick = function (e) { e.stopPropagation(); show(cur + 1); };
+    lb.onclick = function (e) { if (e.target === lb || e.target === img) close(); };
+    addEventListener('keydown', function (e) {
+      if (lb.hidden) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowRight') show(cur + 1);
+      if (e.key === 'ArrowLeft') show(cur - 1);
+    });
+    var x0 = null;
+    lb.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, {passive: true});
+    lb.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1));
+      x0 = null;
+    });
+  })();
+
+  if (/phopen/.test(location.search)) document.querySelectorAll('.modbox, .faq__i').forEach(function (d) { d.open = true; });
+
+  document.querySelectorAll('.g-hero').forEach(function (hero) {
+    var big = hero.querySelector('.g-hero__big img');
+    var thumbs = hero.querySelectorAll('.g-thumb');
+    thumbs.forEach(function (t) {
+      t.onclick = function () {
+        big.src = t.dataset.src;
+        thumbs.forEach(function (o) { o.classList.toggle('is-on', o === t); });
+      };
+    });
+  });
+
+  var btns = document.querySelectorAll('.switch button[data-v]');
+  btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.v === (q || 'v1'))); });
+  btns.forEach(function (b) {
+    b.onclick = function () {
+      document.body.className = b.dataset.v + ' light-theme';
+      btns.forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+      scrollTo({ top: innerHeight * 0.92, behavior: 'smooth' });
+    };
+  });
 })();
 </script>
-
-<!-- Стилус вместо курсора. На телефонах и планшетах не включается. -->
 <script src="js/stylus-cursor.js" defer></script>
 
 
@@ -127,6 +1274,147 @@
   }
   if (document.readyState === 'complete') setTimeout(start, 200);
   else addEventListener('load', function () { setTimeout(start, 200); });
+})();
+</script>
+
+<!-- dev-инструмент: ?probe=<селектор>;<селектор> — кладёт замеры в служебный блок внизу страницы,
+     чтобы снимать их headless-хромом (--dump-dom). На боевой показ не влияет. -->
+<script>
+(function(){
+  var spec = new URLSearchParams(location.search).get('probe');
+  if (!spec) return;
+  function dump(){
+    var out = {};
+    var hide = new URLSearchParams(location.search).get('hide');   // ?hide=<селектор> — что временно убрать
+    if (hide) document.querySelectorAll(hide).forEach(function(e){ e.style.display = 'none'; });
+    spec.split(';').forEach(function(sel){
+      if (!sel) return;
+      if (sel === '__cards') {     // не накрывает ли иллюстрация текст в карточках
+        out[sel] = [].slice.call(document.querySelectorAll('.card')).map(function(card, ci){
+          var art = card.querySelector('.card__art');
+          var a = art.getBoundingClientRect();
+          var bad = [];
+          [].slice.call(card.querySelectorAll('.list li')).forEach(function(li, i, all){
+            // считаем по ТЕКСТУ, а не по коробке: отступ справа коробку не сужает
+            var rng = document.createRange(); rng.selectNodeContents(li);
+            var r = rng.getBoundingClientRect(); rng.detach && rng.detach();
+            var over = Math.min(r.right, a.right) - Math.max(r.left, a.left) > 4 &&
+                       Math.min(r.bottom, a.bottom) - Math.max(r.top, a.top) > 4;
+            if (over) bad.push({ пункт: i + 1, последний: i === all.length - 1,
+                                 заход: Math.round(Math.min(r.right, a.right) - Math.max(r.left, a.left)) });
+          });
+          return { карточка: ci + 1, пунктов: card.querySelectorAll('.list li').length,
+                   накрыты: bad };
+        });
+        return;
+      }
+      if (sel === '__wide2') {      // кто торчит вправо вне лент-прокруток
+        out[sel] = [].slice.call(document.querySelectorAll('*')).filter(function(e){
+          var r = e.getBoundingClientRect();
+          if (r.right <= innerWidth + 1) return false;
+          return !e.closest('.stu, .g-rail, .g-hero__thumbs');
+        }).map(function(e){
+          var r = e.getBoundingClientRect();
+          return { tag: e.tagName.toLowerCase(), cls: (e.className||'').toString().slice(0, 50),
+                   left: Math.round(r.left), right: Math.round(r.right) };
+        }).slice(0, 25);
+        return;
+      }
+      if (sel === '__widths') {
+        out[sel] = [{ htmlClient: document.documentElement.clientWidth,
+                      htmlScroll: document.documentElement.scrollWidth,
+                      bodyScroll: document.body.scrollWidth,
+                      bodyRect: Math.round(document.body.getBoundingClientRect().width),
+                      maxRight: (function(){
+                        var m = 0, who = '';
+                        [].slice.call(document.querySelectorAll('*')).forEach(function(e){
+                          var r = e.getBoundingClientRect();
+                          if (r.right > m) { m = r.right; who = e.tagName + '.' + (e.className||'').toString().slice(0,40); }
+                        });
+                        return Math.round(m) + ' ' + who;
+                      })() }];
+        return;
+      }
+      if (sel === '__wide') {          // кто именно растягивает страницу вширь
+        out[sel] = [].slice.call(document.querySelectorAll('*')).filter(function(e){
+          var r = e.getBoundingClientRect();
+          if (r.right <= innerWidth + 1 && r.left >= -1) return false;
+          for (var p = e.parentElement; p; p = p.parentElement) {   // внутри прокрутки — не в счёт
+            var ox = getComputedStyle(p).overflowX;
+            if (ox === 'auto' || ox === 'hidden' || ox === 'scroll') return false;
+          }
+          return true;
+        }).map(function(e){
+          var r = e.getBoundingClientRect();
+          return { tag: e.tagName.toLowerCase(), cls: e.className && e.className.toString().slice(0, 60),
+                   left: Math.round(r.left), right: Math.round(r.right) };
+        }).slice(0, 20);
+        return;
+      }
+      out[sel] = [].slice.call(document.querySelectorAll(sel)).map(function(e){
+        var r = e.getBoundingClientRect(), cs = getComputedStyle(e);
+        var o = { x: Math.round(r.left), y: Math.round(r.top + scrollY),
+                  w: Math.round(r.width), h: Math.round(r.height),
+                  bottom: Math.round(r.bottom + scrollY),
+                  display: cs.display, fs: cs.fontSize, color: cs.color };
+        if (e.tagName === 'IMG') { o.src = e.currentSrc || e.src; o.nw = e.naturalWidth; o.nh = e.naturalHeight; }
+        return o;
+      });
+    });
+    var pre = document.createElement('pre');
+    pre.id = 'probe';
+    // сам блок замеров не должен влиять на раскладку страницы
+    pre.style.cssText = 'position:fixed;left:0;top:0;width:0;height:0;overflow:hidden;visibility:hidden';
+    pre.textContent = JSON.stringify({ vw: innerWidth, scrollW: document.documentElement.scrollWidth, data: out });
+    document.body.appendChild(pre);
+  }
+  addEventListener('load', function(){ setTimeout(dump, 500); });
+})();
+</script>
+
+<script>
+/* Окно бронирования: все кнопки «Забронировать место» открывают одну и ту же
+   форму GetCourse. Виджет живёт в странице с самого начала (иначе он не
+   успевает измерить свою высоту), окно только показываем и прячем. */
+(function () {
+  var box = document.getElementById('gcm');
+  if (!box) return;
+  var closeBtn = document.getElementById('gcm-close');
+  var opened = false;
+
+  function open() {
+    box.classList.add('is-open');
+    box.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    opened = true;
+  }
+  function close() {
+    box.classList.remove('is-open');
+    box.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    opened = false;
+  }
+
+  var forms = box.querySelectorAll('.gcm__form');
+  document.querySelectorAll('[data-gcm]').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.preventDefault();
+      var key = b.dataset.gcm;
+      forms.forEach(function (f) { f.classList.toggle('is-active', f.dataset.form === key); });
+      box.querySelector('.gcm__box').scrollTop = 0;
+      open();
+    });
+  });
+  var q = (location.search.match(/gcm=([\w-]+)/) || [])[1];
+  if (q) addEventListener('load', function () {
+    setTimeout(function () {
+      forms.forEach(function (f) { f.classList.toggle('is-active', f.dataset.form === q); });
+      open();
+    }, 800);
+  });
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', function (e) { if (e.target === box) close(); });
+  addEventListener('keydown', function (e) { if (opened && e.key === 'Escape') close(); });
 })();
 </script>
 </body>

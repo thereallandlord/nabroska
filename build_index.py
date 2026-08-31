@@ -1,52 +1,85 @@
 #!/usr/bin/env python3
-"""Собирает боевой index.html из blocks.html.
+"""Собирает две боевые страницы из одной рабочей blocks.html.
 
-blocks.html — рабочая страница: там переключатель вариантов и noindex.
-Боевая отличается ровно двумя вещами: нормальная «шапка» для поиска
-и никакого переключателя. Всё остальное — один в один, чтобы правки
-в blocks.html доезжали до сайта одной командой:  python3 build_index.py
+  /                — витрина: тот же сайт, но без цен и кнопок покупки
+  /predspisok/     — полная версия с тарифами и формами оплаты
+
+В blocks.html размечены два вида служебных кусков:
+  /*dev*/ … /*/dev*/    — замеры и открывалки по адресу, в боевые не идут
+  <!--sale--> … <!--/sale-->  — тарифы, окно с формами и его скрипт
+
+Запуск:  python3 build_index.py [домен]
 """
-import re, sys
+import os, re, sys
 
-DOMAIN = sys.argv[1] if len(sys.argv) > 1 else "thereallandlord.github.io/nabroska"
-BASE = "https://" + DOMAIN.rstrip("/") + "/"
+DOMAIN = (sys.argv[1] if len(sys.argv) > 1 else "aszavra.art").rstrip("/")
+BASE = f"https://{DOMAIN}/"
 
 TITLE = "Из наброска в профессию — курс по диджитал-иллюстрации"
 DESC = ("Освой базу диджитал-иллюстрации и построй на ней профессию: от первого взмаха "
         "стилусом до дохода на иллюстрации без академических знаний.")
 
-s = open("blocks.html", encoding="utf-8").read()
+src = open("blocks.html", encoding="utf-8").read()
 
-head = f'''<title>{TITLE}</title>
+
+def head_for(url, noindex=False, extra_icons=True):
+    robots = '\n<meta name="robots" content="noindex">' if noindex else ""
+    icons = ('\n<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">'
+             '\n<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">') if extra_icons else ""
+    return f'''<title>{TITLE}</title>
 <meta name="description" content="{DESC}">
-<link rel="canonical" href="{BASE}">
+<link rel="canonical" href="{url}">{robots}
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="{TITLE}">
 <meta property="og:description" content="{DESC}">
 <meta property="og:image" content="{BASE}img/hero-1600.jpg">
-<meta property="og:url" content="{BASE}">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="{url}">
+<meta name="twitter:card" content="summary_large_image">{icons}'''
 
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">'''
 
-old_head = '<title>Блоки 2–4 — три варианта</title>\n<meta name="robots" content="noindex">'
-assert old_head in s, "шапка blocks.html изменилась — поправь build_index.py"
-s = s.replace(old_head, head, 1)
+OLD_HEAD = '<title>Блоки 2–4 — три варианта</title>\n<meta name="robots" content="noindex">'
 
-# переключатель вариантов — только для показа, в боевую страницу не идёт
-s2 = re.sub(r'<div class="switch">.*?</div>\n', '', s, count=1, flags=re.S)
-assert s2 != s, "переключатель не найден"
-s = s2
 
-# служебные куски: замеры и открывалки по адресу (?probe, ?nohero, ?v, ?gcm,
-# ?lbopen, ?phopen). В рабочей странице нужны, на боевой им делать нечего.
-before = len(s)
-s = re.sub(r'  /\*dev\*/\n.*?  /\*/dev\*/\n', '', s, flags=re.S)
-s = re.sub(r'<!--dev-->\n.*?<!--/dev-->\n', '', s, flags=re.S)
-assert '/*dev*/' not in s and '<!--dev-->' not in s, "служебные куски вырезались не все"
-print(f"служебного кода убрано: {(before - len(s)) // 1024} КБ")
+def strip_dev(html):
+    """убрать замеры, открывалки по адресу и переключатель вариантов"""
+    html = re.sub(r'<div class="switch">.*?</div>\n', '', html, count=1, flags=re.S)
+    html = re.sub(r'  /\*dev\*/\n.*?  /\*/dev\*/\n', '', html, flags=re.S)
+    html = re.sub(r'<!--dev-->\n.*?<!--/dev-->\n', '', html, flags=re.S)
+    assert '/*dev*/' not in html and '<!--dev-->' not in html and 'class="switch"' not in html
+    return html
 
-open("index.html", "w", encoding="utf-8").write(s)
-print(f"index.html собран из blocks.html ({len(s)//1024} КБ), домен в мета-тегах: {BASE}")
+
+def strip_sale(html):
+    """убрать тарифы, окно с формами и его скрипт"""
+    html = re.sub(r'<!--sale-->\n.*?<!--/sale-->\n', '', html, flags=re.S)
+    assert '<!--sale-->' not in html and 'tar__card' not in html and 'gcm__form' not in html
+    return html
+
+
+def keep_sale(html):
+    return html.replace("<!--sale-->\n", "").replace("<!--/sale-->\n", "")
+
+
+def to_root_paths(html):
+    """страница лежит в подпапке — пути к файлам считаем от корня сайта"""
+    html = re.sub(r'(?<=")(css|img|js|fonts)/', r'/\1/', html)
+    html = re.sub(r'(?<=, )(img)/', r'/\1/', html)          # второй адрес в srcset
+    for f in ("favicon.ico", "favicon-32.png", "favicon-16.png", "apple-touch-icon.png"):
+        html = html.replace(f'"{f}"', f'"/{f}"')
+    return html
+
+
+# ---------- витрина: без цен и кнопок покупки ----------
+main = strip_sale(strip_dev(src)).replace(OLD_HEAD, head_for(BASE), 1)
+open("index.html", "w", encoding="utf-8").write(main)
+
+# ---------- предсписок: всё, включая тарифы ----------
+full = keep_sale(strip_dev(src))
+full = full.replace(OLD_HEAD, head_for(BASE + "predspisok/", noindex=True), 1)
+full = to_root_paths(full)
+os.makedirs("predspisok", exist_ok=True)
+open("predspisok/index.html", "w", encoding="utf-8").write(full)
+
+print(f"витрина      index.html            {len(main)//1024:3} КБ  (тарифов нет)")
+print(f"предсписок   predspisok/index.html {len(full)//1024:3} КБ  (тарифы и формы на месте)")

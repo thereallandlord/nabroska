@@ -920,7 +920,6 @@
   </details>
 </section>
 
-<!--sale-->
 <!-- ======================= ТАРИФЫ ======================= -->
 <!-- Одна лестница пути: «Письма художника» -> оба курса -> сопровождение.
      Курс «Из наброска в профессию» отдельно не продаётся: он живёт в тарифах 3 и 4. -->
@@ -933,8 +932,10 @@
       <img class="tar__orb" src="img/blocks/orb-blue.webp" alt="" style="--tilt: -4deg" loading="lazy" decoding="async">
       <p class="tar__step">Тариф 1</p>
       <h3 class="tar__name">Проба пера</h3>
+      <!--sale-->
       <p class="tar__price">13 500 ₽</p>
       <p class="tar__was">15 000 ₽</p>
+      <!--/sale-->
       <p class="tar__course">Курс «Письма художника»</p>
       <p class="tar__sub">Что внутри</p>
       <ul class="tar__list">
@@ -951,9 +952,11 @@
         <li>нет курса по монетизации</li>
       </ul>
       <div class="tar__foot">
+        <!--sale-->
         <button class="tar__btn tar__btn--main" type="button" data-gcm="pay-1">Оплатить</button>
         <button class="tar__btn tar__btn--book" type="button" data-gcm="book">Забронировать место</button>
         <a class="tar__btn" href="https://t.me/aszavra" target="_blank" rel="noopener">Купить в рассрочку без банков %</a>
+        <!--/sale-->
       </div>
     </article>
 
@@ -962,8 +965,10 @@
       <p class="tar__badge">Хит</p>
       <p class="tar__step">Тариф 2</p>
       <h3 class="tar__name">Засучив рукава</h3>
+      <!--sale-->
       <p class="tar__price">19 500 ₽</p>
       <p class="tar__was">22 000 ₽</p>
+      <!--/sale-->
       <p class="tar__course">Курс «Письма художника»</p>
       <p class="tar__sub">Что внутри</p>
       <ul class="tar__list">
@@ -983,9 +988,11 @@
           <div class="tar__bar"><span style="width: 30%"></span></div>
           <p>12 из 40 мест занято</p>
         </div>
+        <!--sale-->
         <button class="tar__btn tar__btn--main" type="button" data-gcm="pay-2">Оплатить</button>
         <button class="tar__btn tar__btn--book" type="button" data-gcm="book">Забронировать место</button>
         <a class="tar__btn" href="https://t.me/aszavra" target="_blank" rel="noopener">Купить в рассрочку без банков %</a>
+        <!--/sale-->
       </div>
     </article>
 
@@ -994,8 +1001,10 @@
       <p class="tar__badge">Выгодный</p>
       <p class="tar__step">Тариф 3</p>
       <h3 class="tar__name">До победного</h3>
+      <!--sale-->
       <p class="tar__price">39 500 ₽</p>
       <p class="tar__was">45 000 ₽</p>
+      <!--/sale-->
       <p class="tar__course">Курс «Письма художника»<br>Курс «Из наброска в профессию»</p>
       <p class="tar__sub">Что внутри</p>
       <ul class="tar__list">
@@ -1013,10 +1022,12 @@
           <div class="tar__bar"><span style="width: 50%"></span></div>
           <p>5 из 10 мест занято</p>
         </div>
+        <!--sale-->
         <button class="tar__btn tar__btn--main" type="button" data-gcm="pay-3">Оплатить</button>
         <button class="tar__btn tar__btn--book" type="button" data-gcm="book">Забронировать место</button>
         <a class="tar__btn" href="https://t.me/aszavra" target="_blank" rel="noopener">Купить в рассрочку без банков %</a>
         <a class="tar__btn tar__btn--ask" href="https://t.me/aszavra" target="_blank" rel="noopener">Уже брала 1-й курс, хочу 2-й.<br>Написать Асие</a>
+        <!--/sale-->
       </div>
     </article>
 
@@ -1024,8 +1035,10 @@
       <img class="tar__orb" src="img/blocks/donut.webp" alt="" style="--tilt: 4deg" loading="lazy" decoding="async">
       <p class="tar__step">Тариф 4</p>
       <h3 class="tar__name">Наставничество</h3>
+      <!--sale-->
       <p class="tar__price">79 000 ₽</p>
       <p class="tar__was">89 000 ₽</p>
+      <!--/sale-->
       <p class="tar__course">Оба курса и личное сопровождение</p>
       <p class="tar__sub">Что внутри</p>
       <ul class="tar__list">
@@ -1035,14 +1048,15 @@
         <li>приоритетная обратная связь</li>
       </ul>
       <div class="tar__foot">
+        <!--sale-->
         <p class="tar__soldout" aria-disabled="true">Мест нет</p>
+        <!--/sale-->
       </div>
     </article>
     </div>
   </div>
 </section>
 
-<!--/sale-->
 <!-- ======================= СВЯЗЬ С АСИЕЙ ======================= -->
 <section class="section s-ask light">
   <div class="wrap">
@@ -1366,7 +1380,8 @@
         var o = { x: Math.round(r.left), y: Math.round(r.top + scrollY),
                   w: Math.round(r.width), h: Math.round(r.height),
                   bottom: Math.round(r.bottom + scrollY),
-                  display: cs.display, fs: cs.fontSize, color: cs.color };
+                  display: cs.display, fs: cs.fontSize, color: cs.color,
+                  pl: cs.paddingLeft, pr: cs.paddingRight };
         if (e.tagName === 'IMG') { o.src = e.currentSrc || e.src; o.nw = e.naturalWidth; o.nh = e.naturalHeight; }
         return o;
       });

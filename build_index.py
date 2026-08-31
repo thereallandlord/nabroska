@@ -51,9 +51,14 @@ def strip_dev(html):
 
 
 def strip_sale(html):
-    """убрать тарифы, окно с формами и его скрипт"""
+    """убрать цены, кнопки покупки и окно с формами.
+    Сами карточки тарифов на витрине остаются: там видно, что входит
+    в каждый вариант, — без цен и без кнопок."""
     html = re.sub(r'<!--sale-->\n.*?<!--/sale-->\n', '', html, flags=re.S)
-    assert '<!--sale-->' not in html and 'tar__card' not in html and 'gcm__form' not in html
+    assert '<!--sale-->' not in html, "метки вырезались не все"
+    assert '₽' not in html, "на витрине осталась цена"
+    assert 'class="tar__btn' not in html, "на витрине осталась кнопка покупки"
+    assert 'gcm__form' not in html, "на витрине осталось окно с формами"
     return html
 
 
@@ -81,5 +86,5 @@ full = to_root_paths(full)
 os.makedirs("predspisok", exist_ok=True)
 open("predspisok/index.html", "w", encoding="utf-8").write(full)
 
-print(f"витрина      index.html            {len(main)//1024:3} КБ  (тарифов нет)")
+print(f"витрина      index.html            {len(main)//1024:3} КБ  (тарифы без цен и кнопок)")
 print(f"предсписок   predspisok/index.html {len(full)//1024:3} КБ  (тарифы и формы на месте)")

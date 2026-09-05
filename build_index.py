@@ -2,7 +2,8 @@
 """Собирает две боевые страницы из одной рабочей blocks.html.
 
   /                — витрина: тот же сайт, но без цен и кнопок покупки
-  /predspisok/     — полная версия с тарифами и формами оплаты
+  /predspisok/     — полная версия, ранние цены
+  /blog/           — полная версия, обычные цены (выше)
 
 В blocks.html размечены два вида служебных кусков:
   /*dev*/ … /*/dev*/    — замеры и открывалки по адресу, в боевые не идут
@@ -14,6 +15,15 @@ import os, re, sys
 
 DOMAIN = (sys.argv[1] if len(sys.argv) > 1 else "aszavra.art").rstrip("/")
 BASE = f"https://{DOMAIN}/"
+
+# цены страницы /blog/: те же тарифы, но дороже, чем в предсписке.
+# Зачёркнутые «старые» цены НЕ меняются — они одинаковые на всех страницах.
+BLOG_PRICES = {
+    "13 500 ₽": "14 500 ₽",
+    "19 500 ₽": "20 500 ₽",
+    "39 500 ₽": "42 500 ₽",
+    "79 000 ₽": "85 000 ₽",
+}
 
 TITLE = "Из наброска в профессию — курс по диджитал-иллюстрации"
 DESC = ("Освой базу диджитал-иллюстрации и построй на ней профессию: от первого взмаха "
@@ -86,5 +96,19 @@ full = to_root_paths(full)
 os.makedirs("predspisok", exist_ok=True)
 open("predspisok/index.html", "w", encoding="utf-8").write(full)
 
+# ---------- blog: та же полная версия, но цены выше ----------
+blog = keep_sale(strip_dev(src))
+blog = blog.replace(OLD_HEAD, head_for(BASE + "blog/", noindex=True), 1)
+for old, new in BLOG_PRICES.items():
+    marker = f'<p class="tar__price">{old}</p>'
+    assert marker in blog, f"не нашёл цену {old} — проверь разметку тарифов"
+    blog = blog.replace(marker, f'<p class="tar__price">{new}</p>', 1)
+for old in BLOG_PRICES:                      # старая цена не должна остаться в тарифной строке
+    assert f'<p class="tar__price">{old}</p>' not in blog
+blog = to_root_paths(blog)
+os.makedirs("blog", exist_ok=True)
+open("blog/index.html", "w", encoding="utf-8").write(blog)
+
 print(f"витрина      index.html            {len(main)//1024:3} КБ  (тарифы без цен и кнопок)")
-print(f"предсписок   predspisok/index.html {len(full)//1024:3} КБ  (тарифы и формы на месте)")
+print(f"предсписок   predspisok/index.html {len(full)//1024:3} КБ  (ранние цены)")
+print(f"blog         blog/index.html       {len(blog)//1024:3} КБ  (обычные цены)")
